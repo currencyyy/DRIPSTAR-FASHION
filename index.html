@@ -161,7 +161,7 @@
     .top-nav a {
       color: white;
       text-decoration: none;
-      font-size: 0.9em;
+      font-size: 1em;
       letter-spacing: 2px;
       text-transform: uppercase;
       opacity: 0.7;
@@ -170,16 +170,305 @@
 
     .top-nav a:hover { opacity: 1; color: var(--gold); }
 
+@media (max-width: 600px) {
+  .top-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+}
+
+
+    .menu-btn {
+      background: var(--gold);
+      color: black;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+
+    .nav-links {
+      display: none; /* hidden by default */
+      flex-direction: column;
+      background: rgba(0,0,0,0.95);
+      position: absolute;
+      top: 50px;
+      right: 0;
+      padding: 20px;
+      border-radius: 10px;
+      width: 200px;
+    }
+
+    .nav-links.active {
+      display: flex; /* show when toggled */
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.9em;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.7;
+      transition: 0.3s;
+      margin: 10px 0;
+    }
+
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+    :root {
+      --gold: #b8860b;
+      --drip-gradient: linear-gradient(45deg, #ff00cc, #3333ff);
+      --glass: rgba(255, 255, 255, 0.03);
+    }
+
+    body {
+      background-color: black;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .top-nav {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+    }
+
+    .menu-btn {
+      background: var(--gold);
+      color: black;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+
+    .nav-links {
+      display: none; /* hidden by default */
+      flex-direction: column;
+      background: rgba(0,0,0,0.95);
+      position: absolute;
+      top: 50px;
+      right: 0;
+      padding: 20px;
+      border-radius: 10px;
+      width: 200px;
+    }
+
+    .nav-links.active {
+      display: flex; /* show when toggled */
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.9em;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.7;
+      transition: 0.3s;
+      margin: 10px 0;
+    }
+
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+      position: relative;
+    }
+
+    .hero-content {
+      z-index: 10;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: reveal 1s ease-out forwards;
+    }
+
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(3em, 10vw, 6em);
+      margin: 0;
+      background: var(--drip-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      color: var(--gold);
+      letter-spacing: 5px;
+      font-weight: bold;
+      margin: 20px 0;
+      font-size: 1.2em;
+    }
+
+    .btn-explore {
+      display: inline-block;
+      padding: 15px 40px;
+      background: white;
+      color: black;
+      text-decoration: none;
+      border-radius: 40px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      transition: 0.3s;
+      margin-top: 20px;
+    }
+    :root {
+      --gold: #b8860b;
+      --drip-gradient: linear-gradient(45deg, #ff00cc, #3333ff);
+      --glass: rgba(255, 255, 255, 0.03);
+    }
+
+    body {
+      background-color: black;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .top-nav {
+      position: fixed; /* stays visible even when scrolling */
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .menu-btn {
+      background: var(--gold);
+      color: black;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+
+    .nav-links {
+      max-height: 0; /* hidden by default */
+      overflow: hidden;
+      flex-direction: column;
+      background: rgba(0,0,0,0.95);
+      position: absolute;
+      top: 50px;
+      right: 0;
+      padding: 0 20px;
+      border-radius: 10px;
+      width: 200px;
+      transition: max-height 0.4s ease; /* smooth slide */
+    }
+
+    .nav-links.active {
+      max-height: 500px; /* enough space to show all links */
+      padding: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.9em;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.7;
+      transition: 0.3s;
+      margin: 10px 0;
+    }
+
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+      position: relative;
+    }
+
+    .hero-content {
+      z-index: 10;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: reveal 1s ease-out forwards;
+    }
+
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(3em, 10vw, 6em);
+      margin: 0;
+      background: var(--drip-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      color: var(--gold);
+      letter-spacing: 5px;
+      font-weight: bold;
+      margin: 20px 0;
+      font-size: 1.2em;
+    }
+
+    .btn-explore {
+      display: inline-block;
+      padding: 15px 40px;
+      background: white;
+      color: black;
+      text-decoration: none;
+      border-radius: 40px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      transition: 0.3s;
+      margin-top: 20px;
+    }
+
+    .btn-explore:hover {
+      background: var(--drip-gradient);
+      color: white;
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(255, 0, 204, 0.4);
+    }
+
+    @keyframes reveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
 
   <nav class="top-nav">
-    <a href="dripcollection.html">Collection</a>
-    <a href="wishlist.html">Wishlist</a>
-    <a href="dripAbout.html">About</a>
-    <a href="allcart.html">Cart</a>
-    <a href="driplogin.html">Login</a>
+    <button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+      MENU
+    </button>
+    <div class="nav-links">
+      <a href="dripcollection.html">Collection</a>
+      <a href="wishlist.html">Wishlist</a>
+      <a href="dripAbout.html">About</a>
+      <a href="allcart.html">Cart</a>
+      <a href="driplogin.html">Login</a>
+    </div>
   </nav>
 
   <section class="hero">
@@ -190,6 +479,7 @@
       <a href="dripcollection.html" class="btn-explore">SHOP THE COLLECTION</a>
     </div>
   </section>
+
 
   <h2 class="section-title">CHOOSE YOUR VIBE</h2>
 
@@ -234,6 +524,8 @@
 
 </body>
 </html>
+
+
 
 
 
