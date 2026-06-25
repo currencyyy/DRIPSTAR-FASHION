@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dripstar Fashion | Home of Street Drip</title>
   <style>
+
+.nav-buttons { margin-top: -10px; word-spacing: 6%; }
+    .nav-btn { display: inline-block; margin: 5px; padding: 5px 15px; background: #333; color: #fff; text-decoration: none; border-radius: 18px; font-size: 0.85em; transition: 0.3s; }
+    .nav-btn:hover { background: #555; transform: translateY(-2px); }
+    .nav-btn.active { background: var(--gold); font-weight: bold; }
+    
+
     :root {
       --gold: #b8860b;
       --drip-gradient: linear-gradient(45deg, #ff00cc, #3333ff);
@@ -148,7 +155,7 @@
     }
 
     /* Navigation */
-    .top-nav {
+    .nav-button {
       position: absolute;
       top: 30px;
       width: 100%;
@@ -158,29 +165,29 @@
       z-index: 100;
     }
 
-    .top-nav a {
-      color: white;
+    .nav-button a {
+      color: whitesmoke;
       text-decoration: none;
       font-size: 0.9em;
       letter-spacing: 2px;
       text-transform: uppercase;
-      opacity: 0.7;
-      transition: 0.3s;
+      opacity: 5.7;
+     
+     
     }
 
-    .top-nav a:hover { opacity: 1; color: var(--gold); }
+    .nav-button a:hover { opacity: 1; color: var(--gold); }
 
   </style>
 </head>
 <body>
-
-  <nav class="top-nav">
-    <a href="dripcollection.html">Collection</a>
-    <a href="wishlist.html">Wishlist</a>
-    <a href="dripAbout.html">About</a>
-    <a href="allcart.html">Cart</a>
-    <a href="driplogin.html">Login</a>
-  </nav>
+ <div class="nav-button">
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="dripcollection.html" class="nav-btn active">Collection</a>
+      <a href="dripAbout.html" class="nav-btn">About Us</a>
+      <a href="allcart.html" class="nav-btn">Cart</a>
+      <a href="wishlist.html" class="nav-btn">Wishlist <span id="wish-count-nav">(0)</span></a>
+</div>
 
   <section class="hero">
     <div class="hero-content">
@@ -202,8 +209,7 @@
       </div>
     </div>
 
-    
-  <div class="cat-card" onclick="window.location.href='femalesection.html'">
+    <div class="cat-card" onclick="window.location.href='femalesection.html'">
       <img src="shein2.jpeg" class="cat-img">
       <div class="cat-overlay">
         <h3>Essentials</h3>
@@ -211,16 +217,14 @@
       </div>
     </div>
 
-
     <div class="cat-card" onclick="window.location.href='dripcollection.html'">
-      <img src="ChatGPT Image Jun 25, 2026, 01_45_26 AM.png" class="cat-img">
+      <img src="drpcap - Copy.jpeg" class="cat-img">
       <div class="cat-overlay">
         <h3>Cap Collection</h3>
         <p>drip-cap</p>
       </div>
     </div>
   </div>
-
 
   <div class="featured-bar">
     <div class="bar-text">
