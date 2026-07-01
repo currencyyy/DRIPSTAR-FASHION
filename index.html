@@ -187,10 +187,12 @@
       font-weight: bold;
       cursor: pointer;
       border: none;
+      margin-right: -80%;
+      margin-top: 3%;
     }
 
     .nav-links {
-      display: none; /* hidden by default */
+      display: none; 
       flex-direction: column;
       background: rgba(0,0,0,0.95);
       position: absolute;
@@ -242,12 +244,17 @@
 
     .menu-btn {
       background: var(--gold);
-      color: black;
+      color: whitesmoke;
       padding: 10px 20px;
       border-radius: 5px;
       font-weight: bold;
       cursor: pointer;
       border: none;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 130%;
+      text-align: center;
+      justify-self: center;
+
     }
 
     .nav-links {
@@ -349,11 +356,12 @@
       top: 20px;
       right: 20px;
       z-index: 1000;
+      color: whitesmoke;
     }
 
     .menu-btn {
       background: var(--gold);
-      color: black;
+      color:whitesmoke;
       padding: 10px 20px;
       border-radius: 5px;
       font-weight: bold;
@@ -373,7 +381,9 @@
       border-radius: 10px;
       width: 200px;
       transition: max-height 0.4s ease; /* smooth slide */
-    }
+   color:whitesmoke;
+  
+  }
 
     .nav-links.active {
       max-height: 500px; /* enough space to show all links */
@@ -383,12 +393,13 @@
     .nav-links a {
       color: white;
       text-decoration: none;
-      font-size: 0.9em;
+      font: size 5px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      opacity: 0.7;
+      opacity: 100%;
       transition: 0.3s;
       margin: 10px 0;
+      font-size: larger;
     }
 
     .nav-links a:hover { opacity: 1; color: var(--gold); }
@@ -459,15 +470,17 @@
 <body>
 
   <nav class="top-nav">
-    <button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+    <button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')" >
       MENU
     </button>
     <div class="nav-links">
-      <a href="dripcollection.html">Collection</a>
+      <a href="dripcollection.html">male section</a>
+      <a href="femalesection.html">female section</a>
       <a href="wishlist.html">Wishlist</a>
       <a href="dripAbout.html">About</a>
       <a href="allcart.html">Cart</a>
       <a href="driplogin.html">Login</a>
+
     </div>
   </nav>
 
@@ -517,15 +530,13 @@
     <a href="dripcollection.html" style="color:var(--gold); text-decoration:none; font-weight:bold;">SHOP NOW →</a>
   </div>
 
-  <footer style="text-align:center; padding: 60px 0; border-top: 1px solid #111; color: #444; font-size: 0.8em;">
+  <footer style="text-align:center; padding: 60px 0; border-top: 1px solid #111; color: #fbf7f7; font-size: 90%; font-weight: 600;">
      ©  proudly founded By Ngborogwu prince <br>
      © 2026 DRIPSTAR FASHION. ALL RIGHTS RESERVED.
   </footer>
 
 </body>
 </html>
-
-
 
 
 
