@@ -17,10 +17,10 @@
     
     .currency-picker { position: absolute;background: white; color: black; border: 19x solid var(--gold); padding: 10px 15px; border-radius: 23px; cursor: pointer; font-weight: bold;margin-left: -70%; margin-top: -1011%; margin-left: -400%;}
 
-    .product { display: flex; align-items: flex-start; margin: 40px; padding-left: 5%; position: relative; }
+    .product { display: flex; align-items: flex-start; margin: 40px; padding-left: 5%; position: relative; margin-top: 10%; }
     .product img { width: 400px; height: 400px; border-radius: 10px;object-fit: cover; transition: 0.s cubic-bezier(0.105, 0.105, 0.100, 105); }
-    .product img:hover { transform: scale(112%); z-index: 16; }
-    .product-details { text-align: center; max-width: 300px; padding-left: 50px; margin-top: 10%; }
+    .product img:hover { transform: scale(1.08); z-index: 10; }
+    .product-details { text-align: center; max-width: 500px; padding-left: 50px; margin-top: 3%; font-size: larger; font-family: cursive; }
 
     .live-viewers {
       display: flex;
@@ -42,6 +42,75 @@
       animation: blink 1.5s infinite;
     }
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+        
+   .confirmation{
+
+color:#00ff99;
+
+font-size:(17rem,5vw,3.5rem);
+
+font-weight:bold;
+
+opacity:0;
+
+min-height:22px;
+
+transition:.4s;
+
+}
+
+
+#backToTop{
+
+position:fixed;
+
+bottom:40px;
+
+right:30px;
+
+width:55px;
+
+height:55px;
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+background:var(--gold);
+
+color:white;
+
+border:none;
+
+border-radius:50%;
+
+cursor:pointer;
+
+font-size:24px;
+
+font-weight:bold;
+
+box-shadow:
+
+0 0 10px gold,
+
+0 0 25px gold;
+
+transition:.3s;
+
+z-index:9999;
+
+}
+
+#backToTop:hover{
+
+transform:scale(1.1);
+
+}
+
 
     .btn-organic {
       margin-top: 15px;
@@ -81,49 +150,10 @@
     .rv-item img { width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 1px solid #444; }
     .btn-clear-rv { background: none; border: 1px solid #ff4444; color: #ff4444; border-radius: 15px; padding: 5px 12px; cursor: pointer; font-size: 0.7em; }
 
-    #backToTop {  position: fixed;
-      bottom: 40px;
-      right: 40px;
-      display: none; /* Hidden by default */
-      background-color: #0078d7;
-      color: white;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 14px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      transition: opacity 0.3s ease;
-      z-index: 1000;
-    }
 
-    #backToTop:hover {
-      background-color: #005a9e;
-    } 
-    
     .confirmation { color: lime; opacity: 0; font-weight: bold; margin-top: 10px; font-size: 0.9em; transition: opacity 0.4s; }
  
-   .gender{
-    margin-top: 15px;
-      padding: 2px 3px;
-      margin-left: 25%;
-      background: var(--drip);
-      color: white;
-      border: none;
-      border-radius: 3px;
-      font-weight: 800;
-      font-size: 0.9em;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: 0.3s;
-      box-shadow: 0 4px 15px rgba(12, 10, 12, 0.2);
-    
-   
-    }
-.gender:hover{
-  transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 0, 204, 0.5); filter: brightness(1.1);
-}
+
 
    
 .header{
@@ -137,10 +167,11 @@ text-align: center;
   font-size: x-large;
   font-family: 'Times New Roman', Times, serif;
   margin-left: 0%;
+  margin-bottom: 0%;
   padding-bottom: 24%;
   color: rgb(245, 250, 245);
   border: #7def0b;
-  border-radius: 15%;
+  border-radius: 1%;
   box-shadow: #fff;
   border-top-width: 4%;
   text-align: center;
@@ -150,102 +181,17 @@ box-shadow:
 0 0 30px #111,
 0 0 40px rgba(255,255,255,.15);
 
-}
+position:relative;
 
-/* Moving website background */
-.hech2::before{
-    content:"";
-    padding-bottom: 27%;
-    position:absolute;
-    inset:0;
-    background-image:url("blacoo.jpeg") ;
-    background-repeat:repeat-x;
-    background-position:center;
-    animation:movingWebsite 100s linear infinite;
-    transform:scale(1.0);
-    z-index:0;
-    filter:brightness(0.55);
-    padding-top: 10%
-    color: whitesmoke;
-    margin-bottom: 5%;
-}
+overflow:hidden;
 
-/* Dark overlay */
-.hech2::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    z-index:1;
-    color: whitesmoke;
-}
+height:120px;
 
-/* News ticker */
-.hech2 span{
-    position:absolute;
-    white-space:nowrap;
-    z-index:2;
-    animation:newsTicker 10s linear infinite;
-    color:#fff;
-    font-size:28px;
-    font-weight:bold;
-    text-shadow: 10px #fefcfc;
-    position: absolute;
-}
+display:flex;
 
-@keyframes movingWebsite{
-    from{
-        background-position:0 0;
-    }
-    to{
-        background-position:-1800px 0;
-    }
-}
+align-items:center;
 
-@keyframes newsTicker{
-    from{
-        transform:translateX(120%);
-    }
-    to{
-        transform:translateX(-120%);
-    }
-}
-
-/* Dark overlay */
-.hech2::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    z-index:1;
-}
-
-/* News ticker */
-.hech2 span{
-    position:absolute;
-    white-space:nowrap;
-    animation:newsTicker 29s linear infinite;
-    color:#fff;
-    font-size:28px;
-    font-weight:bold;
-    text-shadow:10px #000;
-    padding-top: 5%;
-}
-
-@keyframes movingWebsite{
-    from{
-        background-position:0 0;
-    }
-    to{
-        background-position:-1800px 0;
-    }
-}
-
-@keyframes newsTicker{
-    from{
-        transform:translateX(0%);
-    }
-    to{
-        transform:translateX(-100%);
-    }
+justify-content:center;
 }
 
 .DSF{
@@ -256,69 +202,57 @@ box-shadow:
   text-align: center;
 }
 
-#backToTop {
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
-  opacity: 0;
-  pointer-events: none;
-  background: var(--gold);
-  color: rgb(249, 242, 242);
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  box-shadow: 
-    0 0 10px gold,
-    0 0 20px gold,
-    0 0 30px rgba(255,215,0,0.7);
-  transition: opacity 0.4s ease, transform 0.3s ease;
-  z-index: 999;}
 
-   :root {
-      --gold: #b8860b;
-      --drip-gradient: linear-gradient(45deg, #ff00cc, #3333ff);
-    }
+#backToTop{
 
-    body { background-color: black; font-family: 'Segoe UI', sans-serif; color: white; margin: 0; overflow-x: hidden; scroll-behavior: smooth; }
-    
-    #shipping-bar-container { background: #1a1a1a; padding: 10px; text-align: center; position: sticky; top: 0; z-index: 1100; border-bottom: 1px solid #333; }
-    #shipping-progress-fill { background: linear-gradient(90deg, #00ff00, #00ccff); height: 100%; width: 0%; transition: width 0.5s; }
-    h1 { background-color: aliceblue; color: black; padding: 3% 0 2%; text-align: center; margin: 0; }
-    
-   
+position:fixed;
 
+bottom:80px;
 
-  
-    
-    .currency-picker { background: #222; color: var(--gold); border: 1px solid var(--gold); padding: 5px 10px; border-radius: 15px; cursor: pointer; font-weight: bold; }
+right:30px;
 
-    .product { display: flex; align-items: flex-start; margin: 40px; padding-left: 5%; position: relative; }
-    .product img { margin-bottom: -12%;  width: 400px; height: 400px; border-radius: 10px; cursor: pointer; object-fit: cover; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-    .product img:hover { transform: scale(1.08); z-index: 10; }
-    .product-details { max-width: 500px; padding-left: 25px; font-size: 160%; padding-bottom: 0%; }
+width:55px;
 
-    .live-viewers {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.75em;
-      color: #00ff00;
-      margin-bottom: 8px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      text-align: center;
-      padding-left: 15%;
-    }
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      background: #00ff00;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #00ff00;
-      animation: blink 1.5s infinite;
-      text-align: center;
-    }
+height:55px;
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+background:var(--gold);
+
+color:white;
+
+border:none;
+
+border-radius:50%;
+
+cursor:pointer;
+
+font-size:24px;
+
+font-weight:bold;
+
+box-shadow:
+
+0 0 10px gold,
+
+0 0 25px gold;
+
+transition:.3s;
+
+z-index:9999;
+margin-bottom: -6%;
+}
+
+#backToTop:hover{
+
+transform:scale(1.1);
+
+}
+
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
     .btn-organic {
@@ -382,89 +316,237 @@ box-shadow:
   transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 0, 204, 0.5); filter: brightness(1.1);
 }
 
-/* Navigation */
-    .top-nav {
-      position: fixed; /* stays visible even when scrolling */
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-      color: whitesmoke;
-    }
-      .menu-btn {
-      background: var(--gold);
-      color: whitesmoke;
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-      border: none;
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      font-size: 130%;
-      text-align: center;
-      justify-self: center;
-      margin-top: 59%;
 
-    }
-    .nav-links {
-      max-height: 0; /* hidden by default */
-      overflow: hidden;
-      flex-direction: column;
-      background: rgba(0,0,0,0.95);
-      position: absolute;
-      top: 50px;
-      right: 0;
-      padding: 0 20px;
-      border-radius: 10px;
-      width: 200px;
-      transition: max-height 0.4s ease; /* smooth slide */
-   color:whitesmoke;
-   margin-top: 60%;
-  
-  }
+.top-nav{
 
-    .nav-links.active {
-      max-height: 500px; /* enough space to show all links */
-      padding: 20px;
-    }
+position:fixed;
 
-.nav-links a {
-      color: white;
-      text-decoration: none;
-      font-size: 177%;
-      letter-spacing: 6px;
-      text-transform: uppercase;
-      opacity: 3.7;
-      transition: 0.3s;
-      margin: 10px 0;
-    }
+top:20px;
 
-    .nav-links a:hover { opacity: 1; color: var(--gold); }
+right:20px;
 
+z-index:5000;
+
+}
+
+.menu-btn{
+
+padding:12px 22px;
+
+background:var(--gold);
+
+color:white;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+font-size:17px;
+
+font-weight:bold;
+
+transition:.3s;
+
+box-shadow:0 0 15px rgba(184,134,11,.4);
+
+}
+
+.menu-btn:hover{
+
+transform:scale(1.05);
+
+background:#daa520;
+
+}
+
+.nav-links{
+
+position:absolute;
+
+top:60px;
+
+right:0;
+
+width:240px;
+
+background:#111;
+
+border:1px solid #333;
+
+border-radius:15px;
+
+display:flex;
+
+flex-direction:column;
+
+overflow:hidden;
+
+max-height:0;
+
+transition:.4s;
+
+}
+
+.nav-links.active{
+
+max-height:600px;
+
+padding:15px 0;
+
+}
+
+.nav-links a{
+
+padding:1px 1px;
+
+font-size: x-large;
+
+letter-spacing:2px;
+
+text-decoration:none;
+
+color:white;
+
+transition:.3s;
+
+}
+
+.nav-links a:hover{
+
+background:#222;
+
+padding-left:35px;
+
+color:var(--gold);
+
+}
 .cartext{
   font-size: 370%;
 }
-.cart-count{
-  font-size: ;
+
+::-webkit-scrollbar{
+
+width:12px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#111;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:
+
+linear-gradient(
+
+180deg,
+
+#ff00cc,
+
+#b8860b
+
+);
+
+.cart-floating{
+
+animation:cartFloat 3s ease-in-out infinite;
+
+}
+
+@keyframes cartFloat{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-8px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+border-radius:20px;
+
+}
+
+
+
+.logo h2{
+font-size: 300%;
+animation:logoGlow 4s infinite alternate;
+
+}
+
+@keyframes logoGlow{
+
+0%{
+
+text-shadow:
+
+0 0 8px rgba(255,255,255,.15);
+
+}
+
+100%{
+
+text-shadow:
+
+0 0 20px gold,
+
+0 0 35px rgba(255,215,0,.45);
+
+}
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+background:#ff00cc;
+
+}
+
+::selection{
+
+background:#ff00cc;
+
+color:white;
+
 }
  </style>
 </head>
 <body onload="initPage()">
 
   <div id="shipping-bar-container">
-    <span id="shipping-text">You're $500.00 away from FREE SHIPPING!</span>
+    <span id="shipping-text">You're $500 away from FREE SHIPPING!</span>
     <div style="background: #333; height: 6px; width: 60%; margin: 5px auto; border-radius: 10px; overflow: hidden;"><div id="shipping-progress-fill"></div></div>
   </div>
 
+
   <button id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
 
-  <div style="position: fixed; bottom: 30px; right: 30px; background: var(--drip-gradient); width: 105px; height: 105px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; box-shadow: 0 0 20px rgba(255, 0, 204, 0.4);" onclick="window.location.href='allcart.html'">
-    <span class="cartext">🛒</span><span id="cart-count" style="background: white; color: black; text-align: center; font-size: 33px; font-weight: bold; padding: 5px 13px; border-radius: 72px; position: absolute; top: -5px; right: -5px; border: 2px solid #ff00cc; width: 40%; height: 40%;">0</span>
+   <div style="position: fixed; bottom: 120px; right: 30px; background: var(--drip-gradient); font-size: xx-large; width: 105px; height: 105px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; box-shadow: 0 0 20px rgba(255, 0, 204, 0.4);" onclick="window.location.href='allcart.html'">
+    <span class="cart-floating">🛒</span>
   </div>
    
   <header class="header">
 
     <div class="logo">
-        <a href="index.html">
+        
             <h2>DRIPSTAR FASHION</h2>
         </a>
     </div>
@@ -486,24 +568,7 @@ box-shadow:
 
     </div>
   </nav>
-
-</header>
-      <select class="currency-picker" id="currency-select" onchange="changeCurrency()">
-      
-        <option value="USD">USD ($)</option>
-        <option value="NGN">NGN (₦)</option>
-      </select>
-    </div>
  
-<div class="hech2">
-
-    <span>
-        📢 CONTACT US TO DISPLAY YOUR ADVERT HERE • CALL: 09064575303 • DRIPSTAR FASHION • CONTACT US TODAY •
-    </span>
-</div>
- 
-  <br> <br> <br>
-
   <div class="product">
     <div style="position:relative;">
         <button class="wish-btn" onclick="toggleWish(this, 'DSF DripCap (black)', 'dripcap', 40)">❤</button>
@@ -512,7 +577,7 @@ box-shadow:
     <div class="product-details">
       <div class="live-viewers"><div class="live-dot"></div><span class="view-count">2</span> people are viewing this right now</div>
       <b> DSF Black-MOB-hoodie</b><br>
-      <span class="old-price" data-usd="40">$40</span><span class="sale-price" data-usd="40">$40</span>
+      <span class="old-price" data-usd="">$40</span><span class="sale-price" data-usd="40">$40</span>
       <p>Dripstar MOB-hoodie designed in black for maximum comfort, aura and for starz only.</p>
       <button class="btn-organic" onclick="addToCart('DSF blackMOBhoodie','M',40,1,this)">Add to Cart</button>
       <div class="confirmation"></div>
@@ -522,12 +587,12 @@ box-shadow:
  <div class="product">
     <div style="position:relative;">
         <button class="wish-btn" onclick="toggleWish(this, 'DSF DripCap (black)', 'dripcap', 7)">❤</button>
-        <img src="blacoo - Copy.jpeg" alt="Black drip-cap" onclick="openPopup('', 'blacoo - copy.jpeg', 7, 10)">
+        <img src="blacoo - Copy.jpeg" alt="Black drip-cap" onclick="openPopup('', 'blacoo - copy.jpeg', 7, 7)">
     </div>
     <div class="product-details">
       <div class="live-viewers"><div class="live-dot"></div><span class="view-count">6</span> people are viewing this right now</div>
       <b> DSF Black-Drip-cap</b><br>
-      <span class="old-price" data-usd="10">$7</span><span class="sale-price" data-usd="7">$7</span>
+      <span class="old-price" data-usd="7">$7</span><span class="sale-price" data-usd="7">$7</span>
       <p>Dripstar Face Cap designed in black for the maximum comfort + aura.</p>
       <button class="btn-organic" onclick="addToCart('DSF blackDripCap','M',7,1,this)">Add to Cart</button>
       <div class="confirmation"></div>
@@ -705,114 +770,1118 @@ box-shadow:
   </div>
 
   <script>
-    const RATE = 1400;
-    let activeProduct = {};
+/*=========================================================
+        DRIPSTAR FASHION COLLECTION
+        Professional JavaScript v2.0
+=========================================================*/
 
-    function initPage() {
-      const cur = localStorage.getItem('prefCurrency') || 'USD';
-      document.getElementById('currency-select').value = cur;
-      updatePrices(); updateCartUI(); renderRV();
-      startLiveViewers();
-      window.onscroll = () => document.getElementById("backToTop").style.display = (window.scrollY > 300) ? "flex" : "none";
+"use strict";
+
+/*=========================
+    GLOBAL SETTINGS
+=========================*/
+
+const RATE = 1400;
+const FREE_SHIPPING = 200;
+
+let activeProduct = {
+    name: "",
+    price: 0,
+    front: "",
+    back: ""
+};
+
+/*=========================
+    LOCAL STORAGE HELPERS
+=========================*/
+
+function getCart() {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+function saveCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function getWishlist() {
+    return JSON.parse(localStorage.getItem("wishlist")) || [];
+}
+
+function saveWishlist(list) {
+    localStorage.setItem("wishlist", JSON.stringify(list));
+}
+
+function getRecentlyViewed() {
+    return JSON.parse(localStorage.getItem("rv")) || [];
+}
+
+function saveRecentlyViewed(rv) {
+    localStorage.setItem("rv", JSON.stringify(rv));
+}
+
+/*=========================
+    PRICE FORMATTER
+=========================*/
+
+function getCurrency() {
+    return localStorage.getItem("prefCurrency") || "USD";
+}
+
+function formatPrice(price) {
+
+    const currency = getCurrency();
+
+    if (currency === "NGN") {
+
+        return "₦" + (price * RATE).toLocaleString();
+
     }
 
-    function startLiveViewers() {
-      setInterval(() => {
-        document.querySelectorAll('.view-count').forEach(el => {
-          let count = parseInt(el.innerText);
-          let change = Math.floor(Math.random() * 3) - 1; // -1, 0, or 1
-          el.innerText = Math.max(5, count + change);
+    return "$" + Number(price).toFixed(0);
+
+}
+
+/*=========================
+    INITIALIZATION
+=========================*/
+
+document.addEventListener("DOMContentLoaded", initPage);
+
+function initPage() {
+
+    const currencySelect =
+        document.getElementById("currency-select");
+
+    if (currencySelect) {
+
+        currencySelect.value = getCurrency();
+
+    }
+
+    updatePrices();
+
+    updateCartUI();
+
+    renderRecentlyViewed();
+
+    restoreWishlistButtons();
+
+    startLiveViewers();
+
+    initScrollButton();
+
+}
+
+/*=========================
+    SCROLL BUTTON
+=========================*/
+
+function initScrollButton() {
+
+    const button =
+        document.getElementById("backToTop");
+
+    if (!button) return;
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 300) {
+
+            button.style.display = "flex";
+
+        }
+
+        else {
+
+            button.style.display = "none";
+
+        }
+
+    });
+
+}
+
+/*=========================
+    CURRENCY
+=========================*/
+
+function changeCurrency() {
+
+    const select =
+        document.getElementById("currency-select");
+
+    if (!select) return;
+
+    localStorage.setItem(
+        "prefCurrency",
+        select.value
+    );
+
+    updatePrices();
+
+    updateCartUI();
+
+}
+
+function updatePrices() {
+
+    const currency = getCurrency();
+
+    document.querySelectorAll(".sale-price,.old-price")
+    .forEach(price => {
+
+        const usd =
+            parseFloat(price.dataset.usd);
+
+        if (isNaN(usd)) return;
+
+        if (currency === "NGN") {
+
+            price.textContent =
+                "₦" + (usd * RATE).toLocaleString();
+
+        }
+
+        else {
+
+            price.textContent =
+                "$" + usd;
+
+        }
+
+    });
+
+}
+
+/*=========================
+    PRODUCT POPUP
+=========================*/
+
+function openPopup(name, front, back, price) {
+
+    activeProduct = {
+
+        name,
+        front,
+        back,
+        price
+
+    };
+
+    document.getElementById("pop-name").textContent =
+        name;
+
+    document.getElementById("pop-price").textContent =
+        formatPrice(price);
+
+    const frontImg =
+        document.getElementById("pop-front");
+
+    const backImg =
+        document.getElementById("pop-back");
+
+    frontImg.src = front;
+
+    if (back) {
+
+        backImg.src = back;
+
+        backImg.style.display = "block";
+
+    }
+
+    else {
+
+        backImg.style.display = "none";
+
+    }
+
+    document.getElementById("overlay")
+        .style.display = "block";
+
+    document.getElementById("product-popup")
+        .style.display = "block";
+
+    addRecentlyViewed(
+        name,
+        front,
+        back,
+        price
+    );
+
+}
+
+function closePopup() {
+
+    document.getElementById("overlay")
+        .style.display = "none";
+
+    document.getElementById("product-popup")
+        .style.display = "none";
+
+}
+
+function handlePopupAdd() {
+
+    const size =
+        document.getElementById("pop-size").value;
+
+    const qty = Math.max(
+
+        1,
+
+        parseInt(
+            document.getElementById("pop-qty").value
+        ) || 1
+
+    );
+
+    addToCart(
+
+        activeProduct.name,
+
+        size,
+
+        activeProduct.price,
+
+        qty,
+
+        null
+
+    );
+
+    alert(
+        "Added to cart successfully!"
+    );
+
+    closePopup();
+
+}
+
+/*=========================================================
+                CART SYSTEM
+=========================================================*/
+
+function addToCart(product, size, price, quantity = 1, button = null) {
+
+    quantity = parseInt(quantity) || 1;
+
+    let cart = getCart();
+
+    const existing = cart.find(item =>
+        item.product === product &&
+        item.size === size
+    );
+
+    if (existing) {
+
+        existing.quantity += quantity;
+
+    } else {
+
+        cart.push({
+            product: product,
+            size: size,
+            price: parseFloat(price),
+            quantity: quantity
         });
-      }, 3000);
+
     }
 
-    function changeCurrency() {
-      localStorage.setItem('prefCurrency', document.getElementById('currency-select').value);
-      updatePrices(); updateCartUI();
+    saveCart(cart);
+
+    updateCartUI();
+
+    showConfirmation(button);
+
+}
+
+/*=========================================================
+            REMOVE ITEM FROM CART
+=========================================================*/
+
+function removeCartItem(index) {
+
+    let cart = getCart();
+
+    if (index >= 0 && index < cart.length) {
+
+        cart.splice(index, 1);
+
+        saveCart(cart);
+
+        updateCartUI();
+
     }
 
-    function updatePrices() {
-      const cur = localStorage.getItem('prefCurrency') || 'USD';
-      document.querySelectorAll('.sale-price, .old-price').forEach(el => {
-        const usd = parseFloat(el.getAttribute('data-usd'));
-        el.innerText = cur === 'NGN' ? '₦' + (usd * RATE).toLocaleString() : '$' + usd;
-      });
+}
+
+/*=========================================================
+            CHANGE QUANTITY
+=========================================================*/
+
+function updateCartQuantity(index, quantity) {
+
+    let cart = getCart();
+
+    quantity = parseInt(quantity);
+
+    if (isNaN(quantity) || quantity < 1) {
+
+        quantity = 1;
+
     }
 
-    function formatPrice(usd) {
-      const cur = localStorage.getItem('prefCurrency') || 'USD';
-      return cur === 'NGN' ? '₦' + (usd * RATE).toLocaleString() : '$' + usd;
+    if (cart[index]) {
+
+        cart[index].quantity = quantity;
+
+        saveCart(cart);
+
+        updateCartUI();
+
     }
 
-    function openPopup(name, f, b, p) {
-      activeProduct = { name, price: p, front: f };
-      document.getElementById('pop-name').innerText = name;
-      document.getElementById('pop-price').innerText = formatPrice(p);
-      document.getElementById('pop-front').src = f;
-      document.getElementById('pop-back').src = b;
-      document.getElementById('overlay').style.display = 'block';
-      document.getElementById('product-popup').style.display = 'block';
-      
-      let rv = JSON.parse(localStorage.getItem('rv')) || [];
-      rv = rv.filter(i => i.name !== name);
-      rv.unshift({ name, img: f, back: b, price: p });
-      localStorage.setItem('rv', JSON.stringify(rv.slice(0, 6)));
-      renderRV();
+}
+
+/*=========================================================
+            CLEAR CART
+=========================================================*/
+
+function clearCart() {
+
+    localStorage.removeItem("cart");
+
+    updateCartUI();
+
+}
+
+/*=========================================================
+            CART TOTAL
+=========================================================*/
+
+function getCartTotal() {
+
+    const cart = getCart();
+
+    return cart.reduce((total, item) => {
+
+        return total +
+            (Number(item.price) * Number(item.quantity));
+
+    }, 0);
+
+}
+
+/*=========================================================
+            TOTAL NUMBER OF ITEMS
+=========================================================*/
+
+function getCartCount() {
+
+    const cart = getCart();
+
+    return cart.reduce((count, item) => {
+
+        return count + Number(item.quantity);
+
+    }, 0);
+
+}
+
+/*=========================================================
+            UPDATE CART UI
+=========================================================*/
+
+function updateCartUI() {
+
+    const cartCount =
+        document.getElementById("cart-count");
+
+    if (cartCount) {
+
+        cartCount.textContent = getCartCount();
+
     }
 
-    function renderRV() {
-      const rv = JSON.parse(localStorage.getItem('rv')) || [];
-      const sec = document.getElementById('recently-viewed-section');
-      if (rv.length === 0) { sec.style.display = 'none'; return; }
-      sec.style.display = 'block';
-      document.getElementById('rv-container').innerHTML = rv.map(i => `<div class="rv-item" onclick="openPopup('${i.name}','${i.img}','${i.back}',${i.price})"><img src="${i.img}"><p style="font-size:0.8em; color:#888;">${i.name}</p></div>`).join('');
+    const total = getCartTotal();
+
+    updateShippingBar(total);
+
+    updateWishlistCount();
+
+}
+
+/*=========================================================
+            SHIPPING BAR
+=========================================================*/
+
+function updateShippingBar(total) {
+
+    const bar =
+        document.getElementById("shipping-progress-fill");
+
+    const text =
+        document.getElementById("shipping-text");
+
+    if (!bar || !text) return;
+
+    const percent = Math.min(
+
+        (total / FREE_SHIPPING) * 100,
+
+        100
+
+    );
+
+    bar.style.width = percent + "%";
+
+    if (total >= FREE_SHIPPING) {
+
+        text.textContent =
+            "🎉 FREE SHIPPING UNLOCKED!";
+
     }
 
-    function clearRecentlyViewed() { localStorage.removeItem('rv'); renderRV(); }
+    else {
 
-    function handlePopupAdd() {
-      const q = document.getElementById('pop-qty').value;
-      addToCart(activeProduct.name, document.getElementById('pop-size').value, activeProduct.price, q, null);
-      alert(`Added to cart, thanks for shopping with dripstar fashion!`);
-      closePopup();
+        const remaining =
+            FREE_SHIPPING - total;
+
+        text.textContent =
+            `You're ${formatPrice(remaining)} away from FREE SHIPPING!`;
+
     }
 
-    function addToCart(p, s, pr, q, btn) {
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.push({ product: p, size: s, price: pr, quantity: q });
-      localStorage.setItem("cart", JSON.stringify(cart));
-      updateCartUI();
-      if(btn && btn.nextElementSibling) {
-          const conf = btn.nextElementSibling;
-          conf.innerText = "Added to cart, thanks for shopping with dripstar fashion";
-          conf.style.opacity = "1";
-          setTimeout(() => { conf.style.opacity = "0"; }, 4000);
-      }
+}
+
+/*=========================================================
+        CONFIRMATION MESSAGE
+=========================================================*/
+
+function showConfirmation(button) {
+
+    if (!button) return;
+
+    const container =
+        button.closest(".product-details");
+
+    if (!container) return;
+
+    const message =
+        container.querySelector(".confirmation");
+
+    if (!message) return;
+
+    message.textContent =
+        "✔ Added to cart successfully!";
+
+    message.style.opacity = "1";
+
+    clearTimeout(message.timer);
+
+    message.timer = setTimeout(() => {
+
+        message.style.opacity = "0";
+
+    }, 3000);
+
+}
+
+/*=========================================================
+        ADD FROM POPUP
+=========================================================*/
+
+function addPopupToCart() {
+
+    const size =
+        document.getElementById("pop-size").value;
+
+    const qty = Math.max(
+
+        1,
+
+        parseInt(
+            document.getElementById("pop-qty").value
+        ) || 1
+
+    );
+
+    addToCart(
+
+        activeProduct.name,
+
+        size,
+
+        activeProduct.price,
+
+        qty,
+
+        null
+
+    );
+
+    closePopup();
+
+}
+
+/*=========================================================
+        CART STORAGE CHECK
+=========================================================*/
+
+function cartExists() {
+
+    return getCart().length > 0;
+
+}
+
+/*=========================================================
+        SAVE CART SAFELY
+=========================================================*/
+
+window.addEventListener("beforeunload", () => {
+
+    saveCart(getCart());
+
+});
+
+/*=========================================================
+                WISHLIST SYSTEM
+=========================================================*/
+
+function toggleWish(button, name, image, price) {
+
+    let wishlist = getWishlist();
+
+    const index = wishlist.findIndex(item => item.name === name);
+
+    if (index === -1) {
+
+        wishlist.push({
+            name: name,
+            img: image,
+            price: Number(price)
+        });
+
+        button.classList.add("active");
+        button.textContent = "❤️";
+
+    } else {
+
+        wishlist.splice(index, 1);
+
+        button.classList.remove("active");
+        button.textContent = "❤";
+
     }
 
-    function toggleWish(btn, name, img, price) {
-      let wish = JSON.parse(localStorage.getItem('wishlist')) || [];
-      const idx = wish.findIndex(i => i.name === name);
-      if(idx === -1) { 
-        wish.push({name, img, price}); btn.classList.add('active'); btn.innerText = "❤️";
-      } else { 
-        wish.splice(idx, 1); btn.classList.remove('active'); btn.innerText = "❤";
-      }
-      localStorage.setItem('wishlist', JSON.stringify(wish));
-      updateCartUI();
+    saveWishlist(wishlist);
+
+    updateWishlistCount();
+
+}
+
+function updateWishlistCount() {
+
+    const wish = getWishlist();
+
+    const badge = document.getElementById("wish-count-nav");
+
+    if (badge) {
+
+        badge.textContent = `(${wish.length})`;
+
     }
 
-    function updateCartUI() {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      const wish = JSON.parse(localStorage.getItem("wishlist")) || [];
-      document.getElementById('cart-count').innerText = cart.length;
-      document.getElementById('wish-count-nav').innerText = `(${wish.length})`;
-      const totalUSD = cart.reduce((acc, i) => acc + (parseFloat(i.price) * parseInt(i.quantity)), 0);
-      document.getElementById('shipping-progress-fill').style.width = Math.min((totalUSD/200)*100, 100) + "%";
-      document.getElementById('shipping-text').innerText = totalUSD >= 200 ? "🎉 FREE SHIPPING UNLOCKED!" : `You're ${formatPrice(200-totalUSD)} away from FREE SHIPPING!`;
+}
+
+function restoreWishlistButtons() {
+
+    const wishlist = getWishlist();
+
+    document.querySelectorAll(".wish-btn").forEach(button => {
+
+        const onclick = button.getAttribute("onclick");
+
+        if (!onclick) return;
+
+        const match = onclick.match(/'([^']+)'/);
+
+        if (!match) return;
+
+        const productName = match[1];
+
+        const found = wishlist.some(item => item.name === productName);
+
+        if (found) {
+
+            button.classList.add("active");
+            button.textContent = "❤️";
+
+        } else {
+
+            button.classList.remove("active");
+            button.textContent = "❤";
+
+        }
+
+    });
+
+}
+
+/*=========================================================
+            RECENTLY VIEWED
+=========================================================*/
+
+function addRecentlyViewed(name, front, back, price) {
+
+    let history = getRecentlyViewed();
+
+    history = history.filter(item => item.name !== name);
+
+    history.unshift({
+
+        name,
+
+        img: front,
+
+        back,
+
+        price
+
+    });
+
+    if (history.length > 6) {
+
+        history = history.slice(0, 6);
+
     }
 
-    function closePopup() { document.getElementById('overlay').style.display='none'; document.getElementById('product-popup').style.display='none'; }
-  </script>
+    saveRecentlyViewed(history);
+
+    renderRecentlyViewed();
+
+}
+
+function renderRecentlyViewed() {
+
+    const section = document.getElementById("recently-viewed-section");
+
+    const container = document.getElementById("rv-container");
+
+    if (!section || !container) return;
+
+    const history = getRecentlyViewed();
+
+    if (history.length === 0) {
+
+        section.style.display = "none";
+
+        container.innerHTML = "";
+
+        return;
+
+    }
+
+    section.style.display = "block";
+
+    container.innerHTML = "";
+
+    history.forEach(item => {
+
+        const card = document.createElement("div");
+
+        card.className = "rv-item";
+
+        card.innerHTML = `
+
+            <img src="${item.img}" alt="${item.name}">
+
+            <p style="font-size:.8rem;color:#aaa;margin-top:8px;">
+                ${item.name}
+            </p>
+
+        `;
+
+        card.onclick = () => {
+
+            openPopup(
+
+                item.name,
+
+                item.img,
+
+                item.back,
+
+                item.price
+
+            );
+
+        };
+
+        container.appendChild(card);
+
+    });
+
+}
+
+function clearRecentlyViewed() {
+
+    localStorage.removeItem("rv");
+
+    renderRecentlyViewed();
+
+}
+
+/*=========================================================
+            LIVE VIEWERS
+=========================================================*/
+
+function startLiveViewers() {
+
+    const viewers = document.querySelectorAll(".view-count");
+
+    if (!viewers.length) return;
+
+    viewers.forEach(counter => {
+
+        if (!counter.textContent.trim()) {
+
+            counter.textContent =
+
+                Math.floor(Math.random() * 20) + 5;
+
+        }
+
+    });
+
+    setInterval(() => {
+
+        viewers.forEach(counter => {
+
+            let value = parseInt(counter.textContent);
+
+            if (isNaN(value)) value = 5;
+
+            value += Math.floor(Math.random() * 3) - 1;
+
+            if (value < 5) value = 5;
+
+            if (value > 99) value = 99;
+
+            counter.textContent = value;
+
+        });
+
+    }, 3000);
+
+}
+
+/*=========================================================
+            SEARCH HELPERS
+=========================================================*/
+
+function findProduct(name) {
+
+    return getCart().find(item => item.product === name);
+
+}
+
+function findWishlistItem(name) {
+
+    return getWishlist().find(item => item.name === name);
+
+}
+
+/*=========================================================
+            STORAGE DEBUG
+=========================================================*/
+
+function resetStore() {
+
+    localStorage.removeItem("cart");
+
+    localStorage.removeItem("wishlist");
+
+    localStorage.removeItem("rv");
+
+    updateCartUI();
+
+    renderRecentlyViewed();
+
+    restoreWishlistButtons();
+
+}
+
+console.log("✅ Part 3 Loaded Successfully");
+
+/*=========================================================
+        DRIPSTAR v2.0
+        FINAL UTILITIES & OPTIMIZATION
+=========================================================*/
+
+/*=========================
+    SAFE ELEMENT SELECTOR
+=========================*/
+
+function $(id) {
+    return document.getElementById(id);
+}
+
+/*=========================
+    IMAGE PRELOADER
+=========================*/
+
+function preloadImages() {
+
+    document.querySelectorAll("img").forEach(img => {
+
+        const image = new Image();
+
+        image.src = img.src;
+
+    });
+
+}
+
+/*=========================
+    BUTTON LOADING EFFECT
+=========================*/
+
+function animateButton(button) {
+
+    if (!button) return;
+
+    const text = button.textContent;
+
+    button.disabled = true;
+
+    button.textContent = "Adding...";
+
+    setTimeout(() => {
+
+        button.disabled = false;
+
+        button.textContent = text;
+
+    },700);
+
+}
+
+/*=========================
+    SCROLL TO TOP
+=========================*/
+
+function scrollTopSmooth(){
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+}
+
+/*=========================
+    CLOSE MENU WHEN LINK CLICKED
+=========================*/
+
+function initMenu(){
+
+    const menu=document.querySelector(".nav-links");
+
+    if(!menu) return;
+
+    menu.querySelectorAll("a").forEach(link=>{
+
+        link.addEventListener("click",()=>{
+
+            menu.classList.remove("active");
+
+        });
+
+    });
+
+}
+
+/*=========================
+    ESC CLOSES POPUP
+=========================*/
+
+document.addEventListener("keydown",e=>{
+
+    if(e.key==="Escape"){
+
+        closePopup();
+
+    }
+
+});
+
+/*=========================
+    CLICK OVERLAY CLOSE
+=========================*/
+
+const overlay=$("overlay");
+
+if(overlay){
+
+    overlay.addEventListener("click",closePopup);
+
+}
+
+/*=========================
+    IMAGE FALLBACK
+=========================*/
+
+document.querySelectorAll("img").forEach(img=>{
+
+    img.onerror=function(){
+
+        this.src="placeholder.png";
+
+    };
+
+});
+
+/*=========================
+    FORM VALIDATION
+=========================*/
+
+function validatePopup(){
+
+    const qty=$("pop-qty");
+
+    if(!qty) return true;
+
+    if(qty.value<1){
+
+        qty.value=1;
+
+    }
+
+    return true;
+
+}
+
+/*=========================
+    STORAGE CHECK
+=========================*/
+
+function storageAvailable(){
+
+    try{
+
+        localStorage.setItem("_test","1");
+
+        localStorage.removeItem("_test");
+
+        return true;
+
+    }
+
+    catch(e){
+
+        alert("Local Storage is disabled.");
+
+        return false;
+
+    }
+
+}
+
+/*=========================
+    AUTO SAVE
+=========================*/
+
+window.addEventListener("beforeunload",()=>{
+
+    saveCart(getCart());
+
+    saveWishlist(getWishlist());
+
+    saveRecentlyViewed(getRecentlyViewed());
+
+});
+
+/*=========================
+    PERFORMANCE
+=========================*/
+
+window.addEventListener("load",()=>{
+
+    preloadImages();
+
+    initMenu();
+
+});
+
+/*=========================
+    DEBUG MODE
+=========================*/
+
+const DEBUG=false;
+
+function log(){
+
+    if(DEBUG){
+
+        console.log(...arguments);
+
+    }
+
+}
+
+/*=========================
+    GLOBAL ERROR HANDLER
+=========================*/
+
+window.addEventListener("error",function(e){
+
+    console.error(
+
+        "Dripstar Error:",
+
+        e.message
+
+    );
+
+});
+
+/*=========================
+    FINAL INITIALIZATION
+=========================*/
+
+(function(){
+
+    if(!storageAvailable()) return;
+
+    log("Storage Ready");
+
+    updateCartUI();
+
+    renderRecentlyViewed();
+
+    restoreWishlistButtons();
+
+})();
+
+/*=========================================================
+        END OF DRIPSTAR JAVASCRIPT
+=========================================================*/
+
+console.log(
+"%cDRIPSTAR FASHION v2.0 Loaded Successfully",
+"color:#00ff99;font-size:16px;font-weight:bold;"
+);
+
+
+
+
+
+</script>
 </body>
 </html>
+
