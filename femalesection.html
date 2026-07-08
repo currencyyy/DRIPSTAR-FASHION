@@ -20,7 +20,7 @@
     .product { display: flex; align-items: flex-start; margin: 40px; padding-left: 5%; position: relative; margin-top: 10%; }
     .product img { width: 400px; height: 400px; border-radius: 10px;object-fit: cover; transition: 0.s cubic-bezier(0.105, 0.105, 0.100, 105); }
     .product img:hover { transform: scale(1.08); z-index: 10; }
-    .product-details { text-align: center; max-width: 500px; padding-left: 50px; margin-top: 3%; font-size: 200%; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; }
+    .product-details { text-align: center; max-width: 500px; padding-left: 50px; margin-top: 3%; font-size: 180%; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; }
 
     .live-viewers {
       display: flex;
@@ -231,7 +231,7 @@ border-radius:50%;
 
 cursor:pointer;
 
-font-size:444px;
+font-size:444%;
 
 font-weight:bold;
 
@@ -331,7 +331,7 @@ z-index:5000;
 
 .menu-btn{
 
-padding:27px 39px;
+padding:29px 37px;
 
 background:var(--gold);
 
@@ -401,7 +401,7 @@ padding:15px 0;
 
 padding:1px 1px;
 
-font-size: 200%;
+font-size: 150%;
 
 letter-spacing:2px;
 
@@ -446,7 +446,7 @@ linear-gradient(
 
 180deg,
 
-#ff00cc,
+#010101,
 
 #b8860b
 
@@ -455,6 +455,7 @@ linear-gradient(
 .cart-floating{
 
 animation:cartFloat 3s ease-in-out infinite;
+background-color: #000;
 
 }
 
@@ -539,7 +540,7 @@ color:white;
 
   <button id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
 
-   <div style="position: fixed; bottom: 120px; right: 30px; background: var(--drip-gradient); font-size: 555%; width: 105px; height: 105px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; box-shadow: 0 0 20px rgba(255, 0, 204, 0.4);" onclick="window.location.href='allcart.html'">
+   <div style="position: fixed; bottom: 120px; right: 30px; background: var(--drip-gradient); font-size: 555%; width: 105px; height: 105px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);" onclick="window.location.href='allcart.html'">
     <span class="cart-floating">🛒</span>
   </div>
    
@@ -568,7 +569,6 @@ color:white;
 
     </div>
   </nav>
- 
 
   <div class="product">
     <div style="position:relative;">
