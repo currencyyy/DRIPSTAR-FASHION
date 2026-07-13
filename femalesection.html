@@ -1267,6 +1267,16 @@ function addPopupToCart() {
 
 }
 
+
+document.addEventListener('click', function (event) {
+    const nav = document.querySelector('.top-nav');
+    const navLinks = document.querySelector('.nav-links');
+    
+    // Check if the click happened outside the navigation container
+    if (!nav.contains(event.target)) {
+        navLinks.classList.remove('active');
+    }
+});
 /*=========================================================
         CART STORAGE CHECK
 =========================================================*/

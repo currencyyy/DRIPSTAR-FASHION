@@ -530,6 +530,19 @@ margin-left: 30%;
      © 2026 DRIPSTAR FASHION. ALL RIGHTS RESERVED.
   </footer>
 
+
+  <script>
+    document.addEventListener('click', function (event) {
+    const nav = document.querySelector('.top-nav');
+    const navLinks = document.querySelector('.nav-links');
+    
+    // Check if the click happened outside the navigation container
+    if (!nav.contains(event.target)) {
+        navLinks.classList.remove('active');
+    }
+});
+
+  </script>
 </body>
 </html>
 
