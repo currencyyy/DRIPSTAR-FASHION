@@ -18,7 +18,7 @@
     .currency-picker { position: absolute;background: white; color: black; border: 19x solid var(--gold); padding: 10px 15px; border-radius: 23px; cursor: pointer; font-weight: bold;margin-left: -70%; margin-top: -1011%; margin-left: -400%;}
 
     .product { display: flex; align-items: flex-start; margin: 40px; padding-left: 5%; position: relative; margin-top: 10%; }
-    .product img { width: 400px; height: 400px; border-radius: 10px;object-fit: cover; transition: 0.s cubic-bezier(0.105, 0.105, 0.100, 105); }
+    .product img { width: 550px; height: 550px; border-radius: 10px;object-fit: cover; transition: 0.s cubic-bezier(0.105, 0.105, 0.100, 105); }
     .product img:hover { transform: scale(1.08); z-index: 10; }
     .product-details { text-align: center; max-width: 500px; padding-left: 50px; margin-top: 3%; font-size: 180%; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; }
 
@@ -61,55 +61,6 @@ transition:.4s;
 }
 
 
-#backToTop{
-
-position:fixed;
-
-bottom:40px;
-
-right:30px;
-
-width:55px;
-
-height:55px;
-
-display:none;
-
-justify-content:center;
-
-align-items:center;
-
-background:var(--gold);
-
-color:white;
-
-border:none;
-
-border-radius:50%;
-
-cursor:pointer;
-
-font-size:24px;
-
-font-weight:bold;
-
-box-shadow:
-
-0 0 10px gold,
-
-0 0 25px gold;
-
-transition:.3s;
-
-z-index:9999;
-
-}
-
-#backToTop:hover{
-
-transform:scale(1.1);
-
-}
 
 
     .btn-organic {
@@ -137,9 +88,9 @@ transform:scale(1.1);
     .wish-btn.active { color: red; }
 
     #overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); z-index: 1200; }
-    #product-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #1a1a1a; padding: 30px; z-index: 1300; border-radius: 30px; width: 550px; text-align: center; border: 1px solid #333; }
-    .popup-img-wrapper { overflow: hidden; border-radius: 15px; border: 2px solid var(--gold); width: 220px; height: 220px; display: inline-block; margin: 7px; }
-    .popup-img-wrapper img { width: 160%; height: 160%; object-fit: cover; transition: 0.5s; }
+    #product-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #1a1a1a; padding: 25px; z-index: 1300; border-radius: 30px; width: 450px; text-align: center; border: 1px solid #333; }
+    .popup-img-wrapper { overflow: hidden; border-radius: 15px; border: 2px solid var(--gold); width: 250px; height: 250px; display: inline-block; margin: 5px; }
+    .popup-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
     .popup-img-wrapper img:hover { transform: scale(1.5); cursor: zoom-in; }
     
     .popup-input { width: 100%; padding: 10px; border-radius: 10px; background: #000; color: #fff; border: 1px solid #444; margin-bottom: 10px; }
@@ -207,7 +158,7 @@ justify-content:center;
 
 position:fixed;
 
-bottom:80px;
+bottom:90px;
 
 right:30px;
 
@@ -223,7 +174,7 @@ align-items:center;
 
 background:var(--gold);
 
-color:white;
+color:rgb(255, 255, 255);
 
 border:none;
 
@@ -231,7 +182,7 @@ border-radius:50%;
 
 cursor:pointer;
 
-font-size:544%;
+font-size:944%;
 
 font-weight:bold;
 
@@ -244,7 +195,8 @@ box-shadow:
 transition:.3s;
 
 z-index:9999;
-margin-bottom: -6%;
+
+margin-bottom: -7%;
 }
 
 #backToTop:hover{
@@ -270,33 +222,7 @@ transform:scale(1.1);
       transition: 0.3s;
       box-shadow: 0 4px 15px rgba(255, 0, 204, 0.2);
     }
-    .btn-organic:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 0, 204, 0.5); filter: brightness(1.1); }
-
-    .old-price { text-decoration: line-through; color: #888; font-size: 0.9em; margin-right: 8px; }
-    .sale-price { color: #ff00cc; font-size: 1.2em; font-weight: bold; }
-    .sale-tag { position: absolute; top: 10px; left: 10px; background: #ff0000; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.8em; z-index: 5; }
-
-    .wish-btn { position: absolute; top: 10px; right: 10px; background: white; border: none; border-radius: 50%; width: 35px; height: 35px; cursor: pointer; font-size: 1.2em; z-index: 6; color: #333; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
-    .wish-btn.active { color: red; }
-
-    #overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); z-index: 1200; }
-    #product-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #1a1a1a; padding: 25px; z-index: 1300; border-radius: 30px; width: 450px; text-align: center; border: 1px solid #333; }
-    .popup-img-wrapper { overflow: hidden; border-radius: 15px; border: 5px solid var(--gold); width: 230px; height: 130px; display: inline-block; margin: 8px; }
-    .popup-img-wrapper img { width: 120%; height: 120%; object-fit: cover; transition: 0.5s; }
-    .popup-img-wrapper img:hover { transform: scale(1.5); cursor: zoom-in; }
     
-    .popup-input { width: 120%; padding: 10px; border-radius: 10px; background: #000; color: #fff; border: 1px solid #444; margin-bottom: 15px; }
-    
-    #recently-viewed-section { display: none; background: #111; padding: 40px 10%; border-top: 1px solid #333; margin-top: 50px; }
-    .rv-container { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 10px; }
-    .rv-item { flex: 0 0 150px; text-align: center; cursor: pointer; }
-    .rv-item img { width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 1px solid #444; }
-    .btn-clear-rv { background: none; border: 1px solid #ff4444; color: #ff4444; border-radius: 15px; padding: 5px 12px; cursor: pointer; font-size: 1.7em; }
-
-    #backToTop { position: fixed; bottom: 110px; right: 30px; width: 50px; height: 50px; background: #333; color: white; border: 1px solid #ff00cc; border-radius: 50%; display: none; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; }
-    
-    .confirmation { color: lime; opacity: 0; font-weight: bold; margin-top: 10px; font-size: 0.9em; transition: opacity 0.4s; }
- 
    .gender{
     margin-top: 15px;
       padding: 12px 30px;
@@ -350,6 +276,7 @@ font-weight:bold;
 transition:.3s;
 
 box-shadow:0 0 15px rgba(184,134,11,.4);
+
 
 }
 
@@ -489,7 +416,7 @@ border-radius:20px;
 
 .logo h2{
 font-size: 300%;
-animation:logoGlow 4s infinite alternate;
+animation:logoGlow 2s infinite alternate;
 
 }
 
@@ -503,13 +430,14 @@ text-shadow:
 
 }
 
-100%{
+100%
 
+{
 text-shadow:
 
-0 0 20px gold,
+0 0 10px rgb(49, 131, 5),
 
-0 0 35px rgba(255,215,0,.45);
+0 0 15px rgba(255, 255, 255, 0.45);
 
 }
 
@@ -528,6 +456,25 @@ background:#ff00cc;
 color:white;
 
 }
+
+.policy{
+ display: flex;
+ padding: 30%;
+ padding-left: 40%;
+ margin-bottom: 10%;
+ gap: 10px;
+}
+
+.logo img{
+    height: 30%;
+    width: 30%;
+margin-bottom: -13%;
+margin-top: -5%;
+}
+
+ .logo img:hover {transform: scale(70%);
+      }
+
  </style>
 </head>
 <body onload="initPage()">
@@ -540,7 +487,7 @@ color:white;
 
   <button id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
 
-   <div style="position: fixed; bottom: 120px; right: 30px; background: var(--drip-gradient); font-size: 555%; width: 105px; height: 105px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);" onclick="window.location.href='allcart.html'">
+   <div style="position: fixed; bottom: 120px; right: 30px; background: var(--drip-gradient); font-size: 855%; width: 115px; height: 115px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);" onclick="window.location.href='alllcart.html'">
     <span class="cart-floating">🛒</span>
   </div>
    
@@ -548,10 +495,11 @@ color:white;
 
     <div class="logo">
         
-            <h2>DRIPSTAR FASHION</h2>
+            <h2><a href="index.html"><img src="ChatGPT Image Jul 10, 2026, 12_45_12 AM.png" alt=""></a></h2>
         </a>
     </div>
 
+   
   <nav class="top-nav">
     <button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')" >
       MENU
@@ -563,12 +511,26 @@ color:white;
       <a href="femalesection.html">female section</a> <br> <br>
       <a href="wishlist.html">Wishlist</a> <br> <br>
       <a href="dripAbout.html">About</a> <br> <br>
-      <a href="allcart.html">Cart</a>  <br> <br>
+      <a href="alllcart.html">Cart</a>  <br> <br>
       <a href="driplogin.html">Login</a>
 
     </div>
   </nav>
  
+   <div class="product">
+    <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF plain black crop top', 'shein2.jpeg', 20)">❤</button>
+        <img src="WhatsApp Image 2026-07-13 at 1.44.35 AM.jpeg" alt="Black Top" onclick="openPopup('DSF black crop top', 'WhatsApp Image 2026-07-13 at 1.44.35 AM.jpeg', 'WhatsApp Image 2026-07-13 at 1.30.05 AM.jpeg', 20, 20)">
+    </div>
+    <div class="product-details">
+      <div class="live-viewers"><div class="live-dot"></div><span class="view-count">3</span> people are viewing this right now</div>
+      <b>DSF plain black crop top</b><br>
+      <span class="old-price" data-usd="20">$20</span><span class="sale-price" data-usd="20">$20</span>
+      <p>Embrace elegance with our DSF black crop top designed for maximum feminine aura. and designed with intriguing</p>
+      <button class="btn-organic" onclick="addToCart('DSF plain black crop top','M',20,1,this)">Add to Cart</button>
+      <div class="confirmation"></div>
+    </div>
+  </div>
 
   <div class="product">
     <div style="position:relative;">
@@ -587,15 +549,15 @@ color:white;
 
   </div>  <div class="product">
     <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, 'MOB female Sweatpants', 'shein1', 20)">❤</button>
-        <img src="W4 FRONT.jpeg" alt="Jean Skirt" onclick="openPopup('MOB female Sweatpants', 'W4 FRONT.jpeg', 'W4 BACK.jpeg', 20, 30)">
+        <button class="wish-btn" onclick="toggleWish(this, 'MOB female Sweatpants', 'shein1', 30)">❤</button>
+        <img src="W4 FRONT.jpeg" alt="Jean Skirt" onclick="openPopup('MOB female Sweatpants', 'W4 FRONT.jpeg', 'W4 BACK.jpeg', 30, 30)">
     </div>
     <div class="product-details">
       <div class="live-viewers"><div class="live-dot"></div><span class="view-count">1</span> people are viewing this right now</div>
       <b>MOB female Sweatpants</b><br>
-      <span class="old-price" data-usd="30">$20</span><span class="sale-price" data-usd="20">$20</span>
+      <span class="old-price" data-usd="30">$30</span><span class="sale-price" data-usd="30">$30</span>
       <p>Embrace elegance with our MOB female Sweatpants a Modern fit joggers designed for the ultimate drip.</p>
-      <button class="btn-organic" onclick="addToCart('DSF blue y2k jean skirt','M',20,1,this)">Add to Cart</button>
+      <button class="btn-organic" onclick="addToCart('DSF blue y2k jean skirt','M',30,1,this)">Add to Cart</button>
       <div class="confirmation"></div>
     </div>
   </div>
@@ -616,20 +578,7 @@ color:white;
     </div>
   </div>
 
-  <div class="product">
-    <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, 'DSF plain black crop top', 'shein2.jpeg', 15)">❤</button>
-        <img src="shein2.jpeg" alt="Black Top" onclick="openPopup('DSF plain black crop top', 'shein2.jpeg', 'shein2-back.jpeg', 15, 20)">
-    </div>
-    <div class="product-details">
-      <div class="live-viewers"><div class="live-dot"></div><span class="view-count">3</span> people are viewing this right now</div>
-      <b>DSF plain black crop top</b><br>
-      <span class="old-price" data-usd="17">$17</span><span class="sale-price" data-usd="15">$15</span>
-      <p>Embrace elegance with our DSF plain black crop topthat flows beautifully with each step.</p>
-      <button class="btn-organic" onclick="addToCart('DSF plain black crop top','M',17,1,this)">Add to Cart</button>
-      <div class="confirmation"></div>
-    </div>
-  </div>
+ 
 
      <div class="product">
     <div style="position:relative;">
