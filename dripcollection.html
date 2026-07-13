@@ -502,7 +502,7 @@ margin-top: -5%;
    
   <nav class="top-nav">
     <button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')" >
-      MENU
+      ☰MENU
     </button>
     <div class="nav-links">
       
@@ -1397,6 +1397,16 @@ function restoreWishlistButtons() {
 
 }
 
+
+
+document.addEventListener('click', function (event) {
+    const nav = document.querySelector('.top-nav');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (!nav.contains(event.target)) {
+        navLinks.classList.remove('active');
+    }
+});
 /*=========================================================
             RECENTLY VIEWED
 =========================================================*/
@@ -1419,15 +1429,8 @@ function addRecentlyViewed(name, front, back, price) {
 
     });
 
-    document.addEventListener('click', function (event) {
-    const nav = document.querySelector('.top-nav');
-    const navLinks = document.querySelector('.nav-links');
-    
-    // Check if the click happened outside the navigation container
-    if (!nav.contains(event.target)) {
-        navLinks.classList.remove('active');
-    }
-});
+   
+
 
     if (history.length > 6) {
 
