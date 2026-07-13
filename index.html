@@ -38,6 +38,17 @@
       animation: reveal 1s ease-out forwards;
     }
 
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(3em, 10vw, 6em);
+      margin: 0;
+      background: var(--drip-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+    }
+
     .hero p {
       color: var(--gold);
       letter-spacing: 5px;
@@ -421,9 +432,6 @@
       transform: scale(1.1);
       box-shadow: 0 0 30px rgba(249, 249, 249, 0.4);
     }
-.logo{
-  text-align: center;
-}
 
 .logo img{
     height: 30%;
