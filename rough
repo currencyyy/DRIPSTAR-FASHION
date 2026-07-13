@@ -862,3 +862,65 @@ Since our inception, we have continuously evolved, <br>
 <li>@proudly founded By Ngborogwu prince</li>
 
   <br> <br>
+
+
+
+    .menu-btn {
+      background: var(--gold);
+      color: black;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+
+    .nav-links {
+      display: none; /* hidden by default */
+      flex-direction: column;
+      background: rgba(0,0,0,0.95);
+      position: absolute;
+      top: 50px;
+      right: 0;
+      padding: 20px;
+      border-radius: 10px;
+      width: 200px;
+    }
+
+    .nav-links.active {
+      display: flex; /* show when toggled */
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.9em;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.7;
+      transition: 0.3s;
+      margin: 10px 0;
+    }
+
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+    /* --- H
+
+  <nav class="top-nav">
+    <button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+      MENU
+    </button>
+    <div class="nav-links">
+      <a href="dripcollection.html">Collection</a>
+      <a href="wishlist.html">Wishlist</a>
+      <a href="dripAbout.html">About</a>
+      <a href="allcart.html">Cart</a>
+      <a href="driplogin.html">Login</a>
+    </div>
+  </nav>
+
+
+
+
+
+

@@ -1,0 +1,2401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dripstar Fashion - Collection</title>
+  <style>
+    *{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+img{
+
+max-width:100%;
+
+display:block;
+
+}
+
+button{
+
+font-family:inherit;
+
+}
+    :root {
+      --gold: #b8860b;
+      --drip-gradient: linear-gradient(45deg, #ff00cc, #3333ff);
+    }
+body{
+
+background:
+
+radial-gradient(circle at top,#181818 0%,#080808 60%,#000 100%);
+
+color:white;
+
+}
+    #shipping-bar-container { background: #1a1a1a; padding: 10px; text-align: center; position: sticky; top: 0; z-index: 1100; border-bottom: 1px solid #333; }
+    #shipping-progress-fill { background: linear-gradient(90deg, #00ff00, #00ccff); height: 100%; width: 0%; transition: width 0.5s; }
+    h1 { color: black; padding: 3% 0 2%; text-align: center; margin: 0; }
+    
+    .currency-picker { position: absolute;background: white; color: black; border: 19x solid var(--gold); padding: 10px 15px; border-radius: 23px; cursor: pointer; font-weight: bold;margin-left: -70%; margin-top: -1011%; margin-left: -400%;}
+@media(max-width:900px){
+
+
+
+
+    .product { display: flex; align-items: flex-start; margin: 80%; padding-left: 5%; position: relative; margin-top: 10%; font-size: x-large;}
+    .product-details { text-align: center; max-width: 500px; padding-left: 50px; margin-top: 3%; font-size: xlarger; font-family: cursive; }
+
+
+.currency-picker option{
+
+background:#111;
+
+}
+
+.nav-links{
+
+width:100%;
+
+right:0;
+
+}
+
+}
+.product img{
+
+border-radius:18px;
+
+transition:
+
+transform .45s,
+
+filter .45s,
+
+box-shadow .45s;
+
+box-shadow:
+
+0 10px 25px rgba(0,0,0,.45);
+
+}
+
+.product img:hover{
+
+transform:scale(1.08);
+
+filter:brightness(1.08);
+
+box-shadow:
+
+0 15px 40px rgba(255,0,204,.30);
+
+}
+
+
+.live-viewers{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+font-size:14px;
+
+font-weight:bold;
+
+color:#00ff66;
+
+margin-bottom:10px;
+
+}
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: #00ff00;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #00ff00;
+      animation: blink 1.5s infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+.btn-organic{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.btn-organic::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:-120%;
+
+width:100%;
+
+height:100%;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.35),
+
+transparent
+
+);
+
+transition:.7s;
+
+}
+
+.btn-organic:hover::before{
+
+left:130%;
+
+}
+.old-price{
+
+color:#777;
+
+text-decoration:line-through;
+
+font-size:18px;
+
+}
+
+.sale-price{
+
+font-size:30px;
+
+font-weight:bold;
+
+color:#ff00cc;
+
+margin-left:15px;
+
+}
+
+.sale-tag{
+
+position:absolute;
+
+top:15px;
+
+left:15px;
+
+padding:8px 18px;
+
+border-radius:40px;
+
+background:red;
+
+font-size:13px;
+
+font-weight:bold;
+
+color:white;
+
+letter-spacing:1px;
+
+}
+   .wish-btn{
+
+transition:.35s;
+
+}
+
+.wish-btn:hover{
+
+transform:scale(1.2);
+
+box-shadow:
+
+0 0 20px rgba(255,0,204,.45);
+
+}
+
+.wish-btn.active{
+
+background:#ff0066;
+
+color:white;
+
+box-shadow:
+
+0 0 20px rgba(255,0,204,.6);
+
+}
+
+#overlay{
+
+position:fixed;
+
+inset:0;
+
+background:
+
+rgba(0,0,0,.75);
+
+backdrop-filter:blur(12px);
+
+display:none;
+
+z-index:9998;
+
+animation:fadeOverlay .3s;
+
+}
+
+@keyframes fadeOverlay{
+
+from{
+
+opacity:0;
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+}
+    #product-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #1a1a1a; padding: 25px; z-index: 1300; border-radius: 30px; width: 450px; text-align: center; border: 1px solid #333; }
+    .popup-img-wrapper { overflow: hidden; border-radius: 15px; border: 2px solid var(--gold); width: 180px; height: 180px; display: inline-block; margin: 5px; }
+    .popup-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+    .popup-img-wrapper img:hover { transform: scale(1.5); cursor: zoom-in; }
+    
+    .popup-input { width: 100%; padding: 10px; border-radius: 10px; background: #000; color: #fff; border: 1px solid #444; margin-bottom: 10px; }
+    
+    #recently-viewed-section { display: none; background: #111; padding: 40px 10%; border-top: 1px solid #333; margin-top: 50px; }
+    .rv-container { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 10px; }
+    .rv-item { flex: 0 0 150px; text-align: center; cursor: pointer; }
+    .rv-item img { width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 1px solid #444; }
+    .btn-clear-rv { background: none; border: 1px solid #ff4444; color: #ff4444; border-radius: 15px; padding: 5px 12px; cursor: pointer; font-size: 0.7em; }
+
+    #backToTop {  position: fixed;
+      padding-bottom: 40%;
+      right: 40px;
+      display: none; /* Hidden by default */
+      background-color: #0078d7;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+    }
+
+    #backToTop:hover {
+      background-color: #005a9e;
+    } 
+    
+   .confirmation{
+
+color:#00ff99;
+
+font-size:15px;
+
+font-weight:bold;
+
+opacity:0;
+
+min-height:22px;
+
+transition:.4s;
+
+}
+   .gender{
+    margin-top: 15px;
+      padding: 2px 3px;
+      margin-left: 25%;
+      background: var(--drip);
+      color: white;
+      border: none;
+      border-radius: 3px;
+      font-weight: 800;
+      font-size: 0.9em;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(12, 10, 12, 0.2);
+    
+   
+    }
+.gender:hover{
+  transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 0, 204, 0.5); filter: brightness(1.1);
+}
+
+   
+.header{
+    position: relative;
+    width: 100%;
+    min-height: 140px;
+    padding: 30px 20px;
+    text-align: center;
+    background: #000;
+    overflow: hidden;
+}
+
+.logo h2{
+    color: white;
+    font-size: clamp(2rem,5vw,3.5rem);
+    font-family: Georgia, serif;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    transition: .3s;
+}
+
+.logo a{
+    text-decoration: none;
+}
+
+.logo h2:hover{
+    color: var(--gold);
+}
+
+.hech2{
+  margin-top: -30%;
+  font-size: x-large;
+  font-family: 'Times New Roman', Times, serif;
+  margin-left: 0%;
+  margin-bottom: 0%;
+  padding-bottom: 24%;
+  color: rgb(245, 250, 245);
+  border: #7def0b;
+  border-radius: 1%;
+  box-shadow: #fff;
+  border-top-width: 4%;
+  text-align: center;
+  block-size: 9%;
+box-shadow:
+0 0 15px #000,
+0 0 30px #111,
+0 0 40px rgba(255,255,255,.15);
+
+position:relative;
+
+overflow:hidden;
+
+height:120px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+}
+
+/* Moving website background */
+.hech2::before{
+    content:"";
+    padding-bottom: 0%;
+    position:absolute;
+    inset:0;
+    background-image:url("") ;
+    background-repeat:repeat-x;
+    background-position:center;
+    animation:movingWebsite 100s linear infinite;
+    transform:scale(1.0);
+    z-index:0;
+    filter:brightness(0.55);
+
+    color: whitesmoke;
+   
+}
+
+
+/* Dark overlay */
+.hech2::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+    color: whitesmoke;
+}
+
+/* News ticker */
+.hech2 span{
+  .hech2 span{
+
+white-space:nowrap;
+
+font-size:26px;
+
+font-weight:bold;
+
+color:white;
+
+animation:newsTicker 18s linear infinite;
+
+z-index:3;
+
+}
+}
+
+@keyframes movingWebsite{
+    from{
+        background-position:0 0;
+    }
+    to{
+        background-position:-1800px 0;
+    }
+}
+
+@keyframes newsTicker{
+    from{
+        transform:translateX(120%);
+    }
+    to{
+        transform:translateX(-120%);
+    }
+}
+
+/* Dark overlay */
+.hech2::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+}
+
+/* News ticker */
+.hech2 span{
+    position:absolute;
+    white-space:nowrap;
+    animation:newsTicker 29s linear infinite;
+    color:#fff;
+    font-size:28px;
+    font-weight:bold;
+    text-shadow:10px #000;
+    padding-top: 5%;
+}
+
+@keyframes movingWebsite{
+    from{
+        background-position:0 0;
+    }
+    to{
+        background-position:-1800px 0;
+    }
+}
+
+@keyframes newsTicker{
+    from{
+        transform:translateX(0%);
+    }
+    to{
+        transform:translateX(-100%);
+    }
+}
+
+.DSF{
+  padding-left: 9%;
+}
+
+.gender{
+  text-align: center;
+}
+
+#backToTop{
+
+position:fixed;
+
+bottom:40px;
+
+right:30px;
+
+width:55px;
+
+height:55px;
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+background:var(--gold);
+
+color:white;
+
+border:none;
+
+border-radius:50%;
+
+cursor:pointer;
+
+font-size:24px;
+
+font-weight:bold;
+
+box-shadow:
+
+0 0 10px gold,
+
+0 0 25px gold;
+
+transition:.3s;
+
+z-index:9999;
+
+}
+
+#backToTop:hover{
+
+transform:scale(1.1);
+
+}
+
+
+   
+
+.currency-picker{
+
+position:absolute;
+
+top:25px;
+
+left:25px;
+
+background:#fff;
+
+color:#000;
+
+border:1px solid var(--gold);
+
+padding:8px 14px;
+
+border-radius:25px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+z-index:200;
+
+}
+    .product { display: flex; align-items: flex-start; margin: 40px; padding-left: 5%; position: relative; }
+    .product img { margin-bottom: -12%;  width: 400px; height: 400px; border-radius: 10px; cursor: pointer; object-fit: cover; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .product img:hover { transform: scale(1.08); z-index: 10; }
+    
+    .product-details { text-align: center; max-width: 500px; padding-left: 50px; margin-top: 3%; font-size: larger; font-family: cursive; }
+
+    .live-viewers {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75em;
+      color: #000800;
+      margin-bottom: 8px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: center;
+      padding-left: 15%;
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: #070707;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #00ff00;
+      animation: blink 1.5s infinite;
+      text-align: center;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+.btn-organic{
+
+padding:15px 35px;
+
+background:var(--drip-gradient);
+
+border:none;
+
+border-radius:50px;
+
+font-size:17px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.35s;
+
+color:white;
+
+box-shadow:
+
+0 5px 20px rgba(255,0,204,.25);
+
+}
+
+.btn-organic:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+
+0 12px 35px rgba(255,0,204,.45);
+
+}
+    .old-price { text-decoration: line-through; color: #888; font-size: 0.9em; margin-right: 8px; }
+    .sale-price { color: #ff00cc; font-size: 1.2em; font-weight: bold; }
+    .sale-tag { position: absolute; top: 10px; left: 10px; background: #ff0000; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.8em; z-index: 5; }
+
+    .wish-btn { position: absolute; top: 10px; right: 10px; background: white; border: none; border-radius: 50%; width: 35px; height: 35px; cursor: pointer; font-size: 1.2em; z-index: 6; color: #333; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+    .wish-btn.active { color: red; }
+
+    #overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); z-index: 1200; }
+#product-popup{
+
+display:none;
+
+position:fixed;
+
+top:50%;
+
+left:50%;
+
+transform:translate(-50%,-50%);
+
+width:min(90%,520px);
+
+padding:30px;
+
+background:#111;
+
+border-radius:20px;
+
+border:1px solid #333;
+
+z-index:9999;
+
+box-shadow:
+
+0 0 40px rgba(0,0,0,.7);
+
+}
+    .popup-img-wrapper { overflow: hidden; border-radius: 15px; border: 2px solid var(--gold); width: 180px; height: 180px; display: inline-block; margin: 5px; }
+    .popup-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+    .popup-img-wrapper img:hover { transform: scale(1.5); cursor: zoom-in; }
+    
+    .popup-input { width: 100%; padding: 10px; border-radius: 10px; background: #000; color: #fff; border: 1px solid #444; margin-bottom: 10px; }
+    
+    #recently-viewed-section { display: none; background: #111; padding: 40px 10%; border-top: 1px solid #333; margin-top: 50px; }
+    .rv-container { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 10px; }
+    .rv-item { flex: 0 0 150px; text-align: center; cursor: pointer; }
+    .rv-item img { width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 1px solid #444; }
+    .btn-clear-rv { background: none; border: 1px solid #ff4444; color: #ff4444; border-radius: 15px; padding: 5px 12px; cursor: pointer; font-size: 0.7em; }
+
+    .confirmation { color: lime; opacity: 0; font-weight: bold; margin-top: 10px; font-size: 0.9em; transition: opacity 0.4s; }
+ .gender{
+
+margin-top:15px;
+
+margin-left:auto;
+
+margin-right:auto;
+
+display:block;
+
+padding:12px 30px;
+
+background:var(--drip-gradient);
+
+color:#fff;
+
+border:none;
+
+border-radius:30px;
+
+font-weight:800;
+
+letter-spacing:1px;
+
+cursor:pointer;
+
+transition:.3s;
+
+box-shadow:0 4px 15px rgba(255,0,204,.2);
+
+}
+.gender:hover{
+  transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 0, 204, 0.5); filter: brightness(1.1);
+}
+.top-nav{
+
+position:fixed;
+
+top:20px;
+
+right:20px;
+
+z-index:5000;
+
+}
+
+.menu-btn{
+
+padding:12px 22px;
+
+background:var(--gold);
+
+color:white;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+font-size:17px;
+
+font-weight:bold;
+
+transition:.3s;
+
+box-shadow:0 0 15px rgba(184,134,11,.4);
+
+}
+
+.menu-btn:hover{
+
+transform:scale(1.05);
+
+background:#daa520;
+
+}
+
+.nav-links{
+
+position:absolute;
+
+top:60px;
+
+right:0;
+
+width:240px;
+
+background:#111;
+
+border:1px solid #333;
+
+border-radius:15px;
+
+display:flex;
+
+flex-direction:column;
+
+overflow:hidden;
+
+max-height:0;
+
+transition:.4s;
+
+}
+
+.nav-links.active{
+
+max-height:600px;
+
+padding:15px 0;
+
+}
+
+.nav-links a{
+
+padding: 3px 3px;
+
+font-size:x-large;
+
+letter-spacing:2px;
+
+text-decoration:none;
+
+color:white;
+
+transition:.3s;
+
+}
+
+.nav-links a:hover{
+
+background:#222;
+
+padding-left:35px;
+
+color:var(--gold);
+
+}
+
+.cartext{
+  font-size: 370%;
+}
+
+@media(max-width:900px){
+
+
+
+.product-details{
+
+max-width:100%;
+
+text-align:center;
+
+}
+
+.currency-picker{
+
+position:static;
+
+margin:20px auto;
+
+display:block;
+
+}
+
+.nav-links{
+
+width:100%;
+
+right:0;
+
+}
+
+
+.cart-floating{
+
+animation:cartFloat 3s ease-in-out infinite;
+
+}
+
+@keyframes cartFloat{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-8px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+.logo h2{
+
+animation:logoGlow 4s infinite alternate;
+
+}
+
+@keyframes logoGlow{
+
+0%{
+
+text-shadow:
+
+0 0 8px rgba(255,255,255,.15);
+
+}
+
+100%{
+
+text-shadow:
+
+0 0 20px gold,
+
+0 0 35px rgba(255,215,0,.45);
+
+}
+
+}
+
+.product{
+
+opacity:0;
+
+transform:translateY(60px);
+
+animation:fadeUp .8s forwards;
+
+}
+
+.product:nth-child(2){
+
+animation-delay:.1s;
+
+}
+
+.product:nth-child(3){
+
+animation-delay:.2s;
+
+}
+
+.product:nth-child(4){
+
+animation-delay:.3s;
+
+}
+
+@keyframes fadeUp{
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+::-webkit-scrollbar{
+
+width:12px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#111;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:
+
+linear-gradient(
+
+180deg,
+
+#ff00cc,
+
+#b8860b
+
+);
+
+border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+background:#ff00cc;
+
+}
+
+::selection{
+
+background:#ff00cc;
+
+color:white;
+
+}
+
+.currency-picker { background: #222; color: #b8860b; border: 1px solid #b8860b; padding: 5px 12px; border-radius: 15px; cursor: pointer; font-weight: bold; margin-bottom: 20px; position: absolute; position: fixed; }
+
+
+}
+
+ </style>
+</head>
+<body onload="initPage()">
+
+  <div id="shipping-bar-container">
+    <span id="shipping-text">You're $500.00 away from FREE SHIPPING!</span>
+    <div style="background: #333; height: 6px; width: 60%; margin: 5px auto; border-radius: 10px; overflow: hidden;"><div id="shipping-progress-fill"></div></div>
+  </div>
+
+  <button id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+
+  <div style="position: fixed; bottom: 120px; right: 30px; background: var(--drip-gradient); font-size: xx-large; width: 105px; height: 105px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; box-shadow: 0 0 20px rgba(255, 0, 204, 0.4);" onclick="window.location.href='allcart.html'">
+    <span class="cart-floating">🛒</span>
+  </div>
+   
+  <header class="header">
+
+    <div class="logo">
+        <a href="index.html">
+            <h2>DRIPSTAR FASHION</h2>
+        </a>
+    </div>
+
+   
+  <nav class="top-nav">
+    <button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')" >
+      MENU
+    </button>
+    <div class="nav-links">
+      
+      <a href="index.html">Home</a> <br> <br>
+      <a href="dripcollection.html">male section</a> <br> <br>
+      <a href="femalesection.html">female section</a> <br> <br>
+      <a href="wishlist.html">Wishlist</a> <br> <br>
+      <a href="dripAbout.html">About</a> <br> <br>
+      <a href="allcart.html">Cart</a>  <br> <br>
+      <a href="driplogin.html">Login</a>
+
+    </div>
+  </nav>
+
+
+  <div class="product">
+    <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF DripCap (black)', 'dripcap', 40)">❤</button>
+        <img src="WhatsApp Image 2026-07-06 at 5.21.15 AM.jpeg" alt="Black MOB-hoodie" onclick="openPopup('', 'WhatsApp Image 2026-07-06 at 5.21.15 AM.jpeg', 40, )">
+    </div>
+    <div class="product-details">
+       <div class="live-viewers"><div class="live-dot"></div><span class="view-count">2</span> people are viewing this right now</div>
+      <b> DSF Black-MOB-hoodie</b><br>
+      <span class="old-price" data-usd="">$40</span><span class="sale-price" data-usd="40">$40</span>
+      <p>Dripstar MOB-hoodie designed in black for maximum comfort, aura and for starz only.</p>
+      <button class="btn-organic" onclick="addToCart('DSF blackMOBhoodie','M',40,1,this)">Add to Cart</button>
+      <div class="confirmation"></div>
+    </div>
+</div>
+
+<br> 
+
+ <div class="product">
+    <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF DripCap (black)', 'dripcap', 7)">❤</button>
+        <img src="blacoo - Copy.jpeg" alt="Black drip-cap" onclick="openPopup('', 'blacoo - copy.jpeg', 7, 10)">
+    </div>
+    <div class="product-details">
+      <div class="live-viewers"><div class="live-dot"></div><span class="view-count">6</span> people are viewing this right now</div>
+      <b> DSF Black-Drip-cap</b><br>
+      <span class="old-price" data-usd="10">$7</span><span class="sale-price" data-usd="7">$7</span>
+      <p>Dripstar Face Cap designed in black for the maximum comfort + aura.</p>
+      <button class="btn-organic" onclick="addToCart('DSF blackDripCap','M',7,1,this)">Add to Cart</button>
+      <div class="confirmation"></div>
+    </div>
+</div>
+<br>
+ <div class="product">
+    <div style="position:relative;">
+    
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF DripCap', 'drpcap', 6)">❤</button>
+        <img src="ChatGPT Image Jun 25, 2026, 01_45_26 AM.png" alt="Black Joggers" onclick="openPopup('DSF blue Drip-cap', 'ChatGPT Image Jun 25, 2026, 01_45_26 AM.png', 'WhatsApp Image 2026-06-25 at 1.13.04 AM.jpeg', 6, 8)">
+    </div>
+    <div class="product-details">
+      <div class="live-viewers"><div class="live-dot"></div><span class="view-count">1</span> people are viewing this right now</div>
+      <b> DSF Blue Drip-cap</b><br>
+      <span class="old-price" data-usd="8">$6</span><span class="sale-price" data-usd="6">$6</span>
+      <p>Dripstar Face Cap designed for the maximum aura.</p>
+      <button class="btn-organic" onclick="addToCart('DSF DripCap','M',6,1,this)">Add to Cart</button>
+      <div class="confirmation"></div>
+    </div>
+</div>
+<br>
+ <div class="product">
+    <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF LOS ANGELES POLO', 'shein 3.jpeg', 25)">❤</button>
+        <img src="male1 front.jpeg" alt="Black Joggers" onclick="openPopup('DSF LOS ANGELES POLO', 'male1 front.jpeg', 'male1 back.jpeg', 25, 35)">
+    </div>
+    <div class="product-details">
+      <div class="live-viewers"><div class="live-dot"></div><span class="view-count">10</span> people are viewing this right now</div>
+      <b> DSF LOS ANGELES POLO</b><br>
+      <span class="old-price" data-usd="35">$25</span><span class="sale-price" data-usd="25">$25</span>
+      <p>DSF LOS ANGELES POLO designed for the ultimate drip.</p>
+      <button class="btn-organic" onclick="addToCart('DSF black nano cross joggers','M',25,1,this)">Add to Cart</button>
+      <div class="confirmation"></div>
+    </div>
+</div>
+<br>
+  <div class="product">
+    <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF Ash nano joggers', 'shein 44.jpeg', 45)">❤</button>
+        <img src="shein 44.jpeg" alt="Ash Joggers" onclick="openPopup('DSF Ash nano joggers', 'shein 44.jpeg', 'shein 44-back.jpeg', 45, 45)">
+    </div>
+    <div class="product-details">
+      <div class="live-viewers"><div class="live-dot"></div><span class="view-count">7</span> people are viewing this right now</div>
+      <b>DSF Ash nano joggers</b><br>
+      <span class="old-price" data-usd="55">$45</span><span class="sale-price" data-usd="45">$45</span>
+      <p>This contemporary joggers combines comfort and style, perfect for indoors and outdoors activities.</p>
+      <button class="btn-organic" onclick="addToCart('DSF Ash nano joggers','M',70,1,this)">Add to Cart</button>
+      <div class="confirmation"></div>
+    </div>
+  </div>
+<br>
+  <div class="product">
+    <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF black nano joggers', 'shein 3.jpeg', 45)">❤</button>
+        <img src="shein 3.jpeg" alt="Black Joggers" onclick="openPopup('DSF black nano joggers', 'shein 3.jpeg', 'shein 3-back.jpeg', 45, 55)">
+    </div>
+    <div class="product-details">
+      <div class="live-viewers"><div class="live-dot"></div><span class="view-count">41</span> people are viewing this right now</div>
+      <b>DSF black nano joggers</b><br>
+      <span class="old-price" data-usd="55">$45</span><span class="sale-price" data-usd="45">$45</span>
+      <p>Modern fit joggers designed for the ultimate drip. Combines breathable fabric with a sleek street silhouette.</p>
+      <button class="btn-organic" onclick="addToCart('DSF black nano joggers','M',45,1,this)">Add to Cart</button>
+      <div class="confirmation"></div>
+    </div>
+    </div>
+<br>
+ <div class="product">
+    <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF black nano cross joggers', 'shein 3.jpeg', 50)">❤</button>
+        <img src="shiencfront.jpeg" alt="Black Joggers" onclick="openPopup('DSF black nano cross joggers', 'shiencfront.jpeg', 'shiencback.jpeg', 50, 75)">
+    </div>
+    <div class="product-details">
+      <div class="live-viewers"><div class="live-dot"></div><span class="view-count">10</span> people are viewing this right now</div>
+      <b>DSF black nano cross joggers</b><br>
+      <span class="old-price" data-usd="50">$50</span><span class="sale-price" data-usd="50">$50</span>
+      <p>Modern fit cross designed joggers designed for the ultimate drip.</p>
+      <button class="btn-organic" onclick="addToCart('DSF black nano cross joggers','M',50,1,this)">Add to Cart</button>
+      <div class="confirmation"></div>
+    </div>
+</div>
+
+<br>
+
+ <div class="product">
+    <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF white Nepo Jacket', 'shein 3.jpeg', 50)">❤</button>
+        <img src="shiendfront.jpeg" alt="Nepo" onclick="openPopup('DSF white Nepo Jacket', 'shiendfront.jpeg', 'sheindback.jpeg', 50, 70)">
+    </div>
+    <div class="product-details">
+      <div class="live-viewers"><div class="live-dot"></div><span class="view-count">1</span> people are viewing this right now</div>
+      <b>DSF white Nepo Jacket</b><br>
+      <span class="old-price" data-usd="65">$50</span><span class="sale-price" data-usd="50">$50</span>
+      <p>Modern Nepo Jacket for the bosses.</p>
+      <button class="btn-organic" onclick="addToCart('DSF white Nepo Jacket','M',50,1,this)">Add to Cart</button>
+      <div class="confirmation"></div>
+    </div>
+</div>
+<br>
+
+ <div class="product">
+    <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF black Drippy joggers', 'shein 3.jpeg', 55)">❤</button>
+        <img src="shienEfront.jpeg" alt="Black Joggers" onclick="openPopup('DSF black Drippy joggers', 'shienEfront.jpeg', 'shIEnEback.jpeg', 55, 65)">
+    </div>
+    <div class="product-details">
+      <div class="live-viewers"><div class="live-dot"></div><span class="view-count">4</span> people are viewing this right now</div>
+      <b>DSF black Drippy joggers</b><br>
+      <span class="old-price" data-usd="65">$55</span><span class="sale-price" data-usd="55">$55</span>
+      <p>Modern fit joggers designed for the ultimate drip.</p>
+      <button class="btn-organic" onclick="addToCart('DSF black Drippy joggers','M',60,1,this)">Add to Cart</button>
+      <div class="confirmation"></div>
+    </div>
+</div>
+<br>
+
+ <div class="product">
+    <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF black Wakoo joggers', 'shein 3.jpeg', 50)">❤</button>
+        <img src="sheinIfront.jpeg" alt="Black Joggers" onclick="openPopup('DSF black Wakoo joggers', 'sheinIfront.jpeg', 'sheinIback.jpeg', 50, 55)">
+    </div>
+    <div class="product-details">
+      <div class="live-viewers"><div class="live-dot"></div><span class="view-count">41</span> people are viewing this right now</div>
+      <b>DSF black Wakoo joggers</b><br>
+      <span class="old-price" data-usd="55">$50</span><span class="sale-price" data-usd="50">$50</span>
+      <p>Modern fit WAKOO joggers designed for the ultimate drip. Combines breathable fabric with a sleek street silhouette.</p>
+      <button class="btn-organic" onclick="addToCart('DSF black Wakoo joggers','M',50,1,this)">Add to Cart</button>
+      <div class="confirmation"></div>
+    </div>
+</div>
+<br>
+ <div class="product">
+    <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF Get rich merch', 'shein 3.jpeg', 30)">❤</button>
+        <img src="m2 front - Copy (2).jpeg" alt="Black Joggers" onclick="openPopup('DSF Get rich merch', 'm2 front - Copy (2).jpeg', '', 30, 45)">
+    </div>
+    <div class="product-details">
+      <div class="live-viewers"><div class="live-dot"></div><span class="view-count">1</span> people are viewing this right now</div>
+      <b>DSF Get rich merch</b><br>
+      <span class="old-price" data-usd="45">$30</span><span class="sale-price" data-usd="30">$30</span>
+      <p> DSF Get rich merch is designed for the ultimate drip.</p>
+      <button class="btn-organic" onclick="addToCart('DSF Get rich merch','M',60,1,this)">Add to Cart</button>
+      <div class="confirmation"></div>
+    </div>
+</div>
+<br>
+  </div>
+
+  <div id="recently-viewed-section">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <h3 style="color:var(--gold); margin:0;">Recently Viewed</h3>
+        <button class="btn-clear-rv" onclick="clearRecentlyViewed()">Clear History</button>
+    </div>
+    <div class="rv-container" id="rv-container"></div>
+  </div>
+
+
+
+  <div id="overlay" onclick="closePopup()"></div>
+  <div id="product-popup">
+    <div style="display:flex; gap:10px; justify-content:center; margin-bottom:15px;">
+        <div class="popup-img-wrapper"><img id="pop-front" src=""></div>
+        <div class="popup-img-wrapper"><img id="pop-back" src=""></div>
+    </div>
+    <h3 id="pop-name" style="color:var(--gold);"></h3>
+    <p id="pop-price" style="font-weight:bold; font-size: 1.2em;"></p>
+    
+    <label style="display:block; text-align:left; font-size:0.8em; color:#888;">Size selection</label>
+    <select id="pop-size" class="popup-input"><option>S</option><option selected>M</option><option>L</option></select>
+    <label style="display:block; text-align:left; font-size:0.8em; color:#888;">Quantity selection</label>
+    <input type="number" id="pop-qty" class="popup-input" value="1" min="1">
+    
+    <button class="btn-organic" style="width:100%;" onclick="handlePopupAdd()">Add to Cart</button>
+    <button style="width:100%; background:var(--gold); color:white; border:none; border-radius:30px; padding:12px; margin-top:10px; cursor:pointer; font-weight:bold;" onclick="window.location.href='allcart.html'">See My Cart</button>
+    <button style="width:100%; background:transparent; color:#888; border:1px solid #444; border-radius:30px; padding:10px; margin-top:10px; cursor:pointer;" onclick="closePopup()">Continue Shopping</button>
+  </div>
+
+  <script>
+/*=========================================================
+        DRIPSTAR FASHION COLLECTION
+        Professional JavaScript v2.0
+=========================================================*/
+
+"use strict";
+
+/*=========================
+    GLOBAL SETTINGS
+=========================*/
+
+const RATE = 1400;
+const FREE_SHIPPING = 200;
+
+let activeProduct = {
+    name: "",
+    price: 0,
+    front: "",
+    back: ""
+};
+
+/*=========================
+    LOCAL STORAGE HELPERS
+=========================*/
+
+function getCart() {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+function saveCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function getWishlist() {
+    return JSON.parse(localStorage.getItem("wishlist")) || [];
+}
+
+function saveWishlist(list) {
+    localStorage.setItem("wishlist", JSON.stringify(list));
+}
+
+function getRecentlyViewed() {
+    return JSON.parse(localStorage.getItem("rv")) || [];
+}
+
+function saveRecentlyViewed(rv) {
+    localStorage.setItem("rv", JSON.stringify(rv));
+}
+
+/*=========================
+    PRICE FORMATTER
+=========================*/
+
+function getCurrency() {
+    return localStorage.getItem("prefCurrency") || "USD";
+}
+
+function formatPrice(price) {
+
+    const currency = getCurrency();
+
+    if (currency === "NGN") {
+
+        return "₦" + (price * RATE).toLocaleString();
+
+    }
+
+    return "$" + Number(price).toFixed(0);
+
+}
+
+/*=========================
+    INITIALIZATION
+=========================*/
+
+document.addEventListener("DOMContentLoaded", initPage);
+
+function initPage() {
+
+    const currencySelect =
+        document.getElementById("currency-select");
+
+    if (currencySelect) {
+
+        currencySelect.value = getCurrency();
+
+    }
+
+    updatePrices();
+
+    updateCartUI();
+
+    renderRecentlyViewed();
+
+    restoreWishlistButtons();
+
+    startLiveViewers();
+
+    initScrollButton();
+
+}
+
+/*=========================
+    SCROLL BUTTON
+=========================*/
+
+function initScrollButton() {
+
+    const button =
+        document.getElementById("backToTop");
+
+    if (!button) return;
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 300) {
+
+            button.style.display = "flex";
+
+        }
+
+        else {
+
+            button.style.display = "none";
+
+        }
+
+    });
+
+}
+
+/*=========================
+    CURRENCY
+=========================*/
+
+function changeCurrency() {
+
+    const select =
+        document.getElementById("currency-select");
+
+    if (!select) return;
+
+    localStorage.setItem(
+        "prefCurrency",
+        select.value
+    );
+
+    updatePrices();
+
+    updateCartUI();
+
+}
+
+function updatePrices() {
+
+    const currency = getCurrency();
+
+    document.querySelectorAll(".sale-price,.old-price")
+    .forEach(price => {
+
+        const usd =
+            parseFloat(price.dataset.usd);
+
+        if (isNaN(usd)) return;
+
+        if (currency === "NGN") {
+
+            price.textContent =
+                "₦" + (usd * RATE).toLocaleString();
+
+        }
+
+        else {
+
+            price.textContent =
+                "$" + usd;
+
+        }
+
+    });
+
+}
+
+/*=========================
+    PRODUCT POPUP
+=========================*/
+
+function openPopup(name, front, back, price) {
+
+    activeProduct = {
+
+        name,
+        front,
+        back,
+        price
+
+    };
+
+    document.getElementById("pop-name").textContent =
+        name;
+
+    document.getElementById("pop-price").textContent =
+        formatPrice(price);
+
+    const frontImg =
+        document.getElementById("pop-front");
+
+    const backImg =
+        document.getElementById("pop-back");
+
+    frontImg.src = front;
+
+    if (back) {
+
+        backImg.src = back;
+
+        backImg.style.display = "block";
+
+    }
+
+    else {
+
+        backImg.style.display = "none";
+
+    }
+
+    document.getElementById("overlay")
+        .style.display = "block";
+
+    document.getElementById("product-popup")
+        .style.display = "block";
+
+    addRecentlyViewed(
+        name,
+        front,
+        back,
+        price
+    );
+
+}
+
+function closePopup() {
+
+    document.getElementById("overlay")
+        .style.display = "none";
+
+    document.getElementById("product-popup")
+        .style.display = "none";
+
+}
+
+function handlePopupAdd() {
+
+    const size =
+        document.getElementById("pop-size").value;
+
+    const qty = Math.max(
+
+        1,
+
+        parseInt(
+            document.getElementById("pop-qty").value
+        ) || 1
+
+    );
+
+    addToCart(
+
+        activeProduct.name,
+
+        size,
+
+        activeProduct.price,
+
+        qty,
+
+        null
+
+    );
+
+    alert(
+        "Added to cart successfully!"
+    );
+
+    closePopup();
+
+}
+
+/*=========================================================
+                CART SYSTEM
+=========================================================*/
+
+function addToCart(product, size, price, quantity = 1, button = null) {
+
+    quantity = parseInt(quantity) || 1;
+
+    let cart = getCart();
+
+    const existing = cart.find(item =>
+        item.product === product &&
+        item.size === size
+    );
+
+    if (existing) {
+
+        existing.quantity += quantity;
+
+    } else {
+
+        cart.push({
+            product: product,
+            size: size,
+            price: parseFloat(price),
+            quantity: quantity
+        });
+
+    }
+
+    saveCart(cart);
+
+    updateCartUI();
+
+    showConfirmation(button);
+
+}
+
+/*=========================================================
+            REMOVE ITEM FROM CART
+=========================================================*/
+
+function removeCartItem(index) {
+
+    let cart = getCart();
+
+    if (index >= 0 && index < cart.length) {
+
+        cart.splice(index, 1);
+
+        saveCart(cart);
+
+        updateCartUI();
+
+    }
+
+}
+
+/*=========================================================
+            CHANGE QUANTITY
+=========================================================*/
+
+function updateCartQuantity(index, quantity) {
+
+    let cart = getCart();
+
+    quantity = parseInt(quantity);
+
+    if (isNaN(quantity) || quantity < 1) {
+
+        quantity = 1;
+
+    }
+
+    if (cart[index]) {
+
+        cart[index].quantity = quantity;
+
+        saveCart(cart);
+
+        updateCartUI();
+
+    }
+
+}
+
+/*=========================================================
+            CLEAR CART
+=========================================================*/
+
+function clearCart() {
+
+    localStorage.removeItem("cart");
+
+    updateCartUI();
+
+}
+
+/*=========================================================
+            CART TOTAL
+=========================================================*/
+
+function getCartTotal() {
+
+    const cart = getCart();
+
+    return cart.reduce((total, item) => {
+
+        return total +
+            (Number(item.price) * Number(item.quantity));
+
+    }, 0);
+
+}
+
+/*=========================================================
+            TOTAL NUMBER OF ITEMS
+=========================================================*/
+
+function getCartCount() {
+
+    const cart = getCart();
+
+    return cart.reduce((count, item) => {
+
+        return count + Number(item.quantity);
+
+    }, 0);
+
+}
+
+/*=========================================================
+            UPDATE CART UI
+=========================================================*/
+
+function updateCartUI() {
+
+    const cartCount =
+        document.getElementById("cart-count");
+
+    if (cartCount) {
+
+        cartCount.textContent = getCartCount();
+
+    }
+
+    const total = getCartTotal();
+
+    updateShippingBar(total);
+
+    updateWishlistCount();
+
+}
+
+/*=========================================================
+            SHIPPING BAR
+=========================================================*/
+
+function updateShippingBar(total) {
+
+    const bar =
+        document.getElementById("shipping-progress-fill");
+
+    const text =
+        document.getElementById("shipping-text");
+
+    if (!bar || !text) return;
+
+    const percent = Math.min(
+
+        (total / FREE_SHIPPING) * 100,
+
+        100
+
+    );
+
+    bar.style.width = percent + "%";
+
+    if (total >= FREE_SHIPPING) {
+
+        text.textContent =
+            "🎉 FREE SHIPPING UNLOCKED!";
+
+    }
+
+    else {
+
+        const remaining =
+            FREE_SHIPPING - total;
+
+        text.textContent =
+            `You're ${formatPrice(remaining)} away from FREE SHIPPING!`;
+
+    }
+
+}
+
+/*=========================================================
+        CONFIRMATION MESSAGE
+=========================================================*/
+
+function showConfirmation(button) {
+
+    if (!button) return;
+
+    const container =
+        button.closest(".product-details");
+
+    if (!container) return;
+
+    const message =
+        container.querySelector(".confirmation");
+
+    if (!message) return;
+
+    message.textContent =
+        "✔ Added to cart successfully!";
+
+    message.style.opacity = "1";
+
+    clearTimeout(message.timer);
+
+    message.timer = setTimeout(() => {
+
+        message.style.opacity = "0";
+
+    }, 3000);
+
+}
+
+/*=========================================================
+        ADD FROM POPUP
+=========================================================*/
+
+function addPopupToCart() {
+
+    const size =
+        document.getElementById("pop-size").value;
+
+    const qty = Math.max(
+
+        1,
+
+        parseInt(
+            document.getElementById("pop-qty").value
+        ) || 1
+
+    );
+
+    addToCart(
+
+        activeProduct.name,
+
+        size,
+
+        activeProduct.price,
+
+        qty,
+
+        null
+
+    );
+
+    closePopup();
+
+}
+
+/*=========================================================
+        CART STORAGE CHECK
+=========================================================*/
+
+function cartExists() {
+
+    return getCart().length > 0;
+
+}
+
+/*=========================================================
+        SAVE CART SAFELY
+=========================================================*/
+
+window.addEventListener("beforeunload", () => {
+
+    saveCart(getCart());
+
+});
+
+/*=========================================================
+                WISHLIST SYSTEM
+=========================================================*/
+
+function toggleWish(button, name, image, price) {
+
+    let wishlist = getWishlist();
+
+    const index = wishlist.findIndex(item => item.name === name);
+
+    if (index === -1) {
+
+        wishlist.push({
+            name: name,
+            img: image,
+            price: Number(price)
+        });
+
+        button.classList.add("active");
+        button.textContent = "❤️";
+
+    } else {
+
+        wishlist.splice(index, 1);
+
+        button.classList.remove("active");
+        button.textContent = "❤";
+
+    }
+
+    saveWishlist(wishlist);
+
+    updateWishlistCount();
+
+}
+
+function updateWishlistCount() {
+
+    const wish = getWishlist();
+
+    const badge = document.getElementById("wish-count-nav");
+
+    if (badge) {
+
+        badge.textContent = `(${wish.length})`;
+
+    }
+
+}
+
+function restoreWishlistButtons() {
+
+    const wishlist = getWishlist();
+
+    document.querySelectorAll(".wish-btn").forEach(button => {
+
+        const onclick = button.getAttribute("onclick");
+
+        if (!onclick) return;
+
+        const match = onclick.match(/'([^']+)'/);
+
+        if (!match) return;
+
+        const productName = match[1];
+
+        const found = wishlist.some(item => item.name === productName);
+
+        if (found) {
+
+            button.classList.add("active");
+            button.textContent = "❤️";
+
+        } else {
+
+            button.classList.remove("active");
+            button.textContent = "❤";
+
+        }
+
+    });
+
+}
+
+/*=========================================================
+            RECENTLY VIEWED
+=========================================================*/
+
+function addRecentlyViewed(name, front, back, price) {
+
+    let history = getRecentlyViewed();
+
+    history = history.filter(item => item.name !== name);
+
+    history.unshift({
+
+        name,
+
+        img: front,
+
+        back,
+
+        price
+
+    });
+
+    if (history.length > 6) {
+
+        history = history.slice(0, 6);
+
+    }
+
+    saveRecentlyViewed(history);
+
+    renderRecentlyViewed();
+
+}
+
+function renderRecentlyViewed() {
+
+    const section = document.getElementById("recently-viewed-section");
+
+    const container = document.getElementById("rv-container");
+
+    if (!section || !container) return;
+
+    const history = getRecentlyViewed();
+
+    if (history.length === 0) {
+
+        section.style.display = "none";
+
+        container.innerHTML = "";
+
+        return;
+
+    }
+
+    section.style.display = "block";
+
+    container.innerHTML = "";
+
+    history.forEach(item => {
+
+        const card = document.createElement("div");
+
+        card.className = "rv-item";
+
+        card.innerHTML = `
+
+            <img src="${item.img}" alt="${item.name}">
+
+            <p style="font-size:.8rem;color:#aaa;margin-top:8px;">
+                ${item.name}
+            </p>
+
+        `;
+
+        card.onclick = () => {
+
+            openPopup(
+
+                item.name,
+
+                item.img,
+
+                item.back,
+
+                item.price
+
+            );
+
+        };
+
+        container.appendChild(card);
+
+    });
+
+}
+
+function clearRecentlyViewed() {
+
+    localStorage.removeItem("rv");
+
+    renderRecentlyViewed();
+
+}
+
+/*=========================================================
+            LIVE VIEWERS
+=========================================================*/
+
+function startLiveViewers() {
+
+    const viewers = document.querySelectorAll(".view-count");
+
+    if (!viewers.length) return;
+
+    viewers.forEach(counter => {
+
+        if (!counter.textContent.trim()) {
+
+            counter.textContent =
+
+                Math.floor(Math.random() * 20) + 5;
+
+        }
+
+    });
+
+    setInterval(() => {
+
+        viewers.forEach(counter => {
+
+            let value = parseInt(counter.textContent);
+
+            if (isNaN(value)) value = 5;
+
+            value += Math.floor(Math.random() * 3) - 1;
+
+            if (value < 5) value = 5;
+
+            if (value > 99) value = 99;
+
+            counter.textContent = value;
+
+        });
+
+    }, 3000);
+
+}
+
+/*=========================================================
+            SEARCH HELPERS
+=========================================================*/
+
+function findProduct(name) {
+
+    return getCart().find(item => item.product === name);
+
+}
+
+function findWishlistItem(name) {
+
+    return getWishlist().find(item => item.name === name);
+
+}
+
+/*=========================================================
+            STORAGE DEBUG
+=========================================================*/
+
+function resetStore() {
+
+    localStorage.removeItem("cart");
+
+    localStorage.removeItem("wishlist");
+
+    localStorage.removeItem("rv");
+
+    updateCartUI();
+
+    renderRecentlyViewed();
+
+    restoreWishlistButtons();
+
+}
+
+console.log("✅ Part 3 Loaded Successfully");
+
+/*=========================================================
+        DRIPSTAR v2.0
+        FINAL UTILITIES & OPTIMIZATION
+=========================================================*/
+
+/*=========================
+    SAFE ELEMENT SELECTOR
+=========================*/
+
+function $(id) {
+    return document.getElementById(id);
+}
+
+/*=========================
+    IMAGE PRELOADER
+=========================*/
+
+function preloadImages() {
+
+    document.querySelectorAll("img").forEach(img => {
+
+        const image = new Image();
+
+        image.src = img.src;
+
+    });
+
+}
+
+/*=========================
+    BUTTON LOADING EFFECT
+=========================*/
+
+function animateButton(button) {
+
+    if (!button) return;
+
+    const text = button.textContent;
+
+    button.disabled = true;
+
+    button.textContent = "Adding...";
+
+    setTimeout(() => {
+
+        button.disabled = false;
+
+        button.textContent = text;
+
+    },700);
+
+}
+
+/*=========================
+    SCROLL TO TOP
+=========================*/
+
+function scrollTopSmooth(){
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+}
+
+/*=========================
+    CLOSE MENU WHEN LINK CLICKED
+=========================*/
+
+function initMenu(){
+
+    const menu=document.querySelector(".nav-links");
+
+    if(!menu) return;
+
+    menu.querySelectorAll("a").forEach(link=>{
+
+        link.addEventListener("click",()=>{
+
+            menu.classList.remove("active");
+
+        });
+
+    });
+
+}
+
+/*=========================
+    ESC CLOSES POPUP
+=========================*/
+
+document.addEventListener("keydown",e=>{
+
+    if(e.key==="Escape"){
+
+        closePopup();
+
+    }
+
+});
+
+/*=========================
+    CLICK OVERLAY CLOSE
+=========================*/
+
+const overlay=$("overlay");
+
+if(overlay){
+
+    overlay.addEventListener("click",closePopup);
+
+}
+
+/*=========================
+    IMAGE FALLBACK
+=========================*/
+
+document.querySelectorAll("img").forEach(img=>{
+
+    img.onerror=function(){
+
+        this.src="placeholder.png";
+
+    };
+
+});
+
+/*=========================
+    FORM VALIDATION
+=========================*/
+
+function validatePopup(){
+
+    const qty=$("pop-qty");
+
+    if(!qty) return true;
+
+    if(qty.value<1){
+
+        qty.value=1;
+
+    }
+
+    return true;
+
+}
+
+/*=========================
+    STORAGE CHECK
+=========================*/
+
+function storageAvailable(){
+
+    try{
+
+        localStorage.setItem("_test","1");
+
+        localStorage.removeItem("_test");
+
+        return true;
+
+    }
+
+    catch(e){
+
+        alert("Local Storage is disabled.");
+
+        return false;
+
+    }
+
+}
+
+/*=========================
+    AUTO SAVE
+=========================*/
+
+window.addEventListener("beforeunload",()=>{
+
+    saveCart(getCart());
+
+    saveWishlist(getWishlist());
+
+    saveRecentlyViewed(getRecentlyViewed());
+
+});
+
+/*=========================
+    PERFORMANCE
+=========================*/
+
+window.addEventListener("load",()=>{
+
+    preloadImages();
+
+    initMenu();
+
+});
+
+/*=========================
+    DEBUG MODE
+=========================*/
+
+const DEBUG=false;
+
+function log(){
+
+    if(DEBUG){
+
+        console.log(...arguments);
+
+    }
+
+}
+
+/*=========================
+    GLOBAL ERROR HANDLER
+=========================*/
+
+window.addEventListener("error",function(e){
+
+    console.error(
+
+        "Dripstar Error:",
+
+        e.message
+
+    );
+
+});
+
+/*=========================
+    FINAL INITIALIZATION
+=========================*/
+
+(function(){
+
+    if(!storageAvailable()) return;
+
+    log("Storage Ready");
+
+    updateCartUI();
+
+    renderRecentlyViewed();
+
+    restoreWishlistButtons();
+
+})();
+
+/*=========================================================
+        END OF DRIPSTAR JAVASCRIPT
+=========================================================*/
+
+console.log(
+"%cDRIPSTAR FASHION v2.0 Loaded Successfully",
+"color:#00ff99;font-size:16px;font-weight:bold;"
+);
+
+
+
+
+
+</script>
+</body>
+</html>
