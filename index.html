@@ -103,25 +103,31 @@
     }
 
     .nav-links {
-      max-height: 0;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      background: rgba(10, 10, 10, 0.95);
-      backdrop-filter: blur(12px);
       position: absolute;
       top: 55px;
       right: 0;
-      padding: 0 20px;
-      border-radius: 16px;
       width: 220px;
-      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      border-radius: 16px;
+      
+      /* Smooth closing configuration */
+      display: flex;
+      flex-direction: column;
+      padding: 0 20px;
+      max-height: 0;
+      opacity: 0;
+      visibility: hidden;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease, opacity 0.3s ease, visibility 0.4s ease;
     }
 
     .nav-links.active {
       max-height: 400px;
+      opacity: 1;
+      visibility: visible;
       padding: 20px;
     }
 
