@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Secure Checkout | Dripstar Fashion</title>
   <style>
     :root {
@@ -10,92 +11,217 @@
       --glass: rgba(255, 255, 255, 0.05);
     }
 
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     body {
       background-color: black;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: white;
-      margin: 0; padding: 0;
-      display: flex; justify-content: center;
+      margin: 0; 
+      padding: 0;
+      display: flex; 
+      justify-content: center;
+      align-items: flex-start;
       min-height: 100vh;
-      font-size: 220%;
+      font-size: 16px;
     }
 
     .checkout-wrapper {
-      width: 90%; max-width: 1100px;
-      display: grid; grid-template-columns: 1.6fr 1fr;
-      gap: 30px; margin: 50px 0;
+      width: 90%; 
+      max-width: 1100px;
+      display: grid; 
+      grid-template-columns: 1.6fr 1fr;
+      gap: 30px; 
+      margin: 30px 0;
     }
 
     .checkout-panel {
       background: var(--glass);
       backdrop-filter: blur(20px);
-      padding: 40px; border-radius: 35px;
+      padding: 30px; 
+      border-radius: 25px;
       border: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 20px 50px rgba(0,0,0,0.5);
       color: whitesmoke;
     }
 
-    h2 { color: var(--gold); margin: 0 0 25px 0; letter-spacing: 1px; font-weight: 800; text-transform: uppercase; font-size: 1.2em;}
+    h2 { 
+      color: var(--gold); 
+      margin: 0 0 20px 0; 
+      letter-spacing: 1px; 
+      font-weight: 800; 
+      text-transform: uppercase; 
+      font-size: 1.1em;
+    }
 
-    .input-group { margin-bottom: 20px;  }
-    label { display: block; font-size: 0.75em; color:whitesmoke; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;}
+    .input-group { 
+      margin-bottom: 20px;  
+    }
+    
+    label { 
+      display: block; 
+      font-size: 0.8em; 
+      color: whitesmoke; 
+      margin-bottom: 8px; 
+      text-transform: uppercase; 
+      letter-spacing: 1px;
+    }
     
     input {
-      width: 100%; padding: 15px; background: rgba(0,0,0,0.4);
-      border: 1px solid #333; border-radius: 15px; color: white;
-      outline: none; transition: 0.3s; box-sizing: border-box;
+      width: 100%; 
+      padding: 14px; 
+      background: rgba(0,0,0,0.4);
+      border: 1px solid #333; 
+      border-radius: 12px; 
+      color: white;
+      outline: none; 
+      transition: 0.3s;
+      font-size: 0.95em;
     }
-    input:focus { border-color: #ff00cc; background: rgba(255,255,255,0.05); }
+    
+    input:focus { 
+      border-color: #ff00cc; 
+      background: rgba(255,255,255,0.05); 
+    }
 
-    .payment-methods { display: flex; gap: 10px; margin-bottom: 30px; }
+    .payment-methods { 
+      display: flex; 
+      gap: 12px; 
+      margin-bottom: 25px; 
+    }
+    
     .method-card {
       color: whitesmoke;
-      flex: 1; padding: 15px 10px; text-align: center;
-      background: rgba(255,255,255,0.02); border-radius: 15px;
-      cursor: pointer; border: 1px solid #222; transition: 0.4s;
-      font-weight: bold; font-size: 0.85em; color:whitesmoke;font-size: x-large;
+      flex: 1; 
+      padding: 14px 10px; 
+      text-align: center;
+      background: rgba(255,255,255,0.02); 
+      border-radius: 12px;
+      cursor: pointer; 
+      border: 1px solid #222; 
+      transition: 0.4s;
+      font-weight: bold; 
+      font-size: 1.1em;
     }
+    
     .method-card.active {
-      background: var(--drip-gradient); color: white; border: none;
-      box-shadow: 0 10px 20px rgba(255, 0, 204, 0.3); transform: translateY(-5px);
+      background: var(--drip-gradient); 
+      color: white; 
+      border: none;
+      box-shadow: 0 10px 20px rgba(255, 0, 204, 0.3); 
+      transform: translateY(-3px);
     }
 
     .method-content {
-      background: rgba(0,0,0,0.3); padding: 25px;
-      border-radius: 20px; border: 1px solid #222;
-      display: none; animation: fadeIn 0.5s ease;
+      background: rgba(0,0,0,0.3); 
+      padding: 20px;
+      border-radius: 18px; 
+      border: 1px solid #222;
+      display: none; 
+      animation: fadeIn 0.5s ease;
     }
-    .method-content.active { display: block; }
+    
+    .method-content.active { 
+      display: block; 
+    }
 
     .details-box {
-      border: 1px dashed var(--gold); padding: 20px;
-      border-radius: 15px; margin-bottom: 20px;
-      line-height: 1.6; position: relative;
+      border: 1px dashed var(--gold); 
+      padding: 18px;
+      border-radius: 12px; 
+      margin-bottom: 20px;
+      line-height: 1.6; 
+      position: relative;
     }
 
     .copy-btn {
-      position: absolute; top: 10px; right: 10px;
-      background: var(--gold); border: none; color: black;
-      padding: 5px 10px; border-radius: 8px; font-size: 0.7em;
-      font-weight: bold; cursor: pointer;
+      position: absolute; 
+      top: 10px; 
+      right: 10px;
+      background: var(--gold); 
+      border: none; 
+      color: black;
+      padding: 6px 12px; 
+      border-radius: 6px; 
+      font-size: 0.75em;
+      font-weight: bold; 
+      cursor: pointer;
     }
 
     .whatsapp-btn {
-      display: block; width: 100%; padding: 15px;
-      background: #25D366; color: white; text-align: center;
-      text-decoration: none; border-radius: 30px; font-weight: bold; margin-top: 15px;
+      display: block; 
+      width: 100%; 
+      padding: 14px;
+      background: #25D366; 
+      color: white; 
+      text-align: center;
+      text-decoration: none; 
+      border-radius: 25px; 
+      font-weight: bold; 
+      margin-top: 15px;
     }
 
     .order-summary {
-      background: rgba(255,255,255,0.02); padding: 35px;
-      border-radius: 35px; height: fit-content;
-      position: sticky; top: 40px; border: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(255,255,255,0.02); 
+      padding: 30px;
+      border-radius: 25px; 
+      height: fit-content;
+      position: sticky; 
+      top: 30px; 
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .summary-item { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.9em; }
-    .total-big { font-size: 2.2em; font-weight: 800; margin-top: 20px; padding-top: 20px; border-top: 1px solid #333; text-align: right; color: white;}
+    .summary-item { 
+      display: flex; 
+      justify-content: space-between; 
+      margin-bottom: 12px; 
+      font-size: 0.95em; 
+    }
+    
+    .total-big { 
+      font-size: 1.8em; 
+      font-weight: 800; 
+      margin-top: 20px; 
+      padding-top: 20px; 
+      border-top: 1px solid #333; 
+      text-align: right; 
+      color: white;
+    }
 
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { 
+      from { opacity: 0; transform: translateY(10px); } 
+      to { opacity: 1; transform: translateY(0); } 
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 900px) {
+      .checkout-wrapper {
+        grid-template-columns: 1fr;
+        width: 95%;
+        margin: 20px 0;
+      }
+
+      .order-summary {
+        position: static;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .checkout-panel, .order-summary {
+        padding: 20px;
+        border-radius: 18px;
+      }
+
+      .payment-methods {
+        flex-direction: column;
+      }
+
+      .total-big {
+        font-size: 1.5em;
+      }
+    }
   </style>
 </head>
 <body onload="renderOrder()">
@@ -113,12 +239,11 @@
         <input type="text" placeholder="123 Drip Lane, Lagos">
       </div>
 
-      <h2 style="margin-top:50px;">2. Payment Method</h2>
+      <h2 style="margin-top:35px;">2. Payment Method</h2>
       <div class="payment-methods">
         <div class="method-card" onclick="switchMethod('transfer')">Transfer</div>
         <div class="method-card" onclick="switchMethod('crypto')">Crypto</div>
       </div>
-
 
       <div id="method-transfer" class="method-content">
         <div class="details-box">
@@ -135,7 +260,7 @@
       </div>
 
       <div id="method-crypto" class="method-content">
-          <p style="font-size: 0.8em; color: #aaa; margin-bottom: 15px;">Select your preferred currency to get the wallet address:</p>
+          <p style="font-size: 0.85em; color: #aaa; margin-bottom: 15px;">Select your preferred currency to get the wallet address:</p>
           <select id="crypto-type" onchange="updateCryptoAddress()" style="width: 100%; padding: 12px; background: #000; color: #fff; border-radius: 10px; border: 1px solid #333;">
               <option value="btc">Bitcoin (BTC)</option>
           </select>
@@ -157,11 +282,9 @@
         <span style="color:#666;">Subtotal</span>
         <span id="sub-total"></span>
       </div>
-      <div class="summary-item" style="color:#00ff00;">
-      </div>
       
       <div class="total-big" id="final-total"></div>
-      <a href="dripcollection.html" style="color:var(--gold); text-decoration:none; font-size:0.8em; display:block; text-align:right; margin-top:15px; font-weight: bold;">← BACK TO SHOP</a>
+      <a href="shop.html" style="color:var(--gold); text-decoration:none; font-size:0.85em; display:block; text-align:right; margin-top:15px; font-weight: bold;">← BACK TO SHOP</a>
     </div>
 
   </div>
@@ -179,15 +302,20 @@
       const cont = document.getElementById('summary-items-list');
       let total = 0;
 
-      if(cart.length === 0) { window.location.href = 'dripcollection.html'; return; }
+      if(cart.length === 0) { window.location.href = 'shop.html'; return; }
 
       cont.innerHTML = "";
       cart.forEach(item => {
-        const lineTotal = parseFloat(item.price) * parseInt(item.quantity);
+        const name = item.name || item.title || item.product || item.productName || 'Drip Item';
+        const qty = parseInt(item.quantity || item.qty || 1);
+        const price = parseFloat(item.price || 0);
+
+        const lineTotal = price * qty;
         total += lineTotal;
+
         cont.innerHTML += `
           <div class="summary-item">
-            <span style="color:#888;">${item.quantity}x ${item.product}</span>
+            <span style="color:#888;">${qty}x ${name}</span>
             <span>${format(lineTotal)}</span>
           </div>
         `;
@@ -197,7 +325,6 @@
     }
 
     function switchMethod(method) {
-      
       document.querySelectorAll('.method-card').forEach(c => {
           c.classList.remove('active');
           if(c.innerText.toLowerCase() === method) c.classList.add('active');

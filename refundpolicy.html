@@ -24,13 +24,15 @@ body {
     color: #2b2b2b;
     line-height: 1.7;
     background-color: #faf9f6; /* Elegant off-white background */
+    overflow-x: hidden;
 }
 
 /* Layout Utilities */
 .container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 20px;
+    width: 100%;
 }
 
 /* Header Design */
@@ -38,7 +40,30 @@ body {
     background-color: #1a1a1a; /* Sleek black header */
     color: #ffffff;
     text-align: center;
-    padding: 80px 0;
+    padding: 80px 20px 60px;
+    position: relative;
+}
+
+.back-to-shop {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    color: #b5a48c;
+    background: transparent;
+    border: 1px solid #b5a48c;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.back-to-shop:hover {
+    background-color: #b5a48c;
+    color: #1a1a1a;
 }
 
 .brand-sub {
@@ -94,6 +119,7 @@ body {
 .policy-section p {
     margin-bottom: 16px;
     font-size: 1rem;
+    word-wrap: break-word;
 }
 
 /* Unordered list styling */
@@ -107,6 +133,7 @@ body {
     padding-left: 24px;
     margin-bottom: 10px;
     font-size: 0.95rem;
+    word-wrap: break-word;
 }
 
 .policy-section ul li::before {
@@ -130,6 +157,7 @@ body {
     padding-left: 35px;
     margin-bottom: 15px;
     font-size: 0.95rem;
+    word-wrap: break-word;
 }
 
 .policy-steps li::before {
@@ -156,6 +184,7 @@ body {
     border-radius: 4px;
     margin-top: 15px;
     font-size: 0.95rem;
+    word-break: break-all;
 }
 
 .contact-info a {
@@ -172,7 +201,7 @@ body {
 /* Footer Section */
 .policy-footer {
     text-align: center;
-    padding: 40px 0;
+    padding: 40px 20px;
     border-top: 1px solid #e5e5e5;
     background-color: #ffffff;
 }
@@ -184,15 +213,34 @@ body {
 }
 
 /* Responsive Design tweaks */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .policy-header {
-        padding: 50px 0;
+        padding: 60px 15px 40px;
     }
+    
+    .back-to-shop {
+        position: relative;
+        top: auto;
+        left: auto;
+        display: inline-block;
+        margin-bottom: 25px;
+    }
+
     .policy-header h1 {
         font-size: 2.2rem;
     }
+
+    .policy-content {
+        padding: 40px 0;
+    }
+
     .policy-section h2 {
-        font-size: 1.4rem;
+        font-size: 1.35rem;
+    }
+
+    .intro {
+        font-size: 1.05rem;
+        padding-left: 15px;
     }
 }
 
@@ -200,6 +248,7 @@ body {
 <body>
 
     <header class="policy-header">
+        <a href="shop.html" class="back-to-shop">&larr; Back to Shop</a>
         <div class="container">
             <span class="brand-sub">Returns & Exchanges</span>
             <h1>Refund Policy</h1>
@@ -241,7 +290,7 @@ body {
                 <h2>4. The Process</h2>
                 <p>Follow these steps to complete your return:</p>
                 <ol class="policy-steps">
-                    <li>Visit our online Returns Portal or email <a href="mailto:princechuks@gmail.com.com">dripsupport@dripstar.com</a> with your order number.</li>
+                    <li>Visit our online Returns Portal or email <a href="mailto:dripsupport@dripstar.com">dripsupport@dripstar.com</a> with your order number.</li>
                     <li>Once approved, we will email you a prepaid shipping label and instructions.</li>
                     <li>Pack your items securely and drop the package off at your nearest designated courier.</li>
                 </ol>
@@ -261,7 +310,7 @@ body {
                 <h2>7. Contact Our Concierge</h2>
                 <p>If you have any questions regarding your shipment, sizing concerns, or a damaged delivery, please contact us immediately:</p>
                 <address class="contact-info">
-                    Email: <a href="mailto:princechuks@gmail.com.com">dripsupport@dripstar.com</a><br>
+                    Email: <a href="mailto:dripsupport@dripstar.com">dripsupport@dripstar.com</a><br>
                     Hours: Monday – Friday, 9:00 AM – 5:00 PM (EST)
                 </address>
             </section>
