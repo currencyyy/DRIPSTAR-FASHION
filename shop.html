@@ -12,37 +12,35 @@
       --gold-hover: #e5c158;
       --gold-glow: rgba(212, 175, 55, 0.4);
       --bg-color: #0f0f0f;
+      --header-bg: #141414;
       --card-bg: #1a1a1a;
       --card-border: #2a2a2a;
       --text-color: #ffffff;
       --text-muted: #aaaaaa;
       --success-green: #2ed573;
-      --header-bg: #141414;
       --popup-bg: #141414;
       --input-bg: #222;
       --input-border: #444;
-      --related-bg: #1e1e1e;
-      --related-border: #282828;
+      --shipping-bg: #000;
     }
 
-    /* Light Theme Variables */
+    /* Light Mode Theme Variables */
     [data-theme="light"] {
-      --drip-gradient: linear-gradient(135deg, #f0f0f0 0%, #dcdcdc 100%);
-      --gold: #b38f1d;
-      --gold-hover: #c9a227;
-      --gold-glow: rgba(179, 143, 29, 0.3);
-      --bg-color: #f7f7f7;
+      --drip-gradient: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+      --gold: #b89728;
+      --gold-hover: #d4af37;
+      --gold-glow: rgba(184, 151, 40, 0.3);
+      --bg-color: #f4f4f4;
+      --header-bg: #ffffff;
       --card-bg: #ffffff;
       --card-border: #e0e0e0;
       --text-color: #111111;
       --text-muted: #666666;
-      --success-green: #28a745;
-      --header-bg: #ffffff;
+      --success-green: #2ed573;
       --popup-bg: #ffffff;
-      --input-bg: #f0f0f0;
-      --input-border: #cccccc;
-      --related-bg: #f9f9f9;
-      --related-border: #dddddd;
+      --input-bg: #f9f9f9;
+      --input-border: #ccc;
+      --shipping-bg: #1a1a1a;
     }
 
     * {
@@ -124,7 +122,7 @@
 
     /* Free Shipping Bar */
     #shipping-bar-container {
-      background: #000;
+      background: var(--shipping-bg);
       color: #fff;
       text-align: center;
       padding: 10px;
@@ -132,8 +130,9 @@
       position: sticky;
       top: 0;
       z-index: 999;
-      border-bottom: 1px solid #333;
+      border-bottom: 1px solid var(--card-border);
       width: 100%;
+      transition: background 0.3s ease;
     }
 
     #shipping-progress-fill {
@@ -158,7 +157,7 @@
       font-weight: bold;
       cursor: pointer;
       z-index: 1001;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       transition: transform 0.3s ease, background 0.3s ease;
     }
 
@@ -206,7 +205,7 @@
       position: relative;
       z-index: 1000;
       width: 100%;
-      transition: background-color 0.3s ease, border-color 0.3s ease;
+      transition: background 0.3s ease, border-color 0.3s ease;
     }
 
     .logo img {
@@ -227,7 +226,7 @@
       position: relative;
     }
 
-    .currency-select {
+    .currency-select, .theme-toggle-btn {
       background: var(--card-bg);
       color: var(--gold);
       border: 1px solid var(--gold);
@@ -237,28 +236,10 @@
       font-size: 0.85rem;
       cursor: pointer;
       outline: none;
-      transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s, color 0.3s;
+      transition: border-color 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
     }
 
-    .currency-select:hover {
-      box-shadow: 0 0 8px var(--gold-glow);
-    }
-
-    .theme-toggle-btn {
-      background: var(--card-bg);
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      padding: 8px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 0.85rem;
-      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-    }
-
-    .theme-toggle-btn:hover {
-      background: var(--gold);
-      color: #000;
+    .currency-select:hover, .theme-toggle-btn:hover {
       box-shadow: 0 0 8px var(--gold-glow);
     }
 
@@ -287,10 +268,10 @@
       border: 1px solid var(--card-border);
       padding: 1rem;
       border-radius: 8px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       z-index: 1005;
       min-width: 180px;
-      transition: background-color 0.3s ease, border-color 0.3s ease;
+      transition: background 0.3s ease, border-color 0.3s ease;
     }
 
     .nav-links.active {
@@ -331,15 +312,14 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s, border-color 0.3s, background-color 0.3s;
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s, border-color 0.3s, background 0.3s;
       animation: fadeSlideUp 0.6s ease-out forwards;
       width: 100%;
-      position: relative;
     }
 
     .product:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3), 0 0 15px var(--gold-glow);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15), 0 0 15px var(--gold-glow);
       border-color: var(--gold);
     }
 
@@ -489,9 +469,9 @@
       max-height: 90vh;
       overflow-y: auto;
       z-index: 2001;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
       animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-      transition: background-color 0.3s ease, border-color 0.3s ease;
+      transition: background 0.3s ease, border-color 0.3s ease;
     }
 
     .popup-container {
@@ -568,7 +548,7 @@
       color: var(--text-color);
       border-radius: 6px;
       outline: none;
-      transition: border-color 0.2s, background-color 0.3s, color 0.3s;
+      transition: border-color 0.2s, background 0.3s, color 0.3s;
     }
 
     .popup-input:focus {
@@ -614,12 +594,12 @@
     }
 
     .related-item {
-      background: var(--related-bg);
+      background: var(--card-bg);
       border-radius: 8px;
       padding: 6px;
       text-align: center;
       cursor: pointer;
-      border: 1px solid var(--related-border);
+      border: 1px solid var(--card-border);
       transition: transform 0.2s, border-color 0.2s;
     }
 
@@ -732,12 +712,7 @@
         gap: 6px;
       }
 
-      .currency-select {
-        padding: 6px 8px;
-        font-size: 0.75rem;
-      }
-
-      .theme-toggle-btn {
+      .currency-select, .theme-toggle-btn {
         padding: 6px 8px;
         font-size: 0.75rem;
       }
@@ -754,7 +729,7 @@
   <!-- Free Shipping Header Bar -->
   <div id="shipping-bar-container">
     <span id="shipping-text">You're $500 away from FREE SHIPPING!</span>
-    <div style="background: #333; height: 6px; width: 60%; margin: 5px auto; border-radius: 10px; overflow: hidden;">
+    <div style="background: rgba(128,128,128,0.2); height: 6px; width: 60%; margin: 5px auto; border-radius: 10px; overflow: hidden;">
       <div id="shipping-progress-fill"></div>
     </div>
   </div>
@@ -775,7 +750,7 @@
 
     <div class="nav-controls">
       <!-- Dark/Light Mode Toggle Button -->
-      <button id="theme-toggle-btn" class="theme-toggle-btn" onclick="toggleTheme()">☀️ Light</button>
+      <button id="themeToggleBtn" class="theme-toggle-btn" onclick="toggleTheme()">☀️ Light</button>
 
       <!-- Currency Switcher Dropdown beside Menu -->
       <select id="currency-select" class="currency-select" onchange="changeCurrency(this.value)">
@@ -790,7 +765,7 @@
           ☰ MENU
         </button>
         <div class="nav-links" id="nav-links">
-         <a href="index.html">Home</a>
+      <a href="index.html">Home</a>
           <a href="shop.html">Male Section</a>
           <a href="femaleshop.html">Female Section</a>
           <a href="wishlist.html">Wishlist</a>
@@ -806,11 +781,13 @@
   <main class="product-grid">
 
     <div class="product">
-      <button class="wish-btn" onclick="toggleWish(this, 'DSF double waist jogger', 'double-waist jogger', 75, 'WhatsApp Image 2026-07-15 at 3.35.05 AM.jpeg', 'DSF Double Waist Jogger Featuring our signature layered double-waist design, premium heavyweight fabric.')">❤</button>
-      <img src="WhatsApp Image 2026-07-15 at 3.35.05 AM.jpeg" alt="DSF double waist jogger" onclick="openPopup('DSF double waist jogger', 'WhatsApp Image 2026-07-15 at 3.35.05 AM.jpeg', 'WhatsApp Image 2026-07-15 at 3.35.05 AM.jpeg', 75, 'DSF Double Waist Jogger Featuring our signature layered double-waist design, premium heavyweight fabric.')">
+      <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF double waist jogger', 'double-waist jogger', 75, 'WhatsApp Image 2026-07-15 at 3.35.05 AM.jpeg', 'DSF Double Waist Jogger Featuring our signature layered double-waist design, premium heavyweight fabric.')">❤</button>
+        <img src="WhatsApp Image 2026-07-15 at 3.35.05 AM.jpeg" alt="DSF double waist jogger" onclick="openPopup('DSF double waist jogger', 'WhatsApp Image 2026-07-15 at 3.35.05 AM.jpeg', 'WhatsApp Image 2026-07-15 at 3.35.05 AM.jpeg', 75, 'DSF Double Waist Jogger Featuring our signature layered double-waist design, premium heavyweight fabric.')">
+      </div>
       <div class="product-details">
         <div class="live-viewers"><div class="live-dot"></div><span class="view-count">2</span> people are viewing this right now</div>
-        <b>DSF double waist jogger</b><br>
+        <b> DSF double waist jogger</b><br>
         <span class="old-price" data-usd="80">$80</span><span class="sale-price" data-usd="75">$75</span>
         <p>DSF Double Waist Jogger Featuring our signature layered double-waist design, premium heavyweight fabric.</p>
         <button class="btn-organic" onclick="addToCart('DSF double waist jogger','M',75,1,'WhatsApp Image 2026-07-15 at 3.35.05 AM.jpeg','DSF Double Waist Jogger Featuring our signature layered double-waist design, premium heavyweight fabric.',this)">Add to Cart</button>
@@ -818,6 +795,7 @@
       </div>
     </div>
 
+    
     <div class="product">
       <button class="wish-btn" onclick="toggleWish(this, 'DSF Black-MOB-sleeveless', 'Black-MOB-sleeveless', 25, 'sleeve.jpeg', 'Dripstar MOB - black sleeveless designed for the perfect drip.')">❤</button>
       <img src="sleeve.jpeg" alt="Black MOB-sleeveless" onclick="openPopup('DSF Black-MOB-sleeveless', 'sleeve.jpeg', 'WhatsApp Image 2026-07-13 at 12.55.04 AM.jpeg', 25, 'Dripstar MOB - black sleeveless designed for the perfect drip.')">
@@ -1053,283 +1031,284 @@
     </div>
   </div>
 
+  <!-- JavaScript Implementation -->
   <script>
-    // Global State for Currency Rates & Active Currency
-    const currencyRates = {
+    let currentCurrency = 'USD';
+    const exchangeRates = {
       USD: { symbol: '$', rate: 1 },
       EUR: { symbol: '€', rate: 0.92 },
       GBP: { symbol: '£', rate: 0.78 },
       NGN: { symbol: '₦', rate: 1500 }
     };
-    let currentCurrency = 'USD';
 
-    // Current popup product reference
-    let currentPopupData = null;
+    let activePopupProduct = {
+      title: '',
+      frontImg: '',
+      backImg: '',
+      price: 0,
+      description: ''
+    };
 
-    // Theme Toggle Script
+    // Related products catalog mock
+    const relatedCatalog = [
+      { title: 'DSF Black-Drip-cap', img: 'blacoo - Copy.jpeg', price: 7, desc: 'Dripstar Face Cap in black.' },
+      { title: 'DSF Ash nano joggers', img: 'shein 44.jpeg', price: 45, desc: 'Ash nano joggers modern fit.' },
+      { title: 'DSF Black-MOB-sleeveless', img: 'sleeve.jpeg', price: 25, desc: 'Black MOB sleeveless tee.' }
+    ];
+
+    /* --- Dark & Light Mode Theme Management --- */
+    function initTheme() {
+      const savedTheme = localStorage.getItem('dripTheme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      updateThemeButtonText(savedTheme);
+    }
+
     function toggleTheme() {
-      const html = document.documentElement;
-      const themeBtn = document.getElementById('theme-toggle-btn');
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
       
-      if (html.getAttribute('data-theme') === 'light') {
-        html.removeAttribute('data-theme');
-        themeBtn.innerHTML = '☀️ Light';
-        localStorage.setItem('drip_theme', 'dark');
-      } else {
-        html.setAttribute('data-theme', 'light');
-        themeBtn.innerHTML = '🌙 Dark';
-        localStorage.setItem('drip_theme', 'light');
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('dripTheme', newTheme);
+      updateThemeButtonText(newTheme);
+    }
+
+    function updateThemeButtonText(theme) {
+      const btn = document.getElementById('themeToggleBtn');
+      if (btn) {
+        if (theme === 'light') {
+          btn.innerText = '🌙 Dark';
+        } else {
+          btn.innerText = '☀️ Light';
+        }
       }
     }
 
-    // Toggle Menu dropdown
-    function toggleMenu(e) {
-      e.stopPropagation();
-      const navLinks = document.getElementById('nav-links');
-      navLinks.classList.toggle('active');
+    // Execute theme initialization right away on script load
+    initTheme();
+
+    /* Navigation Menu Toggle & Auto-Close Outside */
+    function toggleMenu(event) {
+      if (event) event.stopPropagation();
+      document.getElementById('nav-links').classList.toggle('active');
     }
 
-    // Close menu when clicking outside
-    window.addEventListener('click', () => {
+    document.addEventListener('click', function(event) {
+      const topNav = document.querySelector('.top-nav');
       const navLinks = document.getElementById('nav-links');
-      if (navLinks && navLinks.classList.contains('active')) {
+      
+      if (topNav && !topNav.contains(event.target)) {
         navLinks.classList.remove('active');
       }
     });
 
-    // Change Currency
+    /* Currency Switcher Handler */
     function changeCurrency(currency) {
       currentCurrency = currency;
-      localStorage.setItem('drip_currency', currency);
-      updatePricesDisplay();
-    }
+      const { symbol, rate } = exchangeRates[currency];
 
-    function updatePricesDisplay() {
-      const config = currencyRates[currentCurrency];
-      const saleElements = document.querySelectorAll('.sale-price');
-      const oldElements = document.querySelectorAll('.old-price');
-
-      saleElements.forEach(el => {
-        const usdVal = parseFloat(el.getAttribute('data-usd'));
-        const converted = Math.round(usdVal * config.rate);
-        el.textContent = config.symbol + converted;
+      // Update grid prices
+      document.querySelectorAll('.sale-price, .old-price').forEach(elem => {
+        const usdVal = parseFloat(elem.getAttribute('data-usd'));
+        if (!isNaN(usdVal)) {
+          const converted = (usdVal * rate).toLocaleString(undefined, { maximumFractionDigits: 2 });
+          elem.innerText = `${symbol}${converted}`;
+        }
       });
 
-      oldElements.forEach(el => {
-        const usdVal = parseFloat(el.getAttribute('data-usd'));
-        const converted = Math.round(usdVal * config.rate);
-        el.textContent = config.symbol + converted;
-      });
-    }
-
-    // Wishlist Toggle
-    function toggleWish(btn, name, id, priceUSD, img, desc) {
-      btn.classList.toggle('active');
-      let wishlist = JSON.parse(localStorage.getItem('drip_wishlist')) || [];
-      const index = wishlist.findIndex(item => item.name === name);
-
-      if (btn.classList.contains('active')) {
-        if (index === -1) {
-          wishlist.push({ name, id, priceUSD, img, desc });
-        }
-      } else {
-        if (index > -1) {
-          wishlist.splice(index, 1);
-        }
-      }
-      localStorage.setItem('drip_wishlist', JSON.stringify(wishlist));
-    }
-
-    // Add to Cart
-    function addToCart(name, size, priceUSD, qty, img, desc, btnElement) {
-      let cart = JSON.parse(localStorage.getItem('drip_cart')) || [];
-      const existingIndex = cart.findIndex(item => item.name === name && item.size === size);
-
-      if (existingIndex > -1) {
-        cart[existingIndex].qty += parseInt(qty);
-      } else {
-        cart.push({ name, size, priceUSD, qty: parseInt(qty), img, desc });
-      }
-
-      localStorage.setItem('drip_cart', JSON.stringify(cart));
-      updateShippingBar();
-
-      // Show inline confirmation message
-      if (btnElement) {
-        const productCard = btnElement.closest('.product') || btnElement.closest('.popup-info');
-        if (productCard) {
-          const conf = productCard.querySelector('.confirmation');
-          if (conf) {
-            conf.style.display = 'block';
-            setTimeout(() => {
-              conf.style.display = 'none';
-            }, 2500);
-          }
-        }
+      // Update active modal price
+      const popPriceElem = document.getElementById('pop-price');
+      if (popPriceElem && popPriceElem.getAttribute('data-usd')) {
+        const popUsd = parseFloat(popPriceElem.getAttribute('data-usd'));
+        const converted = (popUsd * rate).toLocaleString(undefined, { maximumFractionDigits: 2 });
+        popPriceElem.innerText = `${symbol}${converted}`;
       }
     }
 
-    // Free Shipping Progress Calculator ($500 threshold)
-    function updateShippingBar() {
-      const cart = JSON.parse(localStorage.getItem('drip_cart')) || [];
-      let totalUSD = cart.reduce((sum, item) => sum + (item.priceUSD * item.qty), 0);
-      const threshold = 500;
-      const remaining = threshold - totalUSD;
-      const progressPercent = Math.min((totalUSD / threshold) * 100, 100);
-
-      const fill = document.getElementById('shipping-progress-fill');
-      const text = document.getElementById('shipping-text');
-
-      if (fill) fill.style.width = progressPercent + '%';
-      if (text) {
-        if (remaining > 0) {
-          text.textContent = `You're $${remaining} away from FREE SHIPPING!`;
-        } else {
-          text.textContent = '🎉 Congratulations! You qualify for FREE SHIPPING!';
-        }
+    /* Modal Image Switcher */
+    function switchPopImage(src) {
+      if (src) {
+        const mainImg = document.getElementById('pop-main-img');
+        mainImg.style.opacity = '0';
+        setTimeout(() => {
+          mainImg.src = src;
+          mainImg.style.opacity = '1';
+        }, 150);
       }
     }
 
-    // Popup Modal Functions
-    function openPopup(name, imgFront, imgBack, priceUSD, desc) {
-      currentPopupData = { name, imgFront, imgBack, priceUSD, desc };
+    /* Modal Popup Trigger */
+    function openPopup(title, frontImg, backImg, price, description) {
+      activePopupProduct = {
+        title: title || 'Drip Item',
+        frontImg: frontImg || '',
+        backImg: backImg || frontImg || '',
+        price: price || 0,
+        description: description || 'Premium Drip collection streetwear apparel.'
+      };
 
-      document.getElementById('pop-name').textContent = name;
-      document.getElementById('pop-main-img').src = imgFront;
-      document.getElementById('pop-thumb-front').src = imgFront;
-      document.getElementById('pop-thumb-back').src = imgBack || imgFront;
-      
-      const config = currencyRates[currentCurrency];
-      const convertedPrice = Math.round(priceUSD * config.rate);
-      document.getElementById('pop-price').textContent = config.symbol + convertedPrice;
-      document.getElementById('pop-desc').textContent = desc;
+      document.getElementById('pop-name').innerText = activePopupProduct.title;
+      document.getElementById('pop-desc').innerText = activePopupProduct.description;
+      document.getElementById('pop-main-img').src = activePopupProduct.frontImg;
+      document.getElementById('pop-thumb-front').src = activePopupProduct.frontImg;
+      document.getElementById('pop-thumb-back').src = activePopupProduct.backImg;
       document.getElementById('pop-qty').value = 1;
-      document.getElementById('pop-confirmation').style.display = 'none';
 
-      renderRelatedProducts(name);
-      saveRecentlyViewed({ name, img: imgFront, priceUSD, desc });
+      const popPriceElem = document.getElementById('pop-price');
+      popPriceElem.setAttribute('data-usd', activePopupProduct.price);
+      
+      const { symbol, rate } = exchangeRates[currentCurrency];
+      const converted = (activePopupProduct.price * rate).toLocaleString(undefined, { maximumFractionDigits: 2 });
+      popPriceElem.innerText = `${symbol}${converted}`;
+
+      renderRelatedProducts();
 
       document.getElementById('overlay').style.display = 'block';
       document.getElementById('product-popup').style.display = 'block';
-    }
 
-    function switchPopImage(newSrc) {
-      document.getElementById('pop-main-img').src = newSrc;
+      addToRecentlyViewed(activePopupProduct.title, activePopupProduct.frontImg, activePopupProduct.price);
     }
 
     function closePopup() {
       document.getElementById('overlay').style.display = 'none';
       document.getElementById('product-popup').style.display = 'none';
+      const popConfirm = document.getElementById('pop-confirmation');
+      if (popConfirm) popConfirm.style.display = 'none';
     }
 
-    function handlePopupAdd(btn) {
-      if (!currentPopupData) return;
+    function renderRelatedProducts() {
+      const grid = document.getElementById('related-grid');
+      grid.innerHTML = '';
+      relatedCatalog.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'related-item';
+        div.onclick = () => openPopup(item.title, item.img, item.img, item.price, item.desc);
+        div.innerHTML = `
+          <img src="${item.img}" alt="${item.title}">
+          <p>${item.title}</p>
+          <span style="color:var(--gold); font-size:0.75rem; font-weight:bold;">$${item.price}</span>
+        `;
+        grid.appendChild(div);
+      });
+    }
+
+    /* LocalStorage Cart Management with Add Notification */
+    function addToCart(title, size, price, qty, img, description, btnElem) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      const newItem = {
+        id: String(title).toLowerCase().replace(/\s+/g, '-'),
+        name: title || 'Drip Apparel',
+        title: title || 'Drip Apparel',
+        productName: title || 'Drip Apparel',
+        price: parseFloat(price) || 0,
+        size: size || 'M',
+        qty: parseInt(qty) || 1,
+        quantity: parseInt(qty) || 1,
+        img: img || '',
+        image: img || '',
+        description: description || ''
+      };
+
+      const existingIndex = cart.findIndex(
+        item => (item.title === title || item.name === title) && item.size === size
+      );
+
+      if (existingIndex > -1) {
+        cart[existingIndex].qty += newItem.qty;
+        cart[existingIndex].quantity = cart[existingIndex].qty;
+      } else {
+        cart.push(newItem);
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      // Show inline confirmation message below button
+      let msgElem = btnElem ? btnElem.nextElementSibling : null;
+      if (msgElem && msgElem.classList.contains('confirmation')) {
+        msgElem.style.display = 'block';
+        setTimeout(() => {
+          msgElem.style.display = 'none';
+        }, 3000);
+      }
+    }
+
+    /* Modal Add to Cart Action */
+    function handlePopupAdd(btnElem) {
       const size = document.getElementById('pop-size').value;
       const qty = parseInt(document.getElementById('pop-qty').value) || 1;
-      addToCart(currentPopupData.name, size, currentPopupData.priceUSD, qty, currentPopupData.imgFront, currentPopupData.desc, btn);
+
+      addToCart(
+        activePopupProduct.title,
+        size,
+        activePopupProduct.price,
+        qty,
+        activePopupProduct.frontImg,
+        activePopupProduct.description,
+        btnElem
+      );
     }
 
-    // Related Products inside Popup
-    function renderRelatedProducts(currentName) {
-      const allProducts = [
-        { name: 'DSF double waist jogger', img: 'WhatsApp Image 2026-07-15 at 3.35.05 AM.jpeg', priceUSD: 75, desc: 'DSF Double Waist Jogger Featuring our signature layered double-waist design.' },
-        { name: 'DSF Black-MOB-sleeveless', img: 'sleeve.jpeg', priceUSD: 25, desc: 'Dripstar MOB - black sleeveless designed for the perfect drip.' },
-        { name: 'DSF Black-MOB-hoodie', img: 'WhatsApp Image 2026-07-06 at 5.21.15 AM.jpeg', priceUSD: 40, desc: 'Dripstar MOB-hoodie designed in black for maximum comfort.' },
-        { name: 'DSF Black-Drip-cap', img: 'blacoo - Copy.jpeg', priceUSD: 7, desc: 'Dripstar Face Cap designed in black for maximum comfort.' }
-      ];
-
-      const grid = document.getElementById('related-grid');
-      if (!grid) return;
-      grid.innerHTML = '';
-
-      const filtered = allProducts.filter(p => p.name !== currentName);
-      filtered.forEach(p => {
-        const item = document.createElement('div');
-        item.className = 'related-item';
-        item.onclick = () => openPopup(p.name, p.img, p.img, p.priceUSD, p.desc);
-        item.innerHTML = `
-          <img src="${p.img}" alt="${p.name}">
-          <p>${p.name}</p>
-        `;
-        grid.appendChild(item);
-      });
-    }
-
-    // Recently Viewed Management
-    function saveRecentlyViewed(product) {
-      let rv = JSON.parse(localStorage.getItem('drip_rv')) || [];
-      rv = rv.filter(item => item.name !== product.name);
-      rv.unshift(product);
-      if (rv.length > 6) rv.pop();
-      localStorage.setItem('drip_rv', JSON.stringify(rv));
-      renderRecentlyViewed();
-    }
-
-    function renderRecentlyViewed() {
-      const container = document.getElementById('rv-container');
-      if (!container) return;
-      container.innerHTML = '';
-
-      let rv = JSON.parse(localStorage.getItem('drip_rv')) || [];
-      if (rv.length === 0) {
-        container.innerHTML = '<p style="color:var(--text-muted); font-size:0.85rem;">No recently viewed items yet.</p>';
-        return;
+    function toggleWish(btn, title, id, price, img, description) {
+      btn.classList.toggle('active');
+      const isActive = btn.classList.contains('active');
+      
+      let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+      
+      if (isActive) {
+        const exists = wishlist.some(item => item.title === title);
+        if (!exists) {
+          wishlist.push({
+            id: id || title.toLowerCase().replace(/\s+/g, '-'),
+            title: title,
+            price: price,
+            img: img || '',
+            description: description || ''
+          });
+        }
+      } else {
+        wishlist = wishlist.filter(item => item.title !== title);
       }
-
-      const config = currencyRates[currentCurrency];
-      rv.forEach(p => {
-        const card = document.createElement('div');
-        card.style.cssText = 'min-width: 140px; background:var(--card-bg); border:1px solid var(--card-border); border-radius:8px; padding:8px; cursor:pointer; text-align:center; flex-shrink:0; transition:transform 0.2s;';
-        card.onmouseover = () => card.style.transform = 'translateY(-3px)';
-        card.onmouseout = () => card.style.transform = 'translateY(0)';
-        card.onclick = () => openPopup(p.name, p.img, p.img, p.priceUSD, p.desc);
-
-        const convPrice = Math.round(p.priceUSD * config.rate);
-        card.innerHTML = `
-          <img src="${p.img}" alt="${p.name}" style="width:100%; height:110px; object-fit:cover; border-radius:6px; margin-bottom:6px;">
-          <p style="font-size:0.8rem; font-weight:bold; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${p.name}</p>
-          <span style="font-size:0.8rem; color:var(--gold);">${config.symbol}${convPrice}</span>
-        `;
-        container.appendChild(card);
-      });
+      
+      localStorage.setItem('wishlist', JSON.stringify(wishlist));
     }
-
-    function clearRecentlyViewed() {
-      localStorage.removeItem('drip_rv');
-      renderRecentlyViewed();
-    }
-
-    // On Load Initialization
+    
+    // Run on page load to ensure heart buttons reflect active wishlist status
     window.addEventListener('DOMContentLoaded', () => {
-      // Load Theme
-      const savedTheme = localStorage.getItem('drip_theme');
-      const themeBtn = document.getElementById('theme-toggle-btn');
-      if (savedTheme === 'light') {
-        document.documentElement.setAttribute('data-theme', 'light');
-        if (themeBtn) themeBtn.innerHTML = '🌙 Dark';
-      }
-
-      // Load Currency
-      const savedCurrency = localStorage.getItem('drip_currency');
-      if (savedCurrency && currencyRates[savedCurrency]) {
-        currentCurrency = savedCurrency;
-        const select = document.getElementById('currency-select');
-        if (select) select.value = savedCurrency;
-      }
-
-      updatePricesDisplay();
-      updateShippingBar();
-      renderRecentlyViewed();
-
-      // Live viewers randomizer
-      document.querySelectorAll('.live-viewers').forEach(el => {
-        const countSpan = el.querySelector('.view-count');
-        if (countSpan) {
-          const randomCount = Math.floor(Math.random() * 6) + 2;
-          countSpan.textContent = randomCount;
+      const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+      document.querySelectorAll('.wish-btn').forEach(btn => {
+        const onclickAttr = btn.getAttribute('onclick');
+        if (onclickAttr) {
+          const match = onclickAttr.match(/toggleWish\(this,\s*'([^']+)'/);
+          if (match && match[1]) {
+            const productTitle = match[1];
+            if (wishlist.some(item => item.title === productTitle)) {
+              btn.classList.add('active');
+            }
+          }
         }
       });
     });
+
+    /* Recently Viewed Feature */
+    function addToRecentlyViewed(name, img, price) {
+      const container = document.getElementById('rv-container');
+      const safeId = name.replace(/\s+/g, '-');
+      if (document.getElementById(`rv-${safeId}`)) return;
+
+      const item = document.createElement('div');
+      item.id = `rv-${safeId}`;
+      item.style.cssText = "min-width:110px; background:var(--card-bg); padding:8px; border-radius:8px; text-align:center; border: 1px solid var(--card-border); animation: fadeSlideUp 0.4s ease-out;";
+      item.innerHTML = `
+        <img src="${img}" style="width:100%; height:80px; object-fit:cover; border-radius:4px;">
+        <p style="font-size:0.75rem; color:var(--text-color); margin-top:4px; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">${name}</p>
+        <span style="font-size:0.8rem; color:var(--gold); font-weight:bold;">$${price}</span>
+      `;
+      container.appendChild(item);
+    }
+
+    function clearRecentlyViewed() {
+      document.getElementById('rv-container').innerHTML = '';
+    }
   </script>
 </body>
 </html>
