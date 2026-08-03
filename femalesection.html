@@ -17,6 +17,30 @@
       --text-color: #ffffff;
       --text-muted: #aaaaaa;
       --success-green: #2ed573;
+      --header-bg: #141414;
+      --input-bg: #222;
+      --input-border: #444;
+      --modal-bg: #141414;
+      --related-bg: #1e1e1e;
+    }
+
+    /* Light Theme Variables */
+    body.light-mode {
+      --drip-gradient: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+      --gold: #b38f27;
+      --gold-hover: #997920;
+      --gold-glow: rgba(179, 143, 39, 0.3);
+      --bg-color: #f8f9fa;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+      --text-color: #1a202c;
+      --text-muted: #718096;
+      --success-green: #28a745;
+      --header-bg: #ffffff;
+      --input-bg: #edf2f7;
+      --input-border: #cbd5e0;
+      --modal-bg: #ffffff;
+      --related-bg: #edf2f7;
     }
 
     * {
@@ -32,6 +56,7 @@
       padding-bottom: 60px;
       overflow-x: hidden;
       width: 100%;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     /* Keyframe Animations */
@@ -173,12 +198,13 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 1.5rem;
-      background: #141414;
-      border-bottom: 1px solid #222;
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--card-border);
       animation: fadeSlideUp 0.6s ease-out forwards;
       position: relative;
       z-index: 1000;
       width: 100%;
+      transition: background 0.3s ease, border-color 0.3s ease;
     }
 
     .logo img {
@@ -200,7 +226,7 @@
     }
 
     .currency-select {
-      background: #1a1a1a;
+      background: var(--card-bg);
       color: var(--gold);
       border: 1px solid var(--gold);
       padding: 8px 10px;
@@ -209,10 +235,31 @@
       font-size: 0.85rem;
       cursor: pointer;
       outline: none;
-      transition: border-color 0.3s, box-shadow 0.3s;
+      transition: border-color 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
     }
 
     .currency-select:hover {
+      box-shadow: 0 0 8px var(--gold-glow);
+    }
+
+    /* Theme Toggle Button Style */
+    .theme-toggle-btn {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 8px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+
+    .theme-toggle-btn:hover {
+      background: var(--gold);
+      color: #000;
       box-shadow: 0 0 8px var(--gold-glow);
     }
 
@@ -237,11 +284,11 @@
       position: absolute;
       right: 0;
       top: 45px;
-      background: #1a1a1a;
-      border: 1px solid #333;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
       padding: 1rem;
       border-radius: 8px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
       z-index: 1005;
       min-width: 180px;
     }
@@ -252,7 +299,7 @@
     }
 
     .nav-links a {
-      color: #fff;
+      color: var(--text-color);
       text-decoration: none;
       display: block;
       margin-bottom: 0.8rem;
@@ -284,14 +331,14 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s, border-color 0.3s;
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s, border-color 0.3s, background 0.3s;
       animation: fadeSlideUp 0.6s ease-out forwards;
       width: 100%;
     }
 
     .product:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.7), 0 0 15px var(--gold-glow);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2), 0 0 15px var(--gold-glow);
       border-color: var(--gold);
     }
 
@@ -353,7 +400,7 @@
     .live-dot {
       width: 8px;
       height: 8px;
-      background-color: #2ed573;
+      background-color: var(--success-green);
       border-radius: 50%;
       animation: livePulse 1.8s infinite ease-in-out;
       flex-shrink: 0;
@@ -361,7 +408,7 @@
 
     .old-price {
       text-decoration: line-through;
-      color: #777;
+      color: var(--text-muted);
       margin-right: 8px;
       font-size: 0.9rem;
     }
@@ -374,7 +421,7 @@
 
     .product p {
       font-size: 0.85rem;
-      color: #ccc;
+      color: var(--text-muted);
       margin: 8px 0;
       line-height: 1.4;
     }
@@ -420,7 +467,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.75);
       backdrop-filter: blur(8px);
       z-index: 2000;
       transition: opacity 0.3s ease;
@@ -432,8 +479,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: #141414;
-      border: 1px solid #333;
+      background: var(--modal-bg);
+      border: 1px solid var(--card-border);
       border-radius: 16px;
       padding: 1.5rem;
       width: 90%;
@@ -441,8 +488,9 @@
       max-height: 90vh;
       overflow-y: auto;
       z-index: 2001;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
       animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      color: var(--text-color);
     }
 
     .popup-container {
@@ -462,7 +510,7 @@
       height: 280px;
       object-fit: cover;
       border-radius: 10px;
-      border: 1px solid #2a2a2a;
+      border: 1px solid var(--card-border);
       transition: opacity 0.2s ease;
     }
 
@@ -478,7 +526,7 @@
       object-fit: cover;
       border-radius: 6px;
       cursor: pointer;
-      border: 1px solid #333;
+      border: 1px solid var(--card-border);
       transition: transform 0.2s, border-color 0.2s;
     }
 
@@ -494,7 +542,7 @@
     }
 
     .popup-description {
-      color: #ccc;
+      color: var(--text-muted);
       font-size: 0.9rem;
       line-height: 1.5;
       margin: 1rem 0;
@@ -507,16 +555,16 @@
     .popup-form-group label {
       display: block;
       font-size: 0.85rem;
-      color: #888;
+      color: var(--text-muted);
       margin-bottom: 0.3rem;
     }
 
     .popup-input {
       width: 100%;
       padding: 10px;
-      background: #222;
-      border: 1px solid #444;
-      color: #fff;
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      color: var(--text-color);
       border-radius: 6px;
       outline: none;
       transition: border-color 0.2s;
@@ -529,8 +577,8 @@
     .btn-secondary {
       width: 100%;
       background: transparent;
-      color: #aaa;
-      border: 1px solid #444;
+      color: var(--text-muted);
+      border: 1px solid var(--input-border);
       border-radius: 20px;
       padding: 10px;
       margin-top: 8px;
@@ -540,15 +588,15 @@
     }
 
     .btn-secondary:hover {
-      color: #fff;
-      border-color: #666;
-      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-color);
+      border-color: var(--gold);
+      background: rgba(212, 175, 55, 0.05);
     }
 
     /* Related Products Section in Popup */
     .related-products {
       margin-top: 1.5rem;
-      border-top: 1px solid #222;
+      border-top: 1px solid var(--card-border);
       padding-top: 1rem;
     }
 
@@ -565,12 +613,12 @@
     }
 
     .related-item {
-      background: #1e1e1e;
+      background: var(--related-bg);
       border-radius: 8px;
       padding: 6px;
       text-align: center;
       cursor: pointer;
-      border: 1px solid #282828;
+      border: 1px solid var(--card-border);
       transition: transform 0.2s, border-color 0.2s;
     }
 
@@ -588,7 +636,7 @@
 
     .related-item p {
       font-size: 0.7rem;
-      color: #fff;
+      color: var(--text-color);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -612,8 +660,8 @@
 
     .btn-clear-rv {
       background: transparent;
-      border: 1px solid #444;
-      color: #888;
+      border: 1px solid var(--input-border);
+      color: var(--text-muted);
       padding: 4px 10px;
       border-radius: 4px;
       cursor: pointer;
@@ -621,8 +669,8 @@
     }
 
     .btn-clear-rv:hover {
-      color: #fff;
-      border-color: #777;
+      color: var(--text-color);
+      border-color: var(--gold);
     }
 
     /* Media Queries for Full Responsiveness */
@@ -688,6 +736,11 @@
         font-size: 0.75rem;
       }
 
+      .theme-toggle-btn {
+        padding: 6px 8px;
+        font-size: 0.85rem;
+      }
+
       .menu-btn {
         padding: 6px 10px;
         font-size: 0.8rem;
@@ -720,13 +773,18 @@
     </div>
 
     <div class="nav-controls">
-      <!-- Currency Switcher Dropdown beside Menu -->
+      <!-- Currency Switcher Dropdown -->
       <select id="currency-select" class="currency-select" onchange="changeCurrency(this.value)">
         <option value="USD">USD ($)</option>
         <option value="EUR">EUR (€)</option>
         <option value="GBP">GBP (£)</option>
         <option value="NGN">NGN (₦)</option>
       </select>
+
+      <!-- Dark & Light Mode Toggle Button placed beside the menu -->
+      <button id="theme-toggle-btn" class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Light/Dark Mode">
+        🌙
+      </button>
 
       <nav class="top-nav">
         <button class="menu-btn" onclick="toggleMenu(event)">
@@ -748,24 +806,25 @@
   <!-- Main Product Showcase Grid -->
   <main class="product-grid">
 
-   <div class="product">
+<div class="product">
     <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, 'DSF plain black crop top','DSF black crop top', 20, 'WhatsApp Image 2026-07-13 at 1.44.35 AM.jpeg', 'DRIPSTAR nano Crop Top',)">❤</button>
-        <img src="WhatsApp Image 2026-07-13 at 1.44.35 AM.jpeg" alt="Black Top" onclick="openPopup('DSF black crop top', 'WhatsApp Image 2026-07-13 at 1.44.35 AM.jpeg', 'WhatsApp Image 2026-07-13 at 1.30.05 AM.jpeg', 20, 20)">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF plain black crop top','DSF black crop top', 20, 'WhatsApp Image 2026-07-13 at 1.44.35 AM.jpeg', 'DRIPSTAR nano Crop Top')">❤</button>
+        <img src="WhatsApp Image 2026-07-13 at 1.44.35 AM.jpeg" alt="Black Top" onclick="openPopup('DSF black crop top', 'WhatsApp Image 2026-07-13 at 1.44.35 AM.jpeg', 'WhatsApp Image 2026-07-13 at 1.30.05 AM.jpeg', 20, 'DRIPSTAR nano Crop Top — crafted for women who move with confidence, set trends, and make every outfit a statement. Clean silhouette. Premium feel. Streetwear attitude.')">
     </div>
     <div class="product-details">
       <div class="live-viewers"><div class="live-dot"></div><span class="view-count">3</span> people are viewing this right now</div>
       <b>Dripstar nano crop top</b><br>
       <span class="old-price" data-usd="20">$20</span><span class="sale-price" data-usd="20">$20</span>
       <p>DRIPSTAR nano Crop Top — crafted for women who move with confidence, set trends, and make every outfit a statement. Clean silhouette. Premium feel. Streetwear attitude.</p>
-      <button class="btn-organic" onclick="addToCart('DSF plain black crop top','M',20,1,this)">Add to Cart</button>
-      <div class="confirmation"></div>
+      <button class="btn-organic" onclick="addToCart('Dripstar nano crop top', 'M', 20, 1, 'WhatsApp Image 2026-07-13 at 1.44.35 AM.jpeg', 'DRIPSTAR nano Crop Top — crafted for women who move with confidence, set trends, and make every outfit a statement. Clean silhouette. Premium feel. Streetwear attitude.', this)">Add to Cart</button>
+      <div class="confirmation">your drip has been added to cart</div>
     </div>
-  </div>
+  </div>    
+
 
   <div class="product">
     <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, 'currenciaga nano dress', 'currenciaga nano dress', 15,'W5 FRONT.jpeg', 'currenciaga nano dress', )">❤</button>
+        <button class="wish-btn" onclick="toggleWish(this, 'currenciaga nano dress', 'currenciaga nano dress', 15,'W5 FRONT.jpeg', 'currenciaga nano dress')">❤</button>
         <img src="W5 FRONT.jpeg" alt="Jean Skirt" onclick="openPopup('currenciaga nano dress', 'W5 FRONT.jpeg', 'W5 BACK.jpeg', 15, 20)">
     </div>
     <div class="product-details">
@@ -773,14 +832,14 @@
       <b>currenciaga nano dress</b><br>
       <span class="old-price" data-usd="20">$15</span><span class="sale-price" data-usd="15">$15</span>
       <p>Embrace elegance with our currenciaga nano dress that flows beautifully with each step. Designed with a flattering silhouette and intricate detailing.</p>
-      <button class="btn-organic" onclick="addToCart('currenciaga nano dress','M',15,1,this)">Add to Cart</button>
-      <div class="confirmation"></div>
+      <button class="btn-organic" onclick="addToCart('currenciaga nano dress','M',15,1,'W5 FRONT.jpeg','Embrace elegance with our currenciaga nano dress.',this)">Add to Cart</button>
+      <div class="confirmation">your drip has been added to cart</div>
     </div>
+  </div>  
 
-
-  </div>  <div class="product">
+  <div class="product">
     <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, 'MOB female Sweatpants','MOB female Sweatpants', 30,'W4 FRONT.jpeg', ' MOB female Sweatpants a Modern fit joggers', )">❤</button>
+        <button class="wish-btn" onclick="toggleWish(this, 'MOB female Sweatpants','MOB female Sweatpants', 30,'W4 FRONT.jpeg', ' MOB female Sweatpants a Modern fit joggers')">❤</button>
         <img src="W4 FRONT.jpeg" alt="Jean Skirt" onclick="openPopup('MOB female Sweatpants', 'W4 FRONT.jpeg', 'W4 BACK.jpeg', 30, 30)">
     </div>
     <div class="product-details">
@@ -788,49 +847,49 @@
       <b>MOB female Sweatpants</b><br>
       <span class="old-price" data-usd="30">$30</span><span class="sale-price" data-usd="30">$30</span>
       <p>Embrace elegance with our MOB female Sweatpants a Modern fit joggers designed for the ultimate drip.</p>
-      <button class="btn-organic" onclick="addToCart('DSF blue y2k jean skirt','M',30,1,this)">Add to Cart</button>
-      <div class="confirmation"></div>
+      <button class="btn-organic" onclick="addToCart('MOB female Sweatpants','M',30,1,'W4 FRONT.jpeg','MOB female Sweatpants a Modern fit joggers.',this)">Add to Cart</button>
+      <div class="confirmation">your drip has been added to cart</div>
     </div>
   </div>
 
 
   <div class="product">
     <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, 'DSF Yellow Brazil long-sleeve','DSF blue y2k jean skirt', 20,'W2 FRONT.jpeg','DSF Yellow Brazil long-sleeve', )">❤</button>
-        <img src="W2 FRONT.jpeg" alt="Jean Skirt" onclick="openPopup('DSF blue y2k jean skirt', 'W2 FRONT.jpeg', 'W2 BACK.jpeg', 20, 30)">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF Yellow Brazil long-sleeve','DSF Yellow Brazil long-sleeve', 20,'W2 FRONT.jpeg','DSF Yellow Brazil long-sleeve')">❤</button>
+        <img src="W2 FRONT.jpeg" alt="Jean Skirt" onclick="openPopup('DSF Yellow Brazil long-sleeve', 'W2 FRONT.jpeg', 'W2 BACK.jpeg', 20, 30)">
     </div>
     <div class="product-details">
       <div class="live-viewers"><div class="live-dot"></div><span class="view-count">9</span> people are viewing this right now</div>
       <b>DSF Yellow Brazil long-sleeve</b><br>
       <span class="old-price" data-usd="30">$20</span><span class="sale-price" data-usd="20">$20</span>
       <p>Embrace elegance with our DSF Yellow Brazil long-sleeve Designed for the ultimate Baddies.</p>
-      <button class="btn-organic" onclick="addToCart('DSF blue y2k jean skirt','M',20,1,this)">Add to Cart</button>
-      <div class="confirmation"></div>
+      <button class="btn-organic" onclick="addToCart('DSF Yellow Brazil long-sleeve','M',20,1,'W2 FRONT.jpeg','DSF Yellow Brazil long-sleeve Designed for the ultimate Baddies.',this)">Add to Cart</button>
+      <div class="confirmation">your drip has been added to cart</div>
     </div>
   </div>
 
  
 
-     <div class="product">
+  <div class="product">
     <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, 'DSF white rider crop-top','DSF white rider crop-top' , 10, 'sheinridercroptop.jpeg', 'DSF white rider crop-top' )">❤</button>
-        <img src="sheinridercroptop.jpeg" alt="DSF white rider crop-top" onclick="openPopup('DRF white rider crop-top', 'sheinridercroptop.jpeg', 'shein 3-back.jpeg', 15, 10)">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF white rider crop-top','DSF white rider crop-top' , 10, 'sheinridercroptop.jpeg', 'DSF white rider crop-top')">❤</button>
+        <img src="sheinridercroptop.jpeg" alt="DSF white rider crop-top" onclick="openPopup('DSF white rider crop-top', 'sheinridercroptop.jpeg', 'shein 3-back.jpeg', 15, 10)">
     </div>
     <div class="product-details">
       <div class="live-viewers"><div class="live-dot"></div>SOLD OUT</div>
       <b>DSF white rider crop-top</b><br>
       <span class="old-price" data-usd="15">$15</span><span class="sale-price" data-usd="10">$10</span>
       <p>DSF rider crop-top designed for the ultimate drip.</p>
-      <button class="btn-organic" onclick="addToCart('DSF white rider crop-top','M',10,1,this)">Add to Cart</button>
-      <div class="confirmation"></div>
+      <button class="btn-organic" onclick="addToCart('DSF white rider crop-top','M',10,1,'sheinridercroptop.jpeg','DSF rider crop-top designed for the ultimate drip.',this)">Add to Cart</button>
+      <div class="confirmation">your drip has been added to cart</div>
     </div>
-</div>
+  </div>
 
 
 
- <div class="product">
+  <div class="product">
     <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, ' DSF CaLi Dress', 'DSF CaLi Dress', 20, '1front.jpeg', 'Strictly for the Baddies.' )">❤</button>
+        <button class="wish-btn" onclick="toggleWish(this, ' DSF CaLi Dress', 'DSF CaLi Dress', 20, '1front.jpeg', 'Strictly for the Baddies.')">❤</button>
         <img src="1front.jpeg" alt="Black Joggers" onclick="openPopup(' DSF CaLi Dress', '1front.jpeg', '1back.jpeg', 20, 25)">
     </div>
     <div class="product-details">
@@ -838,31 +897,30 @@
       <b> DSF  Mini CaLi Dress</b><br>
       <span class="old-price" data-usd="25">$20</span><span class="sale-price" data-usd="20">$20</span>
       <p>Strictly for the Baddies.</p>
-      <button class="btn-organic" onclick="addToCart('DSF black Crop Hoodie','M',20,1,this)">Add to Cart</button>
-      <div class="confirmation"></div>
+      <button class="btn-organic" onclick="addToCart('DSF Mini CaLi Dress','M',20,1,'1front.jpeg','Strictly for the Baddies.',this)">Add to Cart</button>
+      <div class="confirmation">your drip has been added to cart</div>
     </div>
-</div>
+  </div>
 
 
 
- <div class="product">
+  <div class="product">
     <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, 'DSF ELEGANZA DRESS','>DSF ELEGANZA DRESS', 15, 'FEMALE1.jpeg', 'DSF ELEGANZA DRESS - If elegance was a dress',)">❤</button>
-        <img src="FEMALE1.jpeg" alt="Black Joggers" onclick="openPopup('>DSF ELEGANZA DRESS', 'FEMALE1.jpeg', 'FEMALE1 BACK.jpeg', 15, 20)">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF ELEGANZA DRESS','DSF ELEGANZA DRESS', 15, 'FEMALE1.jpeg', 'DSF ELEGANZA DRESS - If elegance was a dress')">❤</button>
+        <img src="FEMALE1.jpeg" alt="Black Joggers" onclick="openPopup('DSF ELEGANZA DRESS', 'FEMALE1.jpeg', 'FEMALE1 BACK.jpeg', 15, 20)">
     </div>
     <div class="product-details">
       <div class="live-viewers"><div class="live-dot"></div><span class="view-count">1</span> people are viewing this right now</div>
       <b>DSF ELEGANZA DRESS</b><br>
       <span class="old-price" data-usd="20">$15</span><span class="sale-price" data-usd="15">$15</span>
-      <p> DSF ELEGANZA DRESS designed for the ultimate Baddies. designed With Shirred Details And Plants Pattern Sleeveless Flounce Hem
-</p>
-      <button class="btn-organic" onclick="addToCart('DSF black nano crop-top','M',15,1,this)" >Add to Cart</button>
-      <div class="confirmation"></div>
+      <p> DSF ELEGANZA DRESS designed for the ultimate Baddies. designed With Shirred Details And Plants Pattern Sleeveless Flounce Hem</p>
+      <button class="btn-organic" onclick="addToCart('DSF ELEGANZA DRESS','M',15,1,'FEMALE1.jpeg','DSF ELEGANZA DRESS designed for the ultimate Baddies.',this)">Add to Cart</button>
+      <div class="confirmation">your drip has been added to cart</div>
     </div>
-</div>
+  </div>
 
 
- <div class="product">
+  <div class="product">
     <div style="position:relative;">
         <button class="wish-btn" onclick="toggleWish(this, 'DSF browniee', 'DSF browniee' , 30, 'sheinbfront.jpeg', 'Modern fit summer wear designed for the ultimate Baddies.')">❤</button>
         <img src="sheinbfront.jpeg" alt="Black Joggers" onclick="openPopup('DSF browniee', 'sheinbfront.jpeg', '', 20, 30)">
@@ -872,15 +930,15 @@
       <b>DSF browniee</b><br>
       <span class="old-price" data-usd="30">$20</span><span class="sale-price" data-usd="20">$20</span>
       <p>Modern fit summer wear designed for the Baddies.</p>
-      <button class="btn-organic" onclick="addToCart('DSF browniee','M',20,1,this)">Add to Cart</button>
-      <div class="confirmation"></div>
+      <button class="btn-organic" onclick="addToCart('DSF browniee','M',20,1,'sheinbfront.jpeg','Modern fit summer wear designed for the Baddies.',this)">Add to Cart</button>
+      <div class="confirmation">your drip has been added to cart</div>
     </div>
-</div>
+  </div>
 
 
- <div class="product">
+  <div class="product">
     <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, 'DSF black Crop Hoodie', 'DSF black Crop Hoodie', 20, 'sheinffront.jpeg', 'Strictly for the Baddies.',)">❤</button>
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF black Crop Hoodie', 'DSF black Crop Hoodie', 20, 'sheinffront.jpeg', 'Strictly for the Baddies.')">❤</button>
         <img src="sheinffront.jpeg" alt="Black Joggers" onclick="openPopup('DSF black Crop Hoodie', 'sheinffront.jpeg', 'sheinFback.jpeg', 20, 25)">
     </div>
     <div class="product-details">
@@ -888,10 +946,10 @@
       <b>DSF black Crop Hoodie</b><br>
       <span class="old-price" data-usd="25">$20</span><span class="sale-price" data-usd="20">$20</span>
       <p>Strictly for the Baddies.</p>
-      <button class="btn-organic" onclick="addToCart('DSF black Crop Hoodie','M',20,1,this)">Add to Cart</button>
-      <div class="confirmation"></div>
+      <button class="btn-organic" onclick="addToCart('DSF black Crop Hoodie','M',20,1,'sheinffront.jpeg','Strictly for the Baddies.',this)">Add to Cart</button>
+      <div class="confirmation">your drip has been added to cart</div>
     </div>
-</div>
+  </div>
 
 
 
@@ -905,11 +963,9 @@
       <b>DSF Green Brazil long-sleeve</b><br>
       <span class="old-price" data-usd="20">$15</span><span class="sale-price" data-usd="15">$15</span>
       <p>DSF Green Brazil long-sleeve Retro Sporty Top,Autumn Streetwear,Everyday Y2K Vintage Style.</p>
-      <button class="btn-organic" onclick="addToCart('DSF Green Brazil long-sleeve','M',15,1,this)">Add to Cart</button>
-      <div class="confirmation">added to cart, </div>
+      <button class="btn-organic" onclick="addToCart('DSF Green Brazil long-sleeve','M',15,1,'W3 FRONT.jpeg','DSF Green Brazil long-sleeve Retro Sporty Top.',this)">Add to Cart</button>
+      <div class="confirmation">your drip has been added to cart</div>
     </div>
-
-
   </div>
 
   </main>
@@ -956,7 +1012,7 @@
         </div>
 
         <button class="btn-organic" onclick="handlePopupAdd(this)">Add to Cart</button>
-        <div id="pop-confirmation" class="confirmation">your drip has been added to your cart</div>
+        <div id="pop-confirmation" class="confirmation">your drip has been added to cart</div>
 
         <button class="btn-secondary" onclick="closePopup()">Continue Shopping</button>
       </div>
@@ -996,6 +1052,49 @@
       { title: 'DSF ELEGANZA DRESS', img: 'FEMALE1.jpeg', price: 25, desc: 'if elegance was a dress.' }
     ];
 
+    /* Theme Toggle Handler */
+    function toggleTheme() {
+      const body = document.body;
+      const themeBtn = document.getElementById('theme-toggle-btn');
+      
+      body.classList.toggle('light-mode');
+      
+      if (body.classList.contains('light-mode')) {
+        localStorage.setItem('theme', 'light');
+        themeBtn.innerText = '☀️';
+      } else {
+        localStorage.setItem('theme', 'dark');
+        themeBtn.innerText = '🌙';
+      }
+    }
+
+    // Apply saved theme preference on load
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      const themeBtn = document.getElementById('theme-toggle-btn');
+      
+      if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+        if (themeBtn) themeBtn.innerText = '☀️';
+      } else {
+        if (themeBtn) themeBtn.innerText = '🌙';
+      }
+
+      const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+      document.querySelectorAll('.wish-btn').forEach(btn => {
+        const onclickAttr = btn.getAttribute('onclick');
+        if (onclickAttr) {
+          const match = onclickAttr.match(/toggleWish\(this,\s*'([^']+)'/);
+          if (match && match[1]) {
+            const productTitle = match[1];
+            if (wishlist.some(item => item.title === productTitle)) {
+              btn.classList.add('active');
+            }
+          }
+        }
+      });
+    });
+
     /* Navigation Menu Toggle & Auto-Close Outside */
     function toggleMenu(event) {
       if (event) event.stopPropagation();
@@ -1016,7 +1115,6 @@
       currentCurrency = currency;
       const { symbol, rate } = exchangeRates[currency];
 
-      // Update grid prices
       document.querySelectorAll('.sale-price, .old-price').forEach(elem => {
         const usdVal = parseFloat(elem.getAttribute('data-usd'));
         if (!isNaN(usdVal)) {
@@ -1025,7 +1123,6 @@
         }
       });
 
-      // Update active modal price
       const popPriceElem = document.getElementById('pop-price');
       if (popPriceElem && popPriceElem.getAttribute('data-usd')) {
         const popUsd = parseFloat(popPriceElem.getAttribute('data-usd'));
@@ -1132,7 +1229,6 @@
 
       localStorage.setItem('cart', JSON.stringify(cart));
 
-      // Show inline confirmation message below button
       let msgElem = btnElem ? btnElem.nextElementSibling : null;
       if (msgElem && msgElem.classList.contains('confirmation')) {
         msgElem.style.display = 'block';
@@ -1158,7 +1254,7 @@
       );
     }
 
-function toggleWish(btn, title, id, price, img, description) {
+    function toggleWish(btn, title, id, price, img, description) {
       btn.classList.toggle('active');
       const isActive = btn.classList.contains('active');
       
@@ -1181,24 +1277,6 @@ function toggleWish(btn, title, id, price, img, description) {
       
       localStorage.setItem('wishlist', JSON.stringify(wishlist));
     }
-    
-    // Run on page load to ensure heart buttons reflect active wishlist status
-    window.addEventListener('DOMContentLoaded', () => {
-      const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-      document.querySelectorAll('.wish-btn').forEach(btn => {
-        // Extract title or match from attributes
-        const onclickAttr = btn.getAttribute('onclick');
-        if (onclickAttr) {
-          const match = onclickAttr.match(/toggleWish\(this,\s*'([^']+)'/);
-          if (match && match[1]) {
-            const productTitle = match[1];
-            if (wishlist.some(item => item.title === productTitle)) {
-              btn.classList.add('active');
-            }
-          }
-        }
-      });
-    });
 
     /* Recently Viewed Feature */
     function addToRecentlyViewed(name, img, price) {
@@ -1208,10 +1286,10 @@ function toggleWish(btn, title, id, price, img, description) {
 
       const item = document.createElement('div');
       item.id = `rv-${safeId}`;
-      item.style.cssText = "min-width:110px; background:#1e1e1e; padding:8px; border-radius:8px; text-align:center; border: 1px solid #282828; animation: fadeSlideUp 0.4s ease-out;";
+      item.style.cssText = "min-width:110px; background:var(--related-bg); padding:8px; border-radius:8px; text-align:center; border: 1px solid var(--card-border); animation: fadeSlideUp 0.4s ease-out;";
       item.innerHTML = `
         <img src="${img}" style="width:100%; height:80px; object-fit:cover; border-radius:4px;">
-        <p style="font-size:0.75rem; color:#fff; margin-top:4px; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">${name}</p>
+        <p style="font-size:0.75rem; color:var(--text-color); margin-top:4px; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">${name}</p>
         <span style="font-size:0.8rem; color:var(--gold); font-weight:bold;">$${price}</span>
       `;
       container.appendChild(item);
@@ -1220,6 +1298,27 @@ function toggleWish(btn, title, id, price, img, description) {
     function clearRecentlyViewed() {
       document.getElementById('rv-container').innerHTML = '';
     }
+
+    setInterval(() => {
+  // Find all viewer count elements on the page
+  const viewerElements = document.querySelectorAll('.view-count');
+  
+  viewerElements.forEach(element => {
+    // Get the current number of viewers
+    let currentCount = parseInt(element.textContent);
+    
+    // Generate a random change (-2, -1, 0, 1, or 2)
+    const change = Math.floor(Math.random() * 5) - 2;
+    let newCount = currentCount + change;
+    
+    // Keep the count realistic (never let it drop below 2)
+    if (newCount < 2) newCount = 2;
+    
+    // Update the text on the screen
+    element.textContent = newCount;
+  });
+}, 4000); // Updates every 4 seconds (4000 milliseconds)
+
   </script>
 </body>
 </html>

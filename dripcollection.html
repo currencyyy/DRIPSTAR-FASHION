@@ -782,16 +782,16 @@
 
     <div class="product">
       <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, 'DSF double waist jogger', 'double-waist jogger', 75, 'WhatsApp Image 2026-07-15 at 3.35.05 AM.jpeg', 'DSF Double Waist Jogger Featuring our signature layered double-waist design, premium heavyweight fabric.')">❤</button>
-        <img src="WhatsApp Image 2026-07-15 at 3.35.05 AM.jpeg" alt="DSF double waist jogger" onclick="openPopup('DSF double waist jogger', 'WhatsApp Image 2026-07-15 at 3.35.05 AM.jpeg', 'WhatsApp Image 2026-07-15 at 3.35.05 AM.jpeg', 75, 'DSF Double Waist Jogger Featuring our signature layered double-waist design, premium heavyweight fabric.')">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF double waist jogger', 'double-waist jogger', 15, 'WhatsApp Image 2026-08-03 at 3.22.11 AM.jpeg', 'DSF nano singlet, consisting of unmatched Aura embeded in its premium fabric, for the ones that choose to drip like stars in a simple way.')">❤</button>
+        <img src="WhatsApp Image 2026-08-03 at 3.22.11 AM.jpeg" alt="DSF double waist jogger" onclick="openPopup('DSF double waist jogger', 'WhatsApp Image 2026-08-03 at 3.22.11 AM.jpeg', 'WhatsApp Image 2026-08-03 at 3.22.11 AM.jpeg', 15, 'DSF nano singlet, consisting of unmatched Aura embeded in its premium fabric, for the ones that choose to drip like stars in a simple way.')">
       </div>
       <div class="product-details">
         <div class="live-viewers"><div class="live-dot"></div><span class="view-count">2</span> people are viewing this right now</div>
-        <b> DSF double waist jogger</b><br>
-        <span class="old-price" data-usd="80">$80</span><span class="sale-price" data-usd="75">$75</span>
-        <p>DSF Double Waist Jogger Featuring our signature layered double-waist design, premium heavyweight fabric.</p>
-        <button class="btn-organic" onclick="addToCart('DSF double waist jogger','M',75,1,'WhatsApp Image 2026-07-15 at 3.35.05 AM.jpeg','DSF Double Waist Jogger Featuring our signature layered double-waist design, premium heavyweight fabric.',this)">Add to Cart</button>
-        <div class="confirmation">your drip has been added to your cart</div>
+        <b> DSF nano singlet</b><br>
+        <span class="old-price" data-usd="15">$15</span><span class="sale-price" data-usd="15">$15</span>
+        <p>DSF nano singlet, consisting of unmatched Aura embeded in its premium fabric for, the ones that choose to drip like stars in a simple way.</p>
+        <button class="btn-organic" onclick="addToCart('DSF double waist jogger','M',15,1,'WhatsApp Image 2026-07-15 at 3.35.05 AM.jpeg','DSF Double Waist Jogger Featuring our signature layered double-waist design, premium heavyweight fabric.',this)">Add to Cart</button>
+        <div class="confirmation">your dsf-singlet has been added to your cart</div>
       </div>
     </div>
 
@@ -1308,7 +1308,28 @@
 
     function clearRecentlyViewed() {
       document.getElementById('rv-container').innerHTML = '';
+
     }
+    setInterval(() => {
+  // Find all viewer count elements on the page
+  const viewerElements = document.querySelectorAll('.view-count');
+  
+  viewerElements.forEach(element => {
+    // Get the current number of viewers
+    let currentCount = parseInt(element.textContent);
+    
+    // Generate a random change (-2, -1, 0, 1, or 2)
+    const change = Math.floor(Math.random() * 5) - 2;
+    let newCount = currentCount + change;
+    
+    // Keep the count realistic (never let it drop below 2)
+    if (newCount < 2) newCount = 2;
+    
+    // Update the text on the screen
+    element.textContent = newCount;
+  });
+}, 4000); // Updates every 4 seconds (4000 milliseconds)
+
   </script>
 </body>
 </html>
