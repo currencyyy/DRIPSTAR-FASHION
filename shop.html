@@ -5,42 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Drip Collection</title>
   <style>
-    /* Base Theme Variables */
+    /* Base Theme Variables (Dark Mode Default) */
     :root {
       --drip-gradient: linear-gradient(135deg, #111111 0%, #333333 100%);
       --gold: #d4af37;
       --gold-hover: #e5c158;
       --gold-glow: rgba(212, 175, 55, 0.4);
       --bg-color: #0f0f0f;
+      --header-bg: #141414;
       --card-bg: #1a1a1a;
       --card-border: #2a2a2a;
       --text-color: #ffffff;
       --text-muted: #aaaaaa;
       --success-green: #2ed573;
-      --header-bg: #141414;
+      --popup-bg: #141414;
       --input-bg: #222;
       --input-border: #444;
-      --modal-bg: #141414;
-      --related-bg: #1e1e1e;
+      --shipping-bg: #000;
     }
 
-    /* Light Theme Variables */
-    body.light-mode {
+    /* Light Mode Theme Variables */
+    [data-theme="light"] {
       --drip-gradient: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
-      --gold: #b38f27;
-      --gold-hover: #997920;
-      --gold-glow: rgba(179, 143, 39, 0.3);
-      --bg-color: #f8f9fa;
-      --card-bg: #ffffff;
-      --card-border: #e2e8f0;
-      --text-color: #1a202c;
-      --text-muted: #718096;
-      --success-green: #28a745;
+      --gold: #b89728;
+      --gold-hover: #d4af37;
+      --gold-glow: rgba(184, 151, 40, 0.3);
+      --bg-color: #f4f4f4;
       --header-bg: #ffffff;
-      --input-bg: #edf2f7;
-      --input-border: #cbd5e0;
-      --modal-bg: #ffffff;
-      --related-bg: #edf2f7;
+      --card-bg: #ffffff;
+      --card-border: #e0e0e0;
+      --text-color: #111111;
+      --text-muted: #666666;
+      --success-green: #2ed573;
+      --popup-bg: #ffffff;
+      --input-bg: #f9f9f9;
+      --input-border: #ccc;
+      --shipping-bg: #1a1a1a;
     }
 
     * {
@@ -122,7 +122,7 @@
 
     /* Free Shipping Bar */
     #shipping-bar-container {
-      background: #000;
+      background: var(--shipping-bg);
       color: #fff;
       text-align: center;
       padding: 10px;
@@ -130,8 +130,9 @@
       position: sticky;
       top: 0;
       z-index: 999;
-      border-bottom: 1px solid #333;
+      border-bottom: 1px solid var(--card-border);
       width: 100%;
+      transition: background 0.3s ease;
     }
 
     #shipping-progress-fill {
@@ -156,7 +157,7 @@
       font-weight: bold;
       cursor: pointer;
       z-index: 1001;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       transition: transform 0.3s ease, background 0.3s ease;
     }
 
@@ -225,7 +226,7 @@
       position: relative;
     }
 
-    .currency-select {
+    .currency-select, .theme-toggle-btn {
       background: var(--card-bg);
       color: var(--gold);
       border: 1px solid var(--gold);
@@ -238,28 +239,7 @@
       transition: border-color 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
     }
 
-    .currency-select:hover {
-      box-shadow: 0 0 8px var(--gold-glow);
-    }
-
-    /* Theme Toggle Button Style */
-    .theme-toggle-btn {
-      background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      padding: 8px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-    }
-
-    .theme-toggle-btn:hover {
-      background: var(--gold);
-      color: #000;
+    .currency-select:hover, .theme-toggle-btn:hover {
       box-shadow: 0 0 8px var(--gold-glow);
     }
 
@@ -288,9 +268,10 @@
       border: 1px solid var(--card-border);
       padding: 1rem;
       border-radius: 8px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       z-index: 1005;
       min-width: 180px;
+      transition: background 0.3s ease, border-color 0.3s ease;
     }
 
     .nav-links.active {
@@ -338,7 +319,7 @@
 
     .product:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2), 0 0 15px var(--gold-glow);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15), 0 0 15px var(--gold-glow);
       border-color: var(--gold);
     }
 
@@ -400,7 +381,7 @@
     .live-dot {
       width: 8px;
       height: 8px;
-      background-color: var(--success-green);
+      background-color: #2ed573;
       border-radius: 50%;
       animation: livePulse 1.8s infinite ease-in-out;
       flex-shrink: 0;
@@ -479,7 +460,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: var(--modal-bg);
+      background: var(--popup-bg);
       border: 1px solid var(--card-border);
       border-radius: 16px;
       padding: 1.5rem;
@@ -488,9 +469,9 @@
       max-height: 90vh;
       overflow-y: auto;
       z-index: 2001;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
       animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-      color: var(--text-color);
+      transition: background 0.3s ease, border-color 0.3s ease;
     }
 
     .popup-container {
@@ -567,7 +548,7 @@
       color: var(--text-color);
       border-radius: 6px;
       outline: none;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, background 0.3s, color 0.3s;
     }
 
     .popup-input:focus {
@@ -613,7 +594,7 @@
     }
 
     .related-item {
-      background: var(--related-bg);
+      background: var(--card-bg);
       border-radius: 8px;
       padding: 6px;
       text-align: center;
@@ -731,14 +712,9 @@
         gap: 6px;
       }
 
-      .currency-select {
+      .currency-select, .theme-toggle-btn {
         padding: 6px 8px;
         font-size: 0.75rem;
-      }
-
-      .theme-toggle-btn {
-        padding: 6px 8px;
-        font-size: 0.85rem;
       }
 
       .menu-btn {
@@ -753,7 +729,7 @@
   <!-- Free Shipping Header Bar -->
   <div id="shipping-bar-container">
     <span id="shipping-text">You're $500 away from FREE SHIPPING!</span>
-    <div style="background: #333; height: 6px; width: 60%; margin: 5px auto; border-radius: 10px; overflow: hidden;">
+    <div style="background: rgba(128,128,128,0.2); height: 6px; width: 60%; margin: 5px auto; border-radius: 10px; overflow: hidden;">
       <div id="shipping-progress-fill"></div>
     </div>
   </div>
@@ -773,7 +749,10 @@
     </div>
 
     <div class="nav-controls">
-      <!-- Currency Switcher Dropdown -->
+      <!-- Dark/Light Mode Toggle Button -->
+      <button id="themeToggleBtn" class="theme-toggle-btn" onclick="toggleTheme()">☀️ Light</button>
+
+      <!-- Currency Switcher Dropdown beside Menu -->
       <select id="currency-select" class="currency-select" onchange="changeCurrency(this.value)">
         <option value="USD">USD ($)</option>
         <option value="EUR">EUR (€)</option>
@@ -781,12 +760,7 @@
         <option value="NGN">NGN (₦)</option>
       </select>
 
-      <!-- Dark & Light Mode Toggle Button placed beside the menu -->
-      <button id="theme-toggle-btn" class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Light/Dark Mode">
-        🌙
-      </button>
-
-        <nav class="top-nav">
+      <nav class="top-nav">
         <button class="menu-btn" onclick="toggleMenu(event)">
           ☰ MENU
         </button>
@@ -807,20 +781,77 @@
   <!-- Main Product Showcase Grid -->
   <main class="product-grid">
 
-<div class="product">
-    <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, 'DSF plain black crop top','DSF black crop top', 20, 'WhatsApp Image 2026-07-13 at 1.44.35 AM.jpeg', 'DRIPSTAR nano Crop Top')">❤</button>
-        <img src="WhatsApp Image 2026-07-13 at 1.44.35 AM.jpeg" alt="Black Top" onclick="openPopup('DSF black crop top', 'WhatsApp Image 2026-07-13 at 1.44.35 AM.jpeg', 'WhatsApp Image 2026-07-13 at 1.30.05 AM.jpeg', 20, 'DRIPSTAR nano Crop Top — crafted for women who move with confidence, set trends, and make every outfit a statement. Clean silhouette. Premium feel. Streetwear attitude.')">
+        <div class="product">
+      <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'WhatsApp Image 2026-08-14 at 1.55.24 AM.jpeg', 'DSF nano singlet, consisting of unmatched Aura embeded in its premium fabric, for the ones that choose to drip like stars in a simple way.')">❤</button>
+        <img src="WhatsApp Image 2026-08-14 at 1.55.24 AM.jpeg" alt="DSF double waist jogger" onclick="openPopup('DSF double waist jogger', 'WhatsApp Image 2026-08-14 at 1.55.24 AM.jpeg', 'WhatsApp Image 2026-08-14 at 1.55.24 AM.jpeg', 15, 'DSF nano singlet, consisting of unmatched Aura embeded in its premium fabric, for the ones that choose to drip like stars in a simple way.')">
+      </div>
+      <div class="product-details">
+        <div class="live-viewers"><div class="live-dot"></div><span class="view-count">2</span> people are viewing this right now</div>
+        <b> DSF nano singlet</b><br>
+        <span class="old-price" data-usd="15">$15</span><span class="sale-price" data-usd="15">$15</span>
+        <p>DSF nano singlet, consisting of unmatched Aura embeded in its premium fabric for, the ones that choose to drip like stars in a simple way.</p>
+        <button class="btn-organic" onclick="addToCart('DSF double waist jogger','M',15,1,'WhatsApp Image 2026-08-14 at 1.55.24 AM.jpeg','DSF Double Waist Jogger Featuring our signature layered double-waist design, premium heavyweight fabric.',this)">Add to Cart</button>
+        <div class="confirmation">your dsf-singlet has been added to your cart</div>
+      </div>
     </div>
-    <div class="product-details">
-      <div class="live-viewers"><div class="live-dot"></div><span class="view-count">3</span> people are viewing this right now</div>
-      <b>Dripstar nano crop top</b><br>
-      <span class="old-price" data-usd="20">$20</span><span class="sale-price" data-usd="20">$20</span>
-      <p>DRIPSTAR nano Crop Top — crafted for women who move with confidence, set trends, and make every outfit a statement. Clean silhouette. Premium feel. Streetwear attitude.</p>
-      <button class="btn-organic" onclick="addToCart('Dripstar nano crop top', 'M', 20, 1, 'WhatsApp Image 2026-07-13 at 1.44.35 AM.jpeg', 'DRIPSTAR nano Crop Top — crafted for women who move with confidence, set trends, and make every outfit a statement. Clean silhouette. Premium feel. Streetwear attitude.', this)">Add to Cart</button>
-      <div class="confirmation">your drip has been added to cart</div>
+
+
+    
+    <div class="product">
+      <button class="wish-btn" onclick="toggleWish(this, 'DSF Black-MOB-sleeveless', 'Black-MOB-sleeveless', 30, 'sleeve.jpeg', 'Dripstar MOB - black sleeveless designed for the perfect drip.')">❤</button>
+      <img src="sleeve.jpeg" alt="Black MOB-sleeveless" onclick="openPopup('DSF Black-MOB-sleeveless', 'sleeve.jpeg', 'WhatsApp Image 2026-07-13 at 12.55.04 AM.jpeg', 30, 'Dripstar MOB - black sleeveless designed for the perfect drip.')">
+      <div class="product-details">
+        <div class="live-viewers"><div class="live-dot"></div><span class="view-count">12</span> people are viewing this right now</div>
+        <b>DSF Black-MOB-sleeveless</b><br>
+        <span class="old-price" data-usd="25">$25</span><span class="sale-price" data-usd="30">$30</span>
+        <p>Dripstar MOB - black sleeveless designed for the perfect drip.</p>
+        <button class="btn-organic" onclick="addToCart('DSF Black-MOB-sleeveless','M',30,1,'sleeve.jpeg','Dripstar MOB - black sleeveless designed for the perfect drip.',this)">Add to Cart</button>
+        <div class="confirmation">your drip has been added to your cart</div>
+      </div>
     </div>
-  </div>    
+
+    <div class="product">
+      <button class="wish-btn" onclick="toggleWish(this, 'DSF Black-MOB-hoodie', 'DSF Black-MOB-hoodie', 40, 'WhatsApp Image 2026-07-06 at 5.21.15 AM.jpeg', 'Dripstar MOB-hoodie designed in black for maximum comfort, aura and for starz only.')">❤</button>
+      <img src="WhatsApp Image 2026-07-06 at 5.21.15 AM.jpeg" alt="Black MOB-hoodie" onclick="openPopup('DSF Black-MOB-hoodie', 'WhatsApp Image 2026-07-06 at 5.21.15 AM.jpeg', 'WhatsApp Image 2026-07-06 at 5.21.15 AM.jpeg', 40, 'Dripstar MOB-hoodie designed in black for maximum comfort, aura and for starz only.')">
+      <div class="product-details">
+        <div class="live-viewers"><div class="live-dot"></div><span class="view-count">2</span> people are viewing this right now</div>
+        <b>DSF Black-MOB-hoodie</b><br>
+        <span class="old-price" data-usd="50">$50</span><span class="sale-price" data-usd="40">$40</span>
+        <p>Dripstar MOB-hoodie designed in black for maximum comfort, aura and for starz only.</p>
+        <button class="btn-organic" onclick="addToCart('DSF Black-MOB-hoodie','M',40,1,'WhatsApp Image 2026-07-06 at 5.21.15 AM.jpeg','Dripstar MOB-hoodie designed in black for maximum comfort, aura and for starz only.',this)">Add to Cart</button>
+        <div class="confirmation">your drip has been added to your cart</div>
+      </div>
+    </div>
+
+    <div class="product">
+      <button class="wish-btn" onclick="toggleWish(this, 'DSF Black-Drip-cap', 'blackDripCap', 7, 'blacoo - Copy.jpeg', 'Dripstar Face Cap designed in black for maximum comfort + aura.')">❤</button>
+      <img src="blacoo - Copy.jpeg" alt="Black drip-cap" onclick="openPopup('DSF Black-Drip-cap', 'blacoo - Copy.jpeg', 'blacoo - Copy.jpeg', 7, 'Dripstar Face Cap designed in black for maximum comfort + aura.')">
+      <div class="product-details">
+        <div class="live-viewers"><div class="live-dot"></div><span class="view-count">6</span> people are viewing this right now</div>
+        <b>DSF Black-Drip-cap</b><br>
+        <span class="old-price" data-usd="7">$7</span><span class="sale-price" data-usd="10">$10</span>
+        <p>Dripstar Face Cap designed in black for maximum comfort + aura.</p>
+        <button class="btn-organic" onclick="addToCart('DSF Black-Drip-cap','M',7,1,'blacoo - Copy.jpeg','Dripstar Face Cap designed in black for maximum comfort + aura.',this)">Add to Cart</button>
+        <div class="confirmation">your drip has been added to your cart</div>
+      </div>
+    </div>
+
+
+    <div class="product">
+      <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF Blue Drip-cap', 'blueDripCap', 7,  'WhatsApp Image 2026-06-25 at 1.13.04 AM.jpeg', 'Dripstar Face Cap designed for maximum aura.')">❤</button>
+        <img src="ChatGPT Image Jun 25, 2026, 01_45_26 AM.png" alt="Blue Drip Cap" onclick="openPopup('DSF Blue Drip-cap', 'ChatGPT Image Jun 25, 2026, 01_45_26 AM.png', 'WhatsApp Image 2026-06-25 at 1.13.04 AM.jpeg', 7, 'Dripstar Face Cap designed for maximum aura.')">
+      </div>
+      <div class="product-details">
+       <div class="live-viewers"><div class="live-dot"></div><span class="view-count">6</span> people are viewing this right now</div>
+         <b> DSF Blue Drip-cap</b><br>
+         <span class="old-price" data-usd="7">$7</span><span class="sale-price" data-usd="10">$10</span>
+       <p>Dripstar Face Cap designed for maximum aura.</p>
+        <button class="btn-organic" onclick="addToCart('DSF Blue Drip-cap','M',7,1,'ChatGPT Image Jun 25, 2026, 01_45_26 AM.png','Dripstar Face Cap designed for maximum aura.',this)">Add to Cart</button>
+        <div class="confirmation">your drip has been added to your cart</div>
+      </div>
+    </div>
 
     <div class="product">
       <div style="position:relative;">
@@ -852,152 +883,126 @@
       </div>
     </div>
 
-
-  <div class="product">
-    <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, 'currenciaga nano dress', 'currenciaga nano dress', 15,'W5 FRONT.jpeg', 'currenciaga nano dress')">❤</button>
-        <img src="W5 FRONT.jpeg" alt="Jean Skirt" onclick="openPopup('currenciaga nano dress', 'W5 FRONT.jpeg', 'W5 BACK.jpeg', 15, 20)">
+    <div class="product">
+      <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF LOS ANGELES POLO', 'laPolo', 25, 'male1 front.jpeg',  'DSF LOS ANGELES POLO designed for the ultimate drip.')">❤</button>
+        <img src="male1 front.jpeg" alt="LOS ANGELES POLO" onclick="openPopup('DSF LOS ANGELES POLO', 'male1 front.jpeg', 'male1 back.jpeg', 25, 'DSF LOS ANGELES POLO designed for the ultimate drip.')">
+      </div>
+      <div class="product-details">
+        <div class="live-viewers"><div class="live-dot"></div> SOLD OUT </div>
+        <b> DSF LOS ANGELES POLO</b><br>
+        <span class="old-price" data-usd="35">$35</span><span class="sale-price" data-usd="25">$25</span>
+        <p>DSF LOS ANGELES POLO designed for the ultimate drip.</p>
+        <button class="btn-organic" onclick="addToCart('DSF LOS ANGELES POLO','M',25,1,'male1 front.jpeg','DSF LOS ANGELES POLO designed for the ultimate drip.',this)">Add to Cart</button>
+        <div class="confirmation">your drip has been added to your cart</div>
+      </div>
     </div>
-    <div class="product-details">
-      <div class="live-viewers"><div class="live-dot"></div><span class="view-count">1</span> people are viewing this right now</div>
-      <b>currenciaga nano dress</b><br>
-      <span class="old-price" data-usd="20">$15</span><span class="sale-price" data-usd="15">$15</span>
-      <p>Embrace elegance with our currenciaga nano dress that flows beautifully with each step. Designed with a flattering silhouette and intricate detailing.</p>
-      <button class="btn-organic" onclick="addToCart('currenciaga nano dress','M',15,1,'W5 FRONT.jpeg','Embrace elegance with our currenciaga nano dress.',this)">Add to Cart</button>
-      <div class="confirmation">your drip has been added to cart</div>
+
+    <div class="product">
+      <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF Ash nano joggers', 'ashNano', 45,  'shein 44.jpeg', 'This contemporary joggers combines comfort and style, perfect for indoors and outdoors activities.')">❤</button>
+        <img src="shein 44.jpeg" alt="Ash Joggers" onclick="openPopup('DSF Ash nano joggers', 'shein 44.jpeg', 'shein 44-back.jpeg', 45, 'This contemporary joggers combines comfort and style, perfect for indoors and outdoors activities.')">
+      </div>
+      <div class="product-details">
+        <div class="live-viewers"><div class="live-dot"></div><span class="view-count">7</span> people are viewing this right now</div>
+        <b>DSF Ash nano joggers</b><br>
+        <span class="old-price" data-usd="55">$55</span><span class="sale-price" data-usd="45">$45</span>
+        <p>This contemporary joggers combines comfort and style, perfect for indoors and outdoors activities.</p>
+        <button class="btn-organic" onclick="addToCart('DSF Ash nano joggers','M',45,1,'shein 44.jpeg','This contemporary joggers combines comfort and style, perfect for indoors and outdoors activities.',this)">Add to Cart</button>
+        <div class="confirmation">your drip has been added to your cart</div>
+      </div>
     </div>
-  </div>  
 
-  <div class="product">
-    <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, 'MOB female Sweatpants','MOB female Sweatpants', 30,'W4 FRONT.jpeg', ' MOB female Sweatpants a Modern fit joggers')">❤</button>
-        <img src="W4 FRONT.jpeg" alt="Jean Skirt" onclick="openPopup('MOB female Sweatpants', 'W4 FRONT.jpeg', 'W4 BACK.jpeg', 30, 30)">
+    <div class="product">
+      <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF black nano joggers', 'blackNano', 45, 'shein 3.jpeg', 'Modern fit joggers designed for the ultimate drip. Combines breathable fabric with a sleek street silhouette.')">❤</button>
+        <img src="shein 3.jpeg" alt="Black Joggers" onclick="openPopup('DSF black nano joggers', 'shein 3.jpeg', 'shein 3-back.jpeg', 45, 'Modern fit joggers designed for the ultimate drip. Combines breathable fabric with a sleek street silhouette.')">
+      </div>
+      <div class="product-details">
+        <div class="live-viewers"><div class="live-dot"></div><span class="view-count">41</span> people are viewing this right now</div>
+        <b>DSF black nano joggers</b><br>
+        <span class="old-price" data-usd="55">$55</span><span class="sale-price" data-usd="45">$45</span>
+        <p>Modern fit joggers designed for the ultimate drip. Combines breathable fabric with a sleek street silhouette.</p>
+        <button class="btn-organic" onclick="addToCart('DSF black nano joggers','M',45,1,'shein 3.jpeg','Modern fit joggers designed for the ultimate drip. Combines breathable fabric with a sleek street silhouette.',this)">Add to Cart</button>
+        <div class="confirmation">your drip has been added to your cart</div>
+      </div>
     </div>
-    <div class="product-details">
-      <div class="live-viewers"><div class="live-dot"></div><span class="view-count">1</span> people are viewing this right now</div>
-      <b>MOB female Sweatpants</b><br>
-      <span class="old-price" data-usd="30">$30</span><span class="sale-price" data-usd="30">$30</span>
-      <p>Embrace elegance with our MOB female Sweatpants a Modern fit joggers designed for the ultimate drip.</p>
-      <button class="btn-organic" onclick="addToCart('MOB female Sweatpants','M',30,1,'W4 FRONT.jpeg','MOB female Sweatpants a Modern fit joggers.',this)">Add to Cart</button>
-      <div class="confirmation">your drip has been added to cart</div>
+
+    <div class="product">
+      <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF black nano cross joggers', 'nanoCross', 50, 'shiencback.jpeg','Modern fit cross designed joggers designed for the ultimate drip.')">❤</button>
+        <img src="shiencfront.jpeg" alt="Black Joggers" onclick="openPopup('DSF black nano cross joggers', 'shiencfront.jpeg', 'shiencback.jpeg', 50, 'Modern fit cross designed joggers designed for the ultimate drip.')">
+      </div>
+      <div class="product-details">
+        <div class="live-viewers"><div class="live-dot"></div>SOLD OUT</div>
+        <b>DSF black nano cross joggers</b><br>
+        <span class="old-price" data-usd="65">$65</span><span class="sale-price" data-usd="50">$50</span>
+        <p>Modern fit cross designed joggers designed for the ultimate drip.</p>
+        <button class="btn-organic" onclick="addToCart('DSF black nano cross joggers','M',50,1,'shiencfront.jpeg','Modern fit cross designed joggers designed for the ultimate drip.',this)">Add to Cart</button>
+        <div class="confirmation">your drip has been added to your cart</div>
+      </div>
     </div>
-  </div>
 
-
-  <div class="product">
-    <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, 'DSF Yellow Brazil long-sleeve','DSF Yellow Brazil long-sleeve', 20,'W2 FRONT.jpeg','DSF Yellow Brazil long-sleeve')">❤</button>
-        <img src="W2 FRONT.jpeg" alt="Jean Skirt" onclick="openPopup('DSF Yellow Brazil long-sleeve', 'W2 FRONT.jpeg', 'W2 BACK.jpeg', 20, 30)">
+    <div class="product">
+      <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF white Nepo Jacket', 'nepoJacket', 50,  'shiendfront.jpeg', 'Modern Nepo Jacket for the bosses.' )">❤</button>
+        <img src="shiendfront.jpeg" alt="Nepo" onclick="openPopup('DSF white Nepo Jacket', 'shiendfront.jpeg', 'sheindback.jpeg', 50, 'Modern Nepo Jacket for the bosses.')">
+      </div>
+      <div class="product-details">
+        <div class="live-viewers"><div class="live-dot"></div> SOLD OUT</div>
+        <b>DSF white Nepo Jacket</b><br>
+        <span class="old-price" data-usd="65">$65</span><span class="sale-price" data-usd="50">$50</span>
+        <p>Modern Nepo Jacket for the bosses.</p>
+        <button class="btn-organic" onclick="addToCart('DSF white Nepo Jacket','M',50,1,'shiendfront.jpeg','Modern Nepo Jacket for the bosses.',this)">Add to Cart</button>
+        <div class="confirmation">your drip has been added to your cart</div>
+      </div>
     </div>
-    <div class="product-details">
-      <div class="live-viewers"><div class="live-dot"></div><span class="view-count">9</span> people are viewing this right now</div>
-      <b>DSF Yellow Brazil long-sleeve</b><br>
-      <span class="old-price" data-usd="30">$20</span><span class="sale-price" data-usd="20">$20</span>
-      <p>Embrace elegance with our DSF Yellow Brazil long-sleeve Designed for the ultimate Baddies.</p>
-      <button class="btn-organic" onclick="addToCart('DSF Yellow Brazil long-sleeve','M',20,1,'W2 FRONT.jpeg','DSF Yellow Brazil long-sleeve Designed for the ultimate Baddies.',this)">Add to Cart</button>
-      <div class="confirmation">your drip has been added to cart</div>
+
+    <div class="product">
+      <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF black Drippy joggers', 'drippyJoggers', 55, 'shienEfront.jpeg','Modern fit joggers designed for the ultimate drip.' )">❤</button>
+        <img src="shienEfront.jpeg" alt="Black Joggers" onclick="openPopup('DSF black Drippy joggers', 'shienEfront.jpeg', 'shIEnEback.jpeg', 55, 'Modern fit joggers designed for the ultimate drip.')">
+      </div>
+      <div class="product-details">
+        <div class="live-viewers"><div class="live-dot"></div><span class="view-count">4</span> people are viewing this right now</div>
+        <b>DSF black Drippy joggers</b><br>
+        <span class="old-price" data-usd="65">$65</span><span class="sale-price" data-usd="55">$55</span>
+        <p>Modern fit joggers designed for the ultimate drip.</p>
+        <button class="btn-organic" onclick="addToCart('DSF black Drippy joggers','M',55,1,'shienEfront.jpeg','Modern fit joggers designed for the ultimate drip.',this)">Add to Cart</button>
+        <div class="confirmation">your drip has been added to your cart</div>
+      </div>
     </div>
-  </div>
 
- 
-
-  <div class="product">
-    <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, 'DSF white rider crop-top','DSF white rider crop-top' , 10, 'sheinridercroptop.jpeg', 'DSF white rider crop-top')">❤</button>
-        <img src="sheinridercroptop.jpeg" alt="DSF white rider crop-top" onclick="openPopup('DSF white rider crop-top', 'sheinridercroptop.jpeg', 'shein 3-back.jpeg', 15, 10)">
+    <div class="product">
+      <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF black Wakoo joggers', 'wakooJoggers', 50, 'sheinIfront.jpeg', 'Modern fit WAKOO joggers designed for the ultimate drip. Combines breathable fabric with a sleek street silhouette.' )">❤</button>
+        <img src="sheinIfront.jpeg" alt="Black Joggers" onclick="openPopup('DSF black Wakoo joggers', 'sheinIfront.jpeg', 'sheinIback.jpeg', 50, 'Modern fit WAKOO joggers designed for the ultimate drip. Combines breathable fabric with a sleek street silhouette.')">
+      </div>
+      <div class="product-details">
+        <div class="live-viewers"><div class="live-dot"></div><span class="view-count">41</span> people are viewing this right now</div>
+        <b>DSF black Wakoo joggers</b><br>
+        <span class="old-price" data-usd="55">$55</span><span class="sale-price" data-usd="50">$50</span>
+        <p>Modern fit WAKOO joggers designed for the ultimate drip. Combines breathable fabric with a sleek street silhouette.</p>
+        <button class="btn-organic" onclick="addToCart('DSF black Wakoo joggers','M',50,1,'sheinIfront.jpeg','Modern fit WAKOO joggers designed for the ultimate drip. Combines breathable fabric with a sleek street silhouette.',this)">Add to Cart</button>
+        <div class="confirmation">your drip has been added to your cart</div>
+      </div>
     </div>
-    <div class="product-details">
-      <div class="live-viewers"><div class="live-dot"></div>SOLD OUT</div>
-      <b>DSF white rider crop-top</b><br>
-      <span class="old-price" data-usd="15">$15</span><span class="sale-price" data-usd="10">$10</span>
-      <p>DSF rider crop-top designed for the ultimate drip.</p>
-      <button class="btn-organic" onclick="addToCart('DSF white rider crop-top','M',10,1,'sheinridercroptop.jpeg','DSF rider crop-top designed for the ultimate drip.',this)">Add to Cart</button>
-      <div class="confirmation">your drip has been added to cart</div>
+
+    <div class="product">
+      <div style="position:relative;">
+        <button class="wish-btn" onclick="toggleWish(this, 'DSF Get rich merch', 'getRichMerch', 30,  'm2 front - Copy (2).jpeg', 'DSF Get rich merch is designed for the ultimate drip.' )">❤</button>
+        <img src="m2 front - Copy (2).jpeg" alt="Black Joggers" onclick="openPopup('DSF Get rich merch', 'm2 front - Copy (2).jpeg', '', 30, 'DSF Get rich merch is designed for the ultimate drip.')">
+      </div>
+      <div class="product-details">
+        <div class="live-viewers"><div class="live-dot"></div>SOLD OUT</div>
+        <b>DSF Get rich merch</b><br>
+        <span class="old-price" data-usd="45">$45</span><span class="sale-price" data-usd="30">$30</span>
+        <p>DSF Get rich merch is designed for the ultimate drip.</p>
+        <button class="btn-organic" onclick="addToCart('DSF Get rich merch','M',30,1,'m2 front - Copy (2).jpeg','DSF Get rich merch is designed for the ultimate drip.',this)">Add to Cart</button>
+        <div class="confirmation">your drip has been added to your cart</div>
+      </div>
     </div>
-  </div>
 
-
-
-  <div class="product">
-    <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, ' DSF CaLi Dress', 'DSF CaLi Dress', 20, '1front.jpeg', 'Strictly for the Baddies.')">❤</button>
-        <img src="1front.jpeg" alt="Black Joggers" onclick="openPopup(' DSF CaLi Dress', '1front.jpeg', '1back.jpeg', 20, 25)">
-    </div>
-    <div class="product-details">
-      <div class="live-viewers"><div class="live-dot"></div><span class="view-count">41</span> people are viewing this right now</div>
-      <b> DSF  Mini CaLi Dress</b><br>
-      <span class="old-price" data-usd="25">$20</span><span class="sale-price" data-usd="20">$20</span>
-      <p>Strictly for the Baddies.</p>
-      <button class="btn-organic" onclick="addToCart('DSF Mini CaLi Dress','M',20,1,'1front.jpeg','Strictly for the Baddies.',this)">Add to Cart</button>
-      <div class="confirmation">your drip has been added to cart</div>
-    </div>
-  </div>
-
-
-
-  <div class="product">
-    <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, 'DSF ELEGANZA DRESS','DSF ELEGANZA DRESS', 15, 'FEMALE1.jpeg', 'DSF ELEGANZA DRESS - If elegance was a dress')">❤</button>
-        <img src="FEMALE1.jpeg" alt="Black Joggers" onclick="openPopup('DSF ELEGANZA DRESS', 'FEMALE1.jpeg', 'FEMALE1 BACK.jpeg', 15, 20)">
-    </div>
-    <div class="product-details">
-      <div class="live-viewers"><div class="live-dot"></div><span class="view-count">1</span> people are viewing this right now</div>
-      <b>DSF ELEGANZA DRESS</b><br>
-      <span class="old-price" data-usd="20">$15</span><span class="sale-price" data-usd="15">$15</span>
-      <p> DSF ELEGANZA DRESS designed for the ultimate Baddies. designed With Shirred Details And Plants Pattern Sleeveless Flounce Hem</p>
-      <button class="btn-organic" onclick="addToCart('DSF ELEGANZA DRESS','M',15,1,'FEMALE1.jpeg','DSF ELEGANZA DRESS designed for the ultimate Baddies.',this)">Add to Cart</button>
-      <div class="confirmation">your drip has been added to cart</div>
-    </div>
-  </div>
-
-
-  <div class="product">
-    <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, 'DSF browniee', 'DSF browniee' , 30, 'sheinbfront.jpeg', 'Modern fit summer wear designed for the ultimate Baddies.')">❤</button>
-        <img src="sheinbfront.jpeg" alt="Black Joggers" onclick="openPopup('DSF browniee', 'sheinbfront.jpeg', '', 20, 30)">
-    </div>
-    <div class="product-details">
-      <div class="live-viewers"><div class="live-dot"></div><span class="view-count">11</span> people are viewing this right now</div>
-      <b>DSF browniee</b><br>
-      <span class="old-price" data-usd="30">$20</span><span class="sale-price" data-usd="20">$20</span>
-      <p>Modern fit summer wear designed for the Baddies.</p>
-      <button class="btn-organic" onclick="addToCart('DSF browniee','M',20,1,'sheinbfront.jpeg','Modern fit summer wear designed for the Baddies.',this)">Add to Cart</button>
-      <div class="confirmation">your drip has been added to cart</div>
-    </div>
-  </div>
-
-
-  <div class="product">
-    <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, 'DSF black Crop Hoodie', 'DSF black Crop Hoodie', 20, 'sheinffront.jpeg', 'Strictly for the Baddies.')">❤</button>
-        <img src="sheinffront.jpeg" alt="Black Joggers" onclick="openPopup('DSF black Crop Hoodie', 'sheinffront.jpeg', 'sheinFback.jpeg', 20, 25)">
-    </div>
-    <div class="product-details">
-      <div class="live-viewers"><div class="live-dot"></div> SOLD OUT</div>
-      <b>DSF black Crop Hoodie</b><br>
-      <span class="old-price" data-usd="25">$20</span><span class="sale-price" data-usd="20">$20</span>
-      <p>Strictly for the Baddies.</p>
-      <button class="btn-organic" onclick="addToCart('DSF black Crop Hoodie','M',20,1,'sheinffront.jpeg','Strictly for the Baddies.',this)">Add to Cart</button>
-      <div class="confirmation">your drip has been added to cart</div>
-    </div>
-  </div>
-
-
-
-  <div class="product">
-    <div style="position:relative;">
-        <button class="wish-btn" onclick="toggleWish(this, 'DSF Green Brazil long-sleeve', 'DSF Green Brazil long-sleeve', 15, 'W3 FRONT.jpeg', 'DSF Green Brazil long-sleeve Retro Sporty Top,Autumn Streetwear,Everyday Y2K Vintage Style.')">❤</button>
-        <img src="W3 FRONT.jpeg" alt="Jean Skirt" onclick="openPopup('DSF Green Brazil long-sleeve', 'W3 FRONT.jpeg', 'W3 BACK.jpeg', 15, 20)">
-    </div>
-    <div class="product-details">
-      <div class="live-viewers"><div class="live-dot"></div><span class="view-count">22</span> people are viewing this right now</div>
-      <b>DSF Green Brazil long-sleeve</b><br>
-      <span class="old-price" data-usd="20">$15</span><span class="sale-price" data-usd="15">$15</span>
-      <p>DSF Green Brazil long-sleeve Retro Sporty Top,Autumn Streetwear,Everyday Y2K Vintage Style.</p>
-      <button class="btn-organic" onclick="addToCart('DSF Green Brazil long-sleeve','M',15,1,'W3 FRONT.jpeg','DSF Green Brazil long-sleeve Retro Sporty Top.',this)">Add to Cart</button>
-      <div class="confirmation">your drip has been added to cart</div>
-    </div>
-  </div>
 
   </main>
 
@@ -1043,7 +1048,7 @@
         </div>
 
         <button class="btn-organic" onclick="handlePopupAdd(this)">Add to Cart</button>
-        <div id="pop-confirmation" class="confirmation">your drip has been added to cart</div>
+        <div id="pop-confirmation" class="confirmation">your drip has been added to your cart</div>
 
         <button class="btn-secondary" onclick="closePopup()">Continue Shopping</button>
       </div>
@@ -1078,53 +1083,40 @@
 
     // Related products catalog mock
     const relatedCatalog = [
-      { title: 'DSF currenciaga nano dress', img: 'W5 FRONT.jpeg', price: 15, desc: ' currenciaga nano dress flower design.' },
-      { title: 'DSF Green Brazil long-sleeve', img: 'W3 FRONT.jpeg', price: 15, desc: 'DSF Green Brazil long-sleeve.' },
-      { title: 'DSF ELEGANZA DRESS', img: 'FEMALE1.jpeg', price: 25, desc: 'if elegance was a dress.' }
+      { title: 'DSF Black-Drip-cap', img: 'blacoo - Copy.jpeg', price: 7, desc: 'Dripstar Face Cap in black.' },
+      { title: 'DSF Ash nano joggers', img: 'shein 44.jpeg', price: 45, desc: 'Ash nano joggers modern fit.' },
+      { title: 'DSF Black-MOB-sleeveless', img: 'sleeve.jpeg', price: 25, desc: 'Black MOB sleeveless tee.' }
     ];
 
-    /* Theme Toggle Handler */
+    /* --- Dark & Light Mode Theme Management --- */
+    function initTheme() {
+      const savedTheme = localStorage.getItem('dripTheme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      updateThemeButtonText(savedTheme);
+    }
+
     function toggleTheme() {
-      const body = document.body;
-      const themeBtn = document.getElementById('theme-toggle-btn');
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
       
-      body.classList.toggle('light-mode');
-      
-      if (body.classList.contains('light-mode')) {
-        localStorage.setItem('theme', 'light');
-        themeBtn.innerText = '☀️';
-      } else {
-        localStorage.setItem('theme', 'dark');
-        themeBtn.innerText = '🌙';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('dripTheme', newTheme);
+      updateThemeButtonText(newTheme);
+    }
+
+    function updateThemeButtonText(theme) {
+      const btn = document.getElementById('themeToggleBtn');
+      if (btn) {
+        if (theme === 'light') {
+          btn.innerText = '🌙 Dark';
+        } else {
+          btn.innerText = '☀️ Light';
+        }
       }
     }
 
-    // Apply saved theme preference on load
-    window.addEventListener('DOMContentLoaded', () => {
-      const savedTheme = localStorage.getItem('theme');
-      const themeBtn = document.getElementById('theme-toggle-btn');
-      
-      if (savedTheme === 'light') {
-        document.body.classList.add('light-mode');
-        if (themeBtn) themeBtn.innerText = '☀️';
-      } else {
-        if (themeBtn) themeBtn.innerText = '🌙';
-      }
-
-      const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-      document.querySelectorAll('.wish-btn').forEach(btn => {
-        const onclickAttr = btn.getAttribute('onclick');
-        if (onclickAttr) {
-          const match = onclickAttr.match(/toggleWish\(this,\s*'([^']+)'/);
-          if (match && match[1]) {
-            const productTitle = match[1];
-            if (wishlist.some(item => item.title === productTitle)) {
-              btn.classList.add('active');
-            }
-          }
-        }
-      });
-    });
+    // Execute theme initialization right away on script load
+    initTheme();
 
     /* Navigation Menu Toggle & Auto-Close Outside */
     function toggleMenu(event) {
@@ -1146,6 +1138,7 @@
       currentCurrency = currency;
       const { symbol, rate } = exchangeRates[currency];
 
+      // Update grid prices
       document.querySelectorAll('.sale-price, .old-price').forEach(elem => {
         const usdVal = parseFloat(elem.getAttribute('data-usd'));
         if (!isNaN(usdVal)) {
@@ -1154,6 +1147,7 @@
         }
       });
 
+      // Update active modal price
       const popPriceElem = document.getElementById('pop-price');
       if (popPriceElem && popPriceElem.getAttribute('data-usd')) {
         const popUsd = parseFloat(popPriceElem.getAttribute('data-usd'));
@@ -1260,6 +1254,7 @@
 
       localStorage.setItem('cart', JSON.stringify(cart));
 
+      // Show inline confirmation message below button
       let msgElem = btnElem ? btnElem.nextElementSibling : null;
       if (msgElem && msgElem.classList.contains('confirmation')) {
         msgElem.style.display = 'block';
@@ -1308,6 +1303,23 @@
       
       localStorage.setItem('wishlist', JSON.stringify(wishlist));
     }
+    
+    // Run on page load to ensure heart buttons reflect active wishlist status
+    window.addEventListener('DOMContentLoaded', () => {
+      const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+      document.querySelectorAll('.wish-btn').forEach(btn => {
+        const onclickAttr = btn.getAttribute('onclick');
+        if (onclickAttr) {
+          const match = onclickAttr.match(/toggleWish\(this,\s*'([^']+)'/);
+          if (match && match[1]) {
+            const productTitle = match[1];
+            if (wishlist.some(item => item.title === productTitle)) {
+              btn.classList.add('active');
+            }
+          }
+        }
+      });
+    });
 
     /* Recently Viewed Feature */
     function addToRecentlyViewed(name, img, price) {
@@ -1317,7 +1329,7 @@
 
       const item = document.createElement('div');
       item.id = `rv-${safeId}`;
-      item.style.cssText = "min-width:110px; background:var(--related-bg); padding:8px; border-radius:8px; text-align:center; border: 1px solid var(--card-border); animation: fadeSlideUp 0.4s ease-out;";
+      item.style.cssText = "min-width:110px; background:var(--card-bg); padding:8px; border-radius:8px; text-align:center; border: 1px solid var(--card-border); animation: fadeSlideUp 0.4s ease-out;";
       item.innerHTML = `
         <img src="${img}" style="width:100%; height:80px; object-fit:cover; border-radius:4px;">
         <p style="font-size:0.75rem; color:var(--text-color); margin-top:4px; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">${name}</p>
@@ -1328,8 +1340,8 @@
 
     function clearRecentlyViewed() {
       document.getElementById('rv-container').innerHTML = '';
-    }
 
+    }
     setInterval(() => {
   // Find all viewer count elements on the page
   const viewerElements = document.querySelectorAll('.view-count');
