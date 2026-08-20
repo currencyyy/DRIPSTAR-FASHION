@@ -5,42 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Drip Collection</title>
   <style>
-    /* Base Theme Variables */
+    /* Base Theme Variables (Dark Mode Default) */
     :root {
       --drip-gradient: linear-gradient(135deg, #111111 0%, #333333 100%);
       --gold: #d4af37;
       --gold-hover: #e5c158;
       --gold-glow: rgba(212, 175, 55, 0.4);
       --bg-color: #0f0f0f;
+      --header-bg: #141414;
       --card-bg: #1a1a1a;
       --card-border: #2a2a2a;
       --text-color: #ffffff;
       --text-muted: #aaaaaa;
       --success-green: #2ed573;
-      --header-bg: #141414;
+      --popup-bg: #141414;
       --input-bg: #222;
       --input-border: #444;
-      --modal-bg: #141414;
-      --related-bg: #1e1e1e;
+      --shipping-bg: #000;
     }
 
-    /* Light Theme Variables */
-    body.light-mode {
+    /* Light Mode Theme Variables */
+    [data-theme="light"] {
       --drip-gradient: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
-      --gold: #b38f27;
-      --gold-hover: #997920;
-      --gold-glow: rgba(179, 143, 39, 0.3);
-      --bg-color: #f8f9fa;
-      --card-bg: #ffffff;
-      --card-border: #e2e8f0;
-      --text-color: #1a202c;
-      --text-muted: #718096;
-      --success-green: #28a745;
+      --gold: #b89728;
+      --gold-hover: #d4af37;
+      --gold-glow: rgba(184, 151, 40, 0.3);
+      --bg-color: #f4f4f4;
       --header-bg: #ffffff;
-      --input-bg: #edf2f7;
-      --input-border: #cbd5e0;
-      --modal-bg: #ffffff;
-      --related-bg: #edf2f7;
+      --card-bg: #ffffff;
+      --card-border: #e0e0e0;
+      --text-color: #111111;
+      --text-muted: #666666;
+      --success-green: #2ed573;
+      --popup-bg: #ffffff;
+      --input-bg: #f9f9f9;
+      --input-border: #ccc;
+      --shipping-bg: #1a1a1a;
     }
 
     * {
@@ -122,7 +122,7 @@
 
     /* Free Shipping Bar */
     #shipping-bar-container {
-      background: #000;
+      background: var(--shipping-bg);
       color: #fff;
       text-align: center;
       padding: 10px;
@@ -130,8 +130,9 @@
       position: sticky;
       top: 0;
       z-index: 999;
-      border-bottom: 1px solid #333;
+      border-bottom: 1px solid var(--card-border);
       width: 100%;
+      transition: background 0.3s ease;
     }
 
     #shipping-progress-fill {
@@ -156,7 +157,7 @@
       font-weight: bold;
       cursor: pointer;
       z-index: 1001;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       transition: transform 0.3s ease, background 0.3s ease;
     }
 
@@ -225,7 +226,7 @@
       position: relative;
     }
 
-    .currency-select {
+    .currency-select, .theme-toggle-btn {
       background: var(--card-bg);
       color: var(--gold);
       border: 1px solid var(--gold);
@@ -238,28 +239,7 @@
       transition: border-color 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
     }
 
-    .currency-select:hover {
-      box-shadow: 0 0 8px var(--gold-glow);
-    }
-
-    /* Theme Toggle Button Style */
-    .theme-toggle-btn {
-      background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      padding: 8px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-    }
-
-    .theme-toggle-btn:hover {
-      background: var(--gold);
-      color: #000;
+    .currency-select:hover, .theme-toggle-btn:hover {
       box-shadow: 0 0 8px var(--gold-glow);
     }
 
@@ -288,9 +268,10 @@
       border: 1px solid var(--card-border);
       padding: 1rem;
       border-radius: 8px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       z-index: 1005;
       min-width: 180px;
+      transition: background 0.3s ease, border-color 0.3s ease;
     }
 
     .nav-links.active {
@@ -338,7 +319,7 @@
 
     .product:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2), 0 0 15px var(--gold-glow);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15), 0 0 15px var(--gold-glow);
       border-color: var(--gold);
     }
 
@@ -400,7 +381,7 @@
     .live-dot {
       width: 8px;
       height: 8px;
-      background-color: var(--success-green);
+      background-color: #2ed573;
       border-radius: 50%;
       animation: livePulse 1.8s infinite ease-in-out;
       flex-shrink: 0;
@@ -479,7 +460,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: var(--modal-bg);
+      background: var(--popup-bg);
       border: 1px solid var(--card-border);
       border-radius: 16px;
       padding: 1.5rem;
@@ -488,9 +469,9 @@
       max-height: 90vh;
       overflow-y: auto;
       z-index: 2001;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
       animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-      color: var(--text-color);
+      transition: background 0.3s ease, border-color 0.3s ease;
     }
 
     .popup-container {
@@ -567,7 +548,7 @@
       color: var(--text-color);
       border-radius: 6px;
       outline: none;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, background 0.3s, color 0.3s;
     }
 
     .popup-input:focus {
@@ -613,7 +594,7 @@
     }
 
     .related-item {
-      background: var(--related-bg);
+      background: var(--card-bg);
       border-radius: 8px;
       padding: 6px;
       text-align: center;
@@ -731,14 +712,9 @@
         gap: 6px;
       }
 
-      .currency-select {
+      .currency-select, .theme-toggle-btn {
         padding: 6px 8px;
         font-size: 0.75rem;
-      }
-
-      .theme-toggle-btn {
-        padding: 6px 8px;
-        font-size: 0.85rem;
       }
 
       .menu-btn {
@@ -746,63 +722,219 @@
         font-size: 0.8rem;
       }
     }
-  </style>
+
+    #backToTop { 
+    position: fixed;
+    bottom: 15px; 
+    right: 15px; 
+    width: 40px; 
+    height: 40px; 
+    z-index: 1000;
+}
+
+.cart-floating-container { 
+    position: fixed;
+    bottom: 65px; 
+    right: 15px; 
+    width: 50px; 
+    height: 50px; 
+    z-index: 1000;
+}
+/* Base configurations for the floating layout stack */
+#backToTop { 
+    position: fixed;
+    bottom: 15px; 
+    right: 15px; 
+    width: 40px; 
+    height: 40px; 
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.cart-floating-container { 
+    position: fixed;
+    bottom: 65px; 
+    right: 15px; 
+    width: 50px; 
+    height: 50px; 
+    z-index: 1000;
+    cursor: pointer;
+}
+
+/* WhatsApp Floating Container Wrapper */
+#whatsappHelp {
+    position: fixed;
+    bottom: 125px; 
+    right: 20px;   
+    width: 40px;
+    height: 40px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    text-decoration: none;
+}
+
+/* SVG Vector Sizing */
+#whatsappHelp svg {
+    width: 22px;
+    height: 22px;
+    fill: #ffffff;
+    z-index: 2;
+}
+
+/* NEW: Text Bubble Label */
+.whatsapp-label {
+    position: absolute;
+    right: 50px; /* Positions bubble directly to the left of the button icon */
+    background-color: #111111;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    pointer-events: none; /* Prevents text layer from blocking pointer inputs */
+    opacity: 0;
+    transform: translateX(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Text Bubble Tail Little Triangle */
+.whatsapp-label::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 4px 0 4px 4px;
+    border-style: solid;
+    border-color: transparent transparent transparent #111111;
+}
+
+/* Hover Actions: Scales icon and displays text label cleanly */
+#whatsappHelp:hover {
+    transform: scale(1.05);
+    background-color: #20ba5a;
+}
+
+#whatsappHelp:hover .whatsapp-label {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Active Support Live Pulsing Indicator Dot */
+#whatsappHelp::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 10px;
+    height: 10px;
+    background-color: #00FF00;
+    border: 2px solid #25D366;  
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7);
+    animation: pulseBadge 1.8s infinite;
+    z-index: 3;
+}
+
+@keyframes pulseBadge {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(0, 255, 0, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 255, 0, 0);
+    }
+}
+
+.popup-container { grid-template-columns: 1fr; gap: 1rem; } 
+.popup-main-img { height: 220px; } 
+#product-popup { padding: 1rem; width: 95%; } 
+
+/* Responsive Rules Configuration */
+@media (max-width: 768px) {
+    #backToTop { bottom: 15px; right: 15px; }
+    .cart-floating-container { bottom: 65px; right: 15px; }
+    #whatsappHelp { bottom: 125px; right: 20px; }
+    
+    /* Keep label hidden on small screens to prevent covering up card imagery */
+    .whatsapp-label { display: none; } 
+}
+
+@media (max-width: 480px) { 
+    .product-grid { grid-template-columns: 1fr; } 
+    .nav-controls { gap: 6px; } 
+    .currency-select, .theme-toggle-btn { padding: 6px 8px; font-size: 0.75rem; }
+    .menu-btn { padding: 6px 10px; font-size: 0.8rem; } 
+} 
+</style>
 </head>
 <body>
+  <div id="shipping-bar-container"> 
+    <span id="shipping-text">You're $500 away from FREE SHIPPING!</span> 
+    <div style="background: rgba(128,128,128,0.2); height: 6px; width: 60%; margin: 5px auto; border-radius: 10px; overflow: hidden;"> 
+        <div id="shipping-progress-fill"></div> 
+    </div> 
+</div> 
 
-  <!-- Free Shipping Header Bar -->
-  <div id="shipping-bar-container">
-    <span id="shipping-text">You're $500 away from FREE SHIPPING!</span>
-    <div style="background: #333; height: 6px; width: 60%; margin: 5px auto; border-radius: 10px; overflow: hidden;">
-      <div id="shipping-progress-fill"></div>
-    </div>
-  </div>
+<!-- Back to Top Floating Button --> 
+<button id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
 
-  <!-- Back to Top Floating Button -->
-  <button id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+<!-- Floating Cart Icon --> 
+<div class="cart-floating-container" onclick="window.location.href='alllcart.html'"> 
+    <span class="cart-floating">🛒</span> 
+</div>
 
-  <!-- Floating Cart Icon -->
-  <div class="cart-floating-container" onclick="window.location.href='alllcart.html'">
-    <span class="cart-floating">🛒</span>
-  </div>
-
-  <!-- Main Navigation Header -->
-  <header class="header">
-    <div class="logo">
-      <h2><a href="index.html"><img src="WhatsApp Image 2026-07-15 at 3.20.36 AM.jpeg" alt="drip logo"></a></h2>
-    </div>
-
-    <div class="nav-controls">
-      <!-- Currency Switcher Dropdown -->
-      <select id="currency-select" class="currency-select" onchange="changeCurrency(this.value)">
-        <option value="USD">USD ($)</option>
-        <option value="EUR">EUR (€)</option>
-        <option value="GBP">GBP (£)</option>
-        <option value="NGN">NGN (₦)</option>
-      </select>
-
-      <!-- Dark & Light Mode Toggle Button placed beside the menu -->
-      <button id="theme-toggle-btn" class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Light/Dark Mode">
-        🌙
-      </button>
-
-        <nav class="top-nav">
-        <button class="menu-btn" onclick="toggleMenu(event)">
-          ☰ MENU
-        </button>
-        <div class="nav-links" id="nav-links">
-      <a href="index.html">Home</a>
-          <a href="shop.html">Male Section</a>
-          <a href="femaleshop.html">Female Section</a>
-          <a href="wishlist.html">Wishlist</a>
-          <a href="dripAbout.html">About</a>
-          <a href="alllcart.html">Cart</a>
-          <a href="driplogin.html">Login</a>
-          <a href="1of1.html">1 of 1 shop</a>
-        </div>
-      </nav>
-    </div>
-  </header>
+<!-- Native HTML Anchor Link Routing to WhatsApp with live nested label -->
+<a id="whatsappHelp" href="https://wa.me/2349064575303" target="_blank" rel="noopener noreferrer" title="Support is Online">
+    <!-- Text Label Inside Container -->
+    <span class="whatsapp-label">Chat with Drip-Support</span>
+    
+    <svg xmlns="http://w3.org" viewBox="0 0 448 512">
+        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    </svg>
+</a>
+<!-- Main Navigation Header --> 
+<header class="header"> 
+    <div class="logo"> 
+        <h2><a href="index.html"><img src="WhatsApp Image 2026-07-15 at 3.20.36 AM.jpeg" alt="drip logo"></a></h2> 
+    </div> 
+    <div class="nav-controls"> 
+        <button id="themeToggleBtn" class="theme-toggle-btn" onclick="toggleTheme()">☀%EF%B8%8F Light</button> 
+        <select id="currency-select" class="currency-select" onchange="changeCurrency(this.value)"> 
+            <option value="USD">USD ($)</option> 
+            <option value="EUR">EUR (€)</option> 
+            <option value="GBP">GBP (£)</option> 
+            <option value="NGN">NGN (₦)</option> 
+        </select> 
+        <nav class="top-nav"> 
+            <button class="menu-btn" onclick="toggleMenu(event)"> ☰ MENU </button> 
+            <div class="nav-links" id="nav-links"> 
+                <a href="index.html">Home</a> 
+                <a href="shop.html">Male Section</a> 
+                <a href="femaleshop.html">Female Section</a> 
+                <a href="wishlist.html">Wishlist</a> 
+                <a href="dripAbout.html">About</a> 
+                <a href="alllcart.html">Cart</a> 
+                <a href="driplogin.html">Login</a> 
+                <a href="1of1.html">1 of 1 shop</a> 
+            </div> 
+        </nav> 
+    </div> 
+</header>
 
   <!-- Main Product Showcase Grid -->
   <main class="product-grid">
@@ -1075,56 +1207,52 @@
       price: 0,
       description: ''
     };
-
+    
+    function updateWhatsAppMessage(productName) {
+      const whatsappBtn = document.getElementById('whatsappHelp');
+      if (whatsappBtn) {
+          // Double verified number configuration block
+          const targetNumber = "2349064575303";
+          const customizedText = `Hello Drip Support! I am currently checking out the "${productName}" and want to make an inquiry.`;
+          whatsappBtn.href = `https://wa.me{targetNumber}?text=${encodeURIComponent(customizedText)}`;
+      }
+  }
     // Related products catalog mock
     const relatedCatalog = [
-      { title: 'DSF currenciaga nano dress', img: 'W5 FRONT.jpeg', price: 15, desc: ' currenciaga nano dress flower design.' },
-      { title: 'DSF Green Brazil long-sleeve', img: 'W3 FRONT.jpeg', price: 15, desc: 'DSF Green Brazil long-sleeve.' },
-      { title: 'DSF ELEGANZA DRESS', img: 'FEMALE1.jpeg', price: 25, desc: 'if elegance was a dress.' }
+      { title: 'DSF Black-Drip-cap', img: 'blacoo - Copy.jpeg', price: 7, desc: 'Dripstar Face Cap in black.' },
+      { title: 'DSF Ash nano joggers', img: 'shein 44.jpeg', price: 45, desc: 'Ash nano joggers modern fit.' },
+      { title: 'DSF Black-MOB-sleeveless', img: 'sleeve.jpeg', price: 25, desc: 'Black MOB sleeveless tee.' }
     ];
 
-    /* Theme Toggle Handler */
+    /* --- Dark & Light Mode Theme Management --- */
+    function initTheme() {
+      const savedTheme = localStorage.getItem('dripTheme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      updateThemeButtonText(savedTheme);
+    }
+
     function toggleTheme() {
-      const body = document.body;
-      const themeBtn = document.getElementById('theme-toggle-btn');
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
       
-      body.classList.toggle('light-mode');
-      
-      if (body.classList.contains('light-mode')) {
-        localStorage.setItem('theme', 'light');
-        themeBtn.innerText = '☀️';
-      } else {
-        localStorage.setItem('theme', 'dark');
-        themeBtn.innerText = '🌙';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('dripTheme', newTheme);
+      updateThemeButtonText(newTheme);
+    }
+
+    function updateThemeButtonText(theme) {
+      const btn = document.getElementById('themeToggleBtn');
+      if (btn) {
+        if (theme === 'light') {
+          btn.innerText = '🌙 Dark';
+        } else {
+          btn.innerText = '☀️ Light';
+        }
       }
     }
 
-    // Apply saved theme preference on load
-    window.addEventListener('DOMContentLoaded', () => {
-      const savedTheme = localStorage.getItem('theme');
-      const themeBtn = document.getElementById('theme-toggle-btn');
-      
-      if (savedTheme === 'light') {
-        document.body.classList.add('light-mode');
-        if (themeBtn) themeBtn.innerText = '☀️';
-      } else {
-        if (themeBtn) themeBtn.innerText = '🌙';
-      }
-
-      const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-      document.querySelectorAll('.wish-btn').forEach(btn => {
-        const onclickAttr = btn.getAttribute('onclick');
-        if (onclickAttr) {
-          const match = onclickAttr.match(/toggleWish\(this,\s*'([^']+)'/);
-          if (match && match[1]) {
-            const productTitle = match[1];
-            if (wishlist.some(item => item.title === productTitle)) {
-              btn.classList.add('active');
-            }
-          }
-        }
-      });
-    });
+    // Execute theme initialization right away on script load
+    initTheme();
 
     /* Navigation Menu Toggle & Auto-Close Outside */
     function toggleMenu(event) {
@@ -1146,6 +1274,7 @@
       currentCurrency = currency;
       const { symbol, rate } = exchangeRates[currency];
 
+      // Update grid prices
       document.querySelectorAll('.sale-price, .old-price').forEach(elem => {
         const usdVal = parseFloat(elem.getAttribute('data-usd'));
         if (!isNaN(usdVal)) {
@@ -1154,6 +1283,7 @@
         }
       });
 
+      // Update active modal price
       const popPriceElem = document.getElementById('pop-price');
       if (popPriceElem && popPriceElem.getAttribute('data-usd')) {
         const popUsd = parseFloat(popPriceElem.getAttribute('data-usd'));
@@ -1260,6 +1390,7 @@
 
       localStorage.setItem('cart', JSON.stringify(cart));
 
+      // Show inline confirmation message below button
       let msgElem = btnElem ? btnElem.nextElementSibling : null;
       if (msgElem && msgElem.classList.contains('confirmation')) {
         msgElem.style.display = 'block';
@@ -1308,6 +1439,23 @@
       
       localStorage.setItem('wishlist', JSON.stringify(wishlist));
     }
+    
+    // Run on page load to ensure heart buttons reflect active wishlist status
+    window.addEventListener('DOMContentLoaded', () => {
+      const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+      document.querySelectorAll('.wish-btn').forEach(btn => {
+        const onclickAttr = btn.getAttribute('onclick');
+        if (onclickAttr) {
+          const match = onclickAttr.match(/toggleWish\(this,\s*'([^']+)'/);
+          if (match && match[1]) {
+            const productTitle = match[1];
+            if (wishlist.some(item => item.title === productTitle)) {
+              btn.classList.add('active');
+            }
+          }
+        }
+      });
+    });
 
     /* Recently Viewed Feature */
     function addToRecentlyViewed(name, img, price) {
@@ -1317,7 +1465,7 @@
 
       const item = document.createElement('div');
       item.id = `rv-${safeId}`;
-      item.style.cssText = "min-width:110px; background:var(--related-bg); padding:8px; border-radius:8px; text-align:center; border: 1px solid var(--card-border); animation: fadeSlideUp 0.4s ease-out;";
+      item.style.cssText = "min-width:110px; background:var(--card-bg); padding:8px; border-radius:8px; text-align:center; border: 1px solid var(--card-border); animation: fadeSlideUp 0.4s ease-out;";
       item.innerHTML = `
         <img src="${img}" style="width:100%; height:80px; object-fit:cover; border-radius:4px;">
         <p style="font-size:0.75rem; color:var(--text-color); margin-top:4px; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">${name}</p>
@@ -1328,8 +1476,8 @@
 
     function clearRecentlyViewed() {
       document.getElementById('rv-container').innerHTML = '';
-    }
 
+    }
     setInterval(() => {
   // Find all viewer count elements on the page
   const viewerElements = document.querySelectorAll('.view-count');
